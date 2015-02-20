@@ -8,7 +8,6 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
 gem 'uglifier', '>= 1.3.0'
-gem 'bower-rails'
 
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -19,4 +18,3 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
