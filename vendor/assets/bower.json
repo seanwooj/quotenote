@@ -1,9 +1,0 @@
-{
-  "name": "dsl-generated dependencies",
-  "dependencies": {
-    "bootstrap": "latest",
-    "jquery": "latest",
-    "normalize.css": "latest",
-    "skeleton-css": "latest"
-  }
-}
