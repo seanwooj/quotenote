@@ -1,0 +1,25 @@
+/*
+
+One file to rule them all,
+One file to find them,
+One file to bring them all,
+And in the darkness merge them.
+
+This is an in progress refactorization of the current state of SCSS chaos which reigns in our app.
+It seeks to unify all of our stylesheets into a cohesive, heirarchal, and easy to understand pattern.
+
+Using a Scaleable and Modular Architecture for CSS pattern (https://smacss.com/), henceforth referred to as SMACSS
+and elements from an excellent sitepoint article (http://www.sitepoint.com/architecture-sass-project/),
+we aim to organize our site's CSS in the following pattern:
+
+*/
+
+/* Base Files */
+@import 'base/_variables.scss';
+@import 'base/_base.scss';
+@import 'base/_typography.scss';
+
+/* Vendor Scripts */
+@import 'normalize.css/normalize.css';
+@import 'skeleton-css/css/skeleton.css';
+@import 'vendor/minicolors/jquery.minicolors.css';

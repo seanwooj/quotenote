@@ -11,5 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ujs
+//= require minicolors
 //= require_tree .

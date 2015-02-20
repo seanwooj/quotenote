@@ -13,5 +13,12 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "normalize.css": "~3.0.2",
+    "skeleton-css": "~2.0.4",
+    "minicolors": "~2.1.10",
+    "jquery-ujs": "~1.0.3"
+  }
 }
