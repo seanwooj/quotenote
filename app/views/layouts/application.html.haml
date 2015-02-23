@@ -5,6 +5,9 @@
     %title Quotenote
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    = yield :font_styles
     = csrf_meta_tags
   %body
     = yield
+    = yield :footer_js
+

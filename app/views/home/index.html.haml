@@ -1,10 +1,6 @@
-#quotenote
-  .quote
-    .quote-text
-      I can accept failure, everyone fails at something. But I can’t accept not trying
-    .author-text
-      Albert Einstein
-.container
+#quotenote{:style => 'border: 1px solid black'}
+  %iframe{:src => 'http://localhost:3000/generator?quote_text=Type%20your%20inspirational%20quote!&quote_author=You!&font_family=Laila', :style => 'width: 100%; height: 100%;'}
+
 #editor
   .container
     %h2 Editor

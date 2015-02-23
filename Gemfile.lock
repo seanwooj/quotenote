@@ -47,6 +47,7 @@ GEM
     columnize (0.9.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.3.0)
     globalid (0.3.3)
@@ -66,6 +67,7 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
+    imgkit (1.6.0)
     jbuilder (2.2.7)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -80,6 +82,7 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    pdfkit (0.6.2)
     pg (0.18.1)
     rack (1.6.0)
     rack-test (0.6.3)
@@ -110,6 +113,19 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    rspec (3.2.0)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
+    rspec-core (3.2.0)
+      rspec-support (~> 3.2.0)
+    rspec-expectations (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-mocks (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-support (3.2.1)
     ruby_parser (3.6.4)
       sexp_processor (~> 4.1)
     sass (3.4.12)
@@ -154,9 +170,12 @@ PLATFORMS
 DEPENDENCIES
   byebug
   haml-rails
+  imgkit
   jbuilder (~> 2.0)
+  pdfkit
   pg
   rails (= 4.2.0)
+  rspec
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

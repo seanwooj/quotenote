@@ -12,11 +12,15 @@ window.qn.editor = {
     "I can accept failure, everyone fails at something. But I can’t accept not trying"
   ],
 
+  fonts: [
+    'Pacifico', 'Roboto Condensed', 'Raleway', 'Montserrat', 'Cabin'
+  ],
+
   init: function(){
     var $ele = $(this.element);
-    this.cycle_quotes($ele);
+    // this.cycle_quotes($ele);
     this.resize_text($ele);
-    this.init_colorpicker();
+    // this.init_colorpicker();
   },
 
   init_colorpicker: function(){
@@ -83,7 +87,3 @@ window.qn.editor = {
 
   }
 };
-
-$(window).load(function(){
-  window.qn.editor.init();
-});

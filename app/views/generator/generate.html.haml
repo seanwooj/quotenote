@@ -1,0 +1,17 @@
+#quotenote
+  .quote{:style => "font-family: '#{@options[:font_family]}' !important;"}
+    .quote-text
+      = @options[:quote_text]
+    .author-text
+      = @options[:quote_author]
+
+.google_api_key{:style => 'display: none;', :data => {:key => GOOGLE_API_KEY}}
+
+- content_for :font_styles do
+  %link{:rel => 'stylesheet', :type => 'text/css', :href=> "//fonts.googleapis.com/css?family=#{@options[:font_family]}"}
+
+- content_for :footer_js do
+  :javascript
+    $(window).load(function(){
+      window.qn.editor.init();
+    });
