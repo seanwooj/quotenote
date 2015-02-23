@@ -1,0 +1,14 @@
+#quotenote
+  .quote
+    .quote-text
+      I can accept failure, everyone fails at something. But I can’t accept not trying
+    .author-text
+      Albert Einstein
+.container
+#editor
+  .container
+    %h2 Editor
+    %button.button{:onclick => "window.qn.editor.init();"} Change Shit
+    %button.button{:onclick => "window.qn.editor.change_quote_on_input();"} Change Quote
+    %button.button{:onclick => "window.qn.editor.toggle_background();"} Toggle Background
+    %input.minicolors.colorpicker{:type => "text"}

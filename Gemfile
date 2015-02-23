@@ -12,6 +12,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'imgkit'
+gem 'pdfkit'
+
 group :development, :test do
   gem 'byebug'
   # Access an IRB console on exception pages or by using <%= console %> in views

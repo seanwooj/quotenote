@@ -1,0 +1,29 @@
+#quotenote {
+  background-image: url('../img/patterns/swirl_pattern.png');
+  height: 600px;
+  width: 1100px;
+  &.cover-background {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .quote {
+    padding: 160px;
+    box-sizing: border-box;
+    .quote-text{
+
+    }
+    .author-text {
+      opacity: .7;
+      float: right;
+    }
+  }
+}
+
+#editor {
+   background: white;
+   width: 300px;
+   position: fixed;
+   top: 0; left: 0;
+   padding: 15px;
+}
