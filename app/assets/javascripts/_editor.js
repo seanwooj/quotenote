@@ -39,19 +39,21 @@ window.qn.editor = {
   },
 
   generate_querystring: function(){
-    return "/generator?" + $.param(this.quote_params);
+    return "/generator.jpg?" + $.param(this.quote_params);
   },
 
   change_font: function(){
     var font_family = window.prompt('which font?');
     this.quote_params['font_family'] = font_family;
     var params = this.generate_querystring();
-    $("iframe").attr('src', params); // DRY THIS
+    $("img").attr('src', params); // DRY THIS
   },
 
-  // change_quote_color: function(color){
-  //   $(".quote-text").css({color: color});
-  // },
+  change_quote_color: function(color){
+    this.quote_params['font_color'] = color;
+    var params = this.generate_querystring();
+    $("img").attr('src', params); // DRY THIS
+  },
 
   cycle_quotes: function(){
     var random_quote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
@@ -61,7 +63,7 @@ window.qn.editor = {
   change_quote: function(quote_text) {
     this.quote_params['quote_text'] = quote_text;
     var params = this.generate_querystring();
-    $("iframe").attr('src', params); // DRY THIS
+    $("img").attr('src', params); // DRY THIS
   },
 
   change_quote_on_input: function(){

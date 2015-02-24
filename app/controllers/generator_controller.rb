@@ -7,7 +7,7 @@ class GeneratorController < ApplicationController
 
     # need to add stylesheet and js
     # https://github.com/csquared/IMGKit
-    # @kit.javascripts << "#{Rails.root}/app/assets/javascripts/_generator.js"
+    @kit.javascripts << "#{Rails.root}/public/imgkit_application.js"
 
     @string = render_to_string(:action => 'generate.html.haml', :layout => 'application.html.haml')
     respond_to do |format|

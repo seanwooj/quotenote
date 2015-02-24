@@ -1,14 +1,43 @@
-#quotenote{:style => 'width: 1100; height: 600;'}
-  .quote{:style => "font-family: '#{@options[:font_family]}' !important;"}
-    .quote-text
-      = @options[:quote_text]
-    .author-text
-      = @options[:quote_author]
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Quotenote
+    :css
+      #quotenote {
+        height: 1084px;
+        width: 1680px;
+        font-family: Helvetica;
+      }
+      #quotenote.cover-background {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      #quotenote .quote {
+        padding: 15%;
+        box-sizing: border-box;
+      }
+      #quotenote .quote .author-text {
+        opacity: .7;
+        float: right;
+      }
 
-.google_api_key{:style => 'display: none;', :data => {:key => GOOGLE_API_KEY}}
+    = yield :font_styles
+    = csrf_meta_tags
+  %body
+
+    #quotenote{:style => "color: #{@options[:font_color]}"}
+      .quote
+        .quote-text
+          = @options[:quote_text]
+        .author-text
+          = @options[:quote_author]
+
+    .google_api_key{:style => 'display: none;', :data => {:key => GOOGLE_API_KEY}}
 
 - content_for :font_styles do
-  %link{:rel => 'stylesheet', :type => 'text/css', :href=> "//fonts.googleapis.com/css?family=#{@options[:font_family]}"}
+  %link{:rel => 'stylesheet', :type => 'text/css', :href=> "https://fonts.googleapis.com/css?family=#{@options[:font_family]}"}
 
 - content_for :footer_js do
   :javascript
