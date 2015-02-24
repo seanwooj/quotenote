@@ -14,6 +14,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'imgkit'
 gem 'pdfkit'
+gem 'wkhtmltoimage-binary'
+gem "unicorn-rails"
 
 group :development, :test do
   gem 'byebug'
