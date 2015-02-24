@@ -17,7 +17,7 @@ window.qn.editor = {
   ],
 
   quote_params: {
-    font_family: 'Laila',
+    font_family: 'Lato',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
     quote_author: "You!"
   },

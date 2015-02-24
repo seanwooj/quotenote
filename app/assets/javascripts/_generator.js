@@ -29,6 +29,8 @@ window.qn.generator = {
       font_size = font_size - 0.5;
       $quote.css({"font-size": font_size + "px"});
     }
+
+    $container.height($container.height());
   }
 
 };

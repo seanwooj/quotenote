@@ -10541,7 +10541,7 @@ window.qn.editor = {
   ],
 
   quote_params: {
-    font_family: 'Laila',
+    font_family: 'Lato',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
     quote_author: "You!"
   },
@@ -10563,19 +10563,21 @@ window.qn.editor = {
   },
 
   generate_querystring: function(){
-    return "/generator?" + $.param(this.quote_params);
+    return "/generator.jpg?" + $.param(this.quote_params);
   },
 
   change_font: function(){
     var font_family = window.prompt('which font?');
     this.quote_params['font_family'] = font_family;
     var params = this.generate_querystring();
-    $("iframe").attr('src', params); // DRY THIS
+    $("img").attr('src', params); // DRY THIS
   },
 
-  // change_quote_color: function(color){
-  //   $(".quote-text").css({color: color});
-  // },
+  change_quote_color: function(color){
+    this.quote_params['font_color'] = color;
+    var params = this.generate_querystring();
+    $("img").attr('src', params); // DRY THIS
+  },
 
   cycle_quotes: function(){
     var random_quote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
@@ -10585,7 +10587,7 @@ window.qn.editor = {
   change_quote: function(quote_text) {
     this.quote_params['quote_text'] = quote_text;
     var params = this.generate_querystring();
-    $("iframe").attr('src', params); // DRY THIS
+    $("img").attr('src', params); // DRY THIS
   },
 
   change_quote_on_input: function(){
@@ -10614,23 +10616,23 @@ window.qn.generator = {
   },
 
   resize_text: function($ele){
-    var $quote = $ele.find('.quote-text');
+    var $quote_text = $ele.find('.quote-text');
     var $container = $ele.find('.quote');
     var $background = $ele;
     var content_height = $container.outerHeight();
     var background_height = $background.height();
-    var font_size = parseInt($quote.css("font-size"));
+    var font_size = parseInt($quote_text.css("font-size"));
 
     while(background_height > (content_height) ) {
       content_height = $container.outerHeight();
       font_size = font_size + 0.5;
-      $quote.css({"font-size": font_size + "px"});
+      $quote_text.css({"font-size": font_size + "px"});
     }
 
     while(background_height < (content_height) ) {
       content_height = $container.outerHeight();
       font_size = font_size - 0.5;
-      $quote.css({"font-size": font_size + "px"});
+      $quote_text.css({"font-size": font_size + "px"});
     }
   }
 

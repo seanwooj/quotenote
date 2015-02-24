@@ -3,41 +3,22 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Quotenote
-    :css
-      #quotenote {
-        height: 1084px;
-        width: 1680px;
-        font-family: Helvetica;
-      }
-      #quotenote.cover-background {
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-      }
-      #quotenote .quote {
-        padding: 15%;
-        box-sizing: border-box;
-      }
-      #quotenote .quote .author-text {
-        opacity: .7;
-        float: right;
-      }
-
     = yield :font_styles
     = csrf_meta_tags
   %body
 
-    #quotenote{:style => "color: #{@options[:font_color]}"}
+    #quotenote{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family]};"}
       .quote
         .quote-text
           = @options[:quote_text]
         .author-text
           = @options[:quote_author]
-
-    .google_api_key{:style => 'display: none;', :data => {:key => GOOGLE_API_KEY}}
+        - 10.times do
+          %br
 
 - content_for :font_styles do
-  %link{:rel => 'stylesheet', :type => 'text/css', :href=> "https://fonts.googleapis.com/css?family=#{@options[:font_family]}"}
+  = render :partial => 'image_styles'
+  = render :partial => "generator/fonts/#{@options[:font_family].downcase.split(" ").join("_")}"
 
 - content_for :footer_js do
   :javascript
