@@ -4,7 +4,14 @@
 #editor
   .container
     %h2 Editor
-    %button.button{:onclick => "window.qn.editor.init();"} Change Shit
+    %button.button{:onclick => "window.qn.editor.cycle_quotes();"} Random Quote
     %button.button{:onclick => "window.qn.editor.change_quote_on_input();"} Change Quote
     %button.button{:onclick => "window.qn.editor.toggle_background();"} Toggle Background
+    %button.button{:onclick => 'window.qn.editor.change_font();'} Change Font
     %input.minicolors.colorpicker{:type => "text"}
+
+- content_for :footer_js do
+  :javascript
+    $(window).load(function(){
+      window.qn.editor.init();
+    });

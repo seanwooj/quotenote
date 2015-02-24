@@ -16,11 +16,15 @@ window.qn.editor = {
     'Pacifico', 'Roboto Condensed', 'Raleway', 'Montserrat', 'Cabin'
   ],
 
+  quote_params: {
+    font_family: 'Laila',
+    quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
+    quote_author: "You!"
+  },
+
   init: function(){
     var $ele = $(this.element);
-    // this.cycle_quotes($ele);
-    this.resize_text($ele);
-    // this.init_colorpicker();
+    this.init_colorpicker();
   },
 
   init_colorpicker: function(){
@@ -34,34 +38,20 @@ window.qn.editor = {
     });
   },
 
-  change_quote_color: function(color){
-    $(".quote-text").css({color: color});
+  generate_querystring: function(){
+    return "/generator?" + $.param(this.quote_params);
   },
 
-  resize_text: function($ele){
-    var $quote = $ele.find('.quote-text');
-    var $container = $ele.find('.quote');
-    var $background = $ele;
-    var content_height = $container.outerHeight();
-    var background_height = $background.height();
-    var font_size = parseInt($quote.css("font-size"));
-
-    // $ele.height(background_height);
-
-    while(background_height > (content_height) ) {
-      content_height = $container.outerHeight();
-      font_size = font_size + 0.5;
-      $quote.css({"font-size": font_size + "px"});
-    }
-
-    while(background_height < (content_height) ) {
-      console.log(background_height + 'qh');
-      console.log(content_height + 'ch');
-      content_height = $container.outerHeight();
-      font_size = font_size - 0.5;
-      $quote.css({"font-size": font_size + "px"});
-    }
+  change_font: function(){
+    var font_family = window.prompt('which font?');
+    this.quote_params['font_family'] = font_family;
+    var params = this.generate_querystring();
+    $("iframe").attr('src', params); // DRY THIS
   },
+
+  // change_quote_color: function(color){
+  //   $(".quote-text").css({color: color});
+  // },
 
   cycle_quotes: function(){
     var random_quote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
@@ -69,21 +59,21 @@ window.qn.editor = {
   },
 
   change_quote: function(quote_text) {
-    var $quote = $('.quote-text');
-    $quote.text(quote_text);
+    this.quote_params['quote_text'] = quote_text;
+    var params = this.generate_querystring();
+    $("iframe").attr('src', params); // DRY THIS
   },
 
   change_quote_on_input: function(){
     var $ele = $(this.element);
     var quote = window.prompt("what quote?");
     this.change_quote(quote);
-    this.resize_text($ele);
   },
 
-  toggle_background: function(){ // This should be a temporary method.
-    var $ele = $("#quotenote");
-    $ele.css({"background-image": "url('assets/img/backgrounds/nature_03.jpg')"});
-    $ele.toggleClass("cover-background");
+  // toggle_background: function(){ // This should be a temporary method.
+  //   var $ele = $("#quotenote");
+  //   $ele.css({"background-image": "url('assets/img/backgrounds/nature_03.jpg')"});
+  //   $ele.toggleClass("cover-background");
 
-  }
+  // }
 };
