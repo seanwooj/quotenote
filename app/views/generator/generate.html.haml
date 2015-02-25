@@ -7,7 +7,7 @@
     = csrf_meta_tags
   %body
 
-    #quotenote{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family]};"}
+    #quotenote.cover-background{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family]}; background: url(#{@options[:background_url]});"}
       .quote
         .quote-text
           = @options[:quote_text]

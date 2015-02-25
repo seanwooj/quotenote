@@ -17,6 +17,7 @@ gem 'imgkit'
 gem 'pdfkit'
 gem 'wkhtmltoimage-binary'
 gem 'sass-css-importer'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'
