@@ -5,8 +5,6 @@ class GeneratorController < ApplicationController
     @options = Generator.generate(params)
     @kit = IMGKit.new(render_to_string(:action => 'generate.html.haml'))
 
-    # need to add stylesheet and js
-    # https://github.com/csquared/IMGKit
     @kit.javascripts << "#{Rails.root}/public/imgkit_application.js"
 
     @string = render_to_string(:action => 'generate.html.haml', :layout => 'application.html.haml')
