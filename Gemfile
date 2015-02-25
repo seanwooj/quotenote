@@ -23,3 +23,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
