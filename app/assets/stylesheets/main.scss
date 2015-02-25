@@ -14,12 +14,15 @@ we aim to organize our site's CSS in the following pattern:
 
 */
 
+/* Compass */
+@import 'compass';
+
 /* Base Files */
 @import 'base/_variables.scss';
 @import 'base/_base.scss';
 @import 'base/_typography.scss';
 
 /* Vendor Scripts */
-@import 'normalize.css/normalize.css';
-@import 'skeleton-css/css/skeleton.css';
-@import 'minicolors/jquery.minicolors.css';
+@import 'normalize.css/_normalize';
+@import 'skeleton-css/css/_skeleton';
+@import 'minicolors/_jquery.minicolors';

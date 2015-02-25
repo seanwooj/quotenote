@@ -28,6 +28,5 @@
   },
   "_source": "git://github.com/rails/jquery-ujs.git",
   "_target": "~1.0.3",
-  "_originalSource": "jquery-ujs",
-  "_direct": true
+  "_originalSource": "jquery-ujs"
 }

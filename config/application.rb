@@ -25,6 +25,5 @@ module Quotenote
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.middleware.use PDFKit::Middleware
-    config.serve_static_assets = true
   end
 end

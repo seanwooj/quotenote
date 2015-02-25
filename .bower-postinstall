@@ -1,0 +1,6 @@
+#!/bin/sh
+mv vendor/assets/components/normalize.css/normalize.css vendor/assets/components/normalize.css/_normalize.scss
+
+mv vendor/assets/components/minicolors/jquery.minicolors.css vendor/assets/components/minicolors/_jquery.minicolors.scss
+
+mv vendor/assets/components/skeleton-css/css/skeleton.css vendor/assets/components/skeleton-css/css/_skeleton.scss
