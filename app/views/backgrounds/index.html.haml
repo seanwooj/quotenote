@@ -1,0 +1,4 @@
+- @backgrounds.each do |background|
+  .background{:id => "background-#{background.id}"}
+    .name= background.name
+    = image_tag background.image.url
