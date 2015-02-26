@@ -18,6 +18,7 @@ gem 'pdfkit'
 gem 'wkhtmltoimage-binary'
 gem 'sass-css-importer'
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'annotate'
 
 group :development, :test do
