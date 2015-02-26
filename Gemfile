@@ -20,6 +20,7 @@ gem 'sass-css-importer'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'annotate'
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug'
