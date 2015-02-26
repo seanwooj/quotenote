@@ -1,14 +1,14 @@
 #quotenote
-  %img{:src => 'http://localhost:3000/generator.jpg?quote_text=Type%20your%20inspirational%20quote!&quote_author=You!&font_family=Chelsea+Market', :style => 'width: 50%; border: 1px solid black;'}
+  %img{:src => 'http://localhost:3000/generator.jpg?quote_text=Type%20your%20inspirational%20quote!&quote_author=You!&font_family=Chelsea+Market&background_id=1', :style => 'width: 50%; border: 1px solid black;'}
 
 #editor
   .container
     %h2 Editor
     %button.button{:onclick => "window.qn.editor.cycle_quotes();"} Random Quote
     %button.button{:onclick => "window.qn.editor.change_quote_on_input();"} Change Quote
-    %button.button{:onclick => "window.qn.editor.toggle_background();"} Toggle Background
     %button.button{:onclick => 'window.qn.editor.change_font();'} Change Font
     %input.minicolors.colorpicker{:type => "text"}
+    = render :partial => 'background_picker'
 
 - content_for :footer_js do
   :javascript

@@ -4,7 +4,10 @@ class BackgroundsController < ApplicationController
   end
 
   def create
-    @background = Background.create(background_params)
+    @background = Background.new(background_params)
+    if @background.save!
+      redirect_to :action => 'index'
+    end
   end
 
   def index

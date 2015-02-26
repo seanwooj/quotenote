@@ -19,12 +19,18 @@ window.qn.editor = {
   quote_params: {
     font_family: 'Lato',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
-    quote_author: "You!"
+    quote_author: "You!",
+    background_id: 1
   },
 
   init: function(){
     var $ele = $(this.element);
     this.init_colorpicker();
+    this.instantiate_handlers();
+  },
+
+  instantiate_handlers: function(){
+    this.change_background_on_input();
   },
 
   init_colorpicker: function(){
@@ -72,10 +78,19 @@ window.qn.editor = {
     this.change_quote(quote);
   },
 
-  // toggle_background: function(){ // This should be a temporary method.
-  //   var $ele = $("#quotenote");
-  //   $ele.css({"background-image": "url('assets/img/backgrounds/nature_03.jpg')"});
-  //   $ele.toggleClass("cover-background");
+  change_background_id: function(id){
+    this.quote_params['background_id'] = id
+    var params = this.generate_querystring();
+    $("img").attr('src', params); // DRY
+  },
+
+  change_background_on_input: function(){
+    var that = this;
+    $(".backgrounds .bg").on("click", function(e){
+      var id = $(e.target).data("id");
+      that.change_background_id(id);
+    });
+  }
 
   // }
 };

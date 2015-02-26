@@ -3,6 +3,9 @@ class GeneratorController < ApplicationController
 
   def generate
     @options = Generator.generate(params)
+    background_id = @options[:background_id]
+    @background = Background.find(background_id)
+    @background_url = @background.image.url
     @kit = IMGKit.new(render_to_string(:action => 'generate.html.haml'))
 
     @kit.javascripts << "#{Rails.root}/public/imgkit_application.js"

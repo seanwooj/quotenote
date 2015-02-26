@@ -1,0 +1,13 @@
+.backgrounds
+  - @backgrounds.each do |bg|
+    .bg{:id => "background-#{bg.id}", :style => "background-image: url(#{bg.image.url})", :data => {:id => bg.id}}
+
+
+- content_for :font_styles do
+  :css
+    .bg {
+      height: 50px;
+      width: 50px;
+      background-size: cover;
+      background-position: center center;
+    }
