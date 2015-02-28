@@ -7,14 +7,12 @@
     = csrf_meta_tags
   %body
 
-    #quotenote.cover-background{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family]}; background: url(#{@background_url});"}
+    #quotenote.cover-background{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family]}; background-image: url(#{@background_url});"}
       .quote
         .quote-text
           = @options[:quote_text]
         .author-text
           = @options[:quote_author]
-        - 10.times do
-          / %br
 
 - content_for :font_styles do
   = render :partial => 'image_styles'

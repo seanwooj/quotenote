@@ -27,6 +27,7 @@ window.qn.editor = {
     var $ele = $(this.element);
     this.init_colorpicker();
     this.instantiate_handlers();
+    this.init_iframe();
   },
 
   instantiate_handlers: function(){
@@ -44,21 +45,36 @@ window.qn.editor = {
     });
   },
 
+  init_iframe: function(){
+    $("#iframe-container").html($('<iframe/>').attr('src', 'http://localhost:3000/generator?quote_text=Type%20your%20inspirational%20quote!&quote_author=You!&font_family=Chelsea+Market&background_id=1'))
+    $('iframe').zoomer({
+        zoom: 0.25,
+        width: 400
+    });
+  },
+
   generate_querystring: function(){
-    return "/generator.jpg?" + $.param(this.quote_params);
+    return "/generator?" + $.param(this.quote_params);
+  },
+
+  generate_image_querystring: function(){
+    var image_params = {}
+    $.extend(image_params, this.quote_params);
+    image_params['full_size'] = true;
+    return "/generator.jpg?" + $.param(image_params);
   },
 
   change_font: function(){
     var font_family = window.prompt('which font?');
     this.quote_params['font_family'] = font_family;
     var params = this.generate_querystring();
-    $("img").attr('src', params); // DRY THIS
+    this.change_iframe_src(params);
   },
 
   change_quote_color: function(color){
     this.quote_params['font_color'] = color;
     var params = this.generate_querystring();
-    $("img").attr('src', params); // DRY THIS
+    this.change_iframe_src(params);
   },
 
   cycle_quotes: function(){
@@ -69,7 +85,7 @@ window.qn.editor = {
   change_quote: function(quote_text) {
     this.quote_params['quote_text'] = quote_text;
     var params = this.generate_querystring();
-    $("img").attr('src', params); // DRY THIS
+    this.change_iframe_src(params);
   },
 
   change_quote_on_input: function(){
@@ -81,7 +97,7 @@ window.qn.editor = {
   change_background_id: function(id){
     this.quote_params['background_id'] = id
     var params = this.generate_querystring();
-    $("img").attr('src', params); // DRY
+    this.change_iframe_src(params);
   },
 
   change_background_on_input: function(){
@@ -90,6 +106,11 @@ window.qn.editor = {
       var id = $(e.target).data("id");
       that.change_background_id(id);
     });
+  },
+
+  change_iframe_src: function(params){
+    $("iframe").zoomer('src', params).zoomer('refresh');
+    $(".zoomer-cover a").attr('href', this.generate_image_querystring());
   }
 
   // }
