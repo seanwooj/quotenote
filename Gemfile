@@ -20,7 +20,7 @@ gem 'sass-css-importer'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'annotate'
-gem 'unicorn'
+gem 'unicorn-rails'
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 
 group :development, :test do

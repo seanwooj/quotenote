@@ -20,7 +20,8 @@ window.qn.editor = {
     font_family: 'Lato',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
     quote_author: "You!",
-    background_id: 1
+    background_id: 1,
+    overlay: false
   },
 
   init: function(){
@@ -40,7 +41,11 @@ window.qn.editor = {
     $input.minicolors({
         change: function(hex, opacity){
           console.log(hex);
-          that.change_quote_color(hex);
+          if(that.valid_hex(hex)){
+            that.change_quote_color(hex);
+          } else {
+            console.log('invalid hex');
+          }
         }
     });
   },
@@ -48,8 +53,9 @@ window.qn.editor = {
   init_iframe: function(){
     $("#iframe-container").html($('<iframe/>').attr('src', 'http://localhost:3000/generator?quote_text=Type%20your%20inspirational%20quote!&quote_author=You!&font_family=Chelsea+Market&background_id=1'))
     $('iframe').zoomer({
-        zoom: 0.25,
-        width: 400
+        zoom: 0.33333,
+        width: 600,
+        height: 400,
     });
   },
 
@@ -77,6 +83,11 @@ window.qn.editor = {
     this.change_iframe_src(params);
   },
 
+  valid_hex: function(hex){
+    var regex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    return regex.test(hex);
+  },
+
   cycle_quotes: function(){
     var random_quote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
     this.change_quote(random_quote);
@@ -94,8 +105,9 @@ window.qn.editor = {
     this.change_quote(quote);
   },
 
-  change_background_id: function(id){
-    this.quote_params['background_id'] = id
+  change_background_id: function(id, repeating){
+    this.quote_params['background_id'] = id;
+    this.quote_params['repeating'] = repeating;
     var params = this.generate_querystring();
     this.change_iframe_src(params);
   },
@@ -103,13 +115,24 @@ window.qn.editor = {
   change_background_on_input: function(){
     var that = this;
     $(".backgrounds .bg").on("click", function(e){
+      var repeating = $(e.target).data("repeating");
       var id = $(e.target).data("id");
-      that.change_background_id(id);
+      that.change_background_id(id, repeating);
     });
   },
 
+  toggle_overlay: function(){
+    if(this.quote_params['overlay'] === false){
+      this.quote_params['overlay'] = true;
+    } else {
+      this.quote_params['overlay'] = false;
+    }
+    var params = this.generate_querystring();
+    this.change_iframe_src(params);
+  },
+
   change_iframe_src: function(params){
-    $("iframe").zoomer('src', params).zoomer('refresh');
+    $("iframe").zoomer('src', params);
     $(".zoomer-cover a").attr('href', this.generate_image_querystring());
   }
 
