@@ -57,6 +57,7 @@ window.qn.editor = {
         zoom: 0.33333,
         width: 600,
         height: 400,
+        loadingType: 'message'
     });
   },
 
