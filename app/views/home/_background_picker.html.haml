@@ -1,14 +1,4 @@
-%ul.backgrounds
+%ul.backgrounds.cf
   - @backgrounds.each do |bg|
     %li.bg{:id => "background-#{bg.id}", :style => "background-image: url(#{bg.image.url(:small)})", :data => {:id => bg.id, :repeating => bg.repeating.to_s}}
 
-
-- content_for :font_styles do
-  :css
-    .bg {
-      height: 50px;
-      width: 50px;
-      background-size: cover;
-      background-position: center center;
-      float: left;
-    }

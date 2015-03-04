@@ -17,7 +17,7 @@ window.qn.editor = {
   ],
 
   quote_params: {
-    font_family: 'Lato',
+    font_family: 'Roboto',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
     quote_author: "You!",
     background_id: 1,
@@ -52,7 +52,7 @@ window.qn.editor = {
   },
 
   init_iframe: function(){
-    $("#iframe-container").html($('<iframe/>').attr('src', 'http://localhost:3000/generator?quote_text=Type%20your%20inspirational%20quote!&quote_author=You!&font_family=Chelsea+Market&background_id=1'))
+    $("#iframe-container").html($('<iframe/>').attr('src', this.generate_querystring()))
     $('iframe').zoomer({
         zoom: 0.33333,
         width: 600,

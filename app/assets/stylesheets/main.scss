@@ -18,6 +18,7 @@ we aim to organize our site's CSS in the following pattern:
 @import 'compass';
 
 /* Base Files */
+@import 'base/_clearfix.scss';
 @import 'base/_variables.scss';
 @import 'base/_base.scss';
 @import 'base/_typography.scss';
