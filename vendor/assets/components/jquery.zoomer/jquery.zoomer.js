@@ -156,60 +156,6 @@ $('iframe').zoomer({ width: 200, zoom: 0.5 });
                 })
             ;
 
-            options.zoomerLink = $('<a/>')
-                .attr('target', '_blank')
-                .html(options.message)
-                .css({
-                    height: options.height,
-                    width: options.width,
-                    color: '#444',
-                    display: 'block',
-                    lineHeight: (parseInt(options.height, 10) - parseInt((options.height - 80) / 10, 10)) + 'px',
-                    textDecoration: 'none'
-                })
-                .css('background', '-moz-radial-gradient(center center, circle farthest-corner, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 100%) repeat scroll 0 0 transparent')
-                .css('background-image', '-webkit-gradient(radial, center center, 0, center center, ' + parseInt(options.width, 10) + ', from(rgba(255, 255, 255, 0.95)), to(rgba(255, 255, 255, 0.4)))')
-                .mousedown(function(){
-                    $(this).css('box-shadow', 'inset 0px 2px 8px rgba(100, 100, 100, 0.4)');
-                })
-                .bind('mouseout mouseup', function(){
-                    $(this).css('box-shadow', 'none');
-                })
-                .hide()
-            ;
-
-            if (isMSIE) {
-                options.zoomerLink.css({
-                    backgroundColor: 'rgba(255, 255, 255, 0.5)'
-                });
-            }
-
-            if (options.click) {
-                options.zoomerLink
-                    .attr('href', options.messageURL || options.src || '#')
-                    .unbind('click').bind('click', options.click)
-                ;
-            } else {
-                options.zoomerLink.attr('href', options.messageURL || options.src);
-            }
-
-            options.zoomerCover
-                .append(options.zoomerLink)
-                .hover(function(){
-                    options.zoomerLink.show();
-                    $(this).css('box-shadow', 'inset 2px 2px ' + (parseInt(options.width, 10) * 2) + 'px rgba(255, 255, 255, 0.2)');
-                }, function(){
-                    options.zoomerLink.hide();
-                    $(this).css('box-shadow', 'none');
-                })
-                .mousedown(function(){
-                    $(this).css('box-shadow', 'inset 2px 2px ' + (parseInt(options.width, 10) * 2) + 'px rgba(200, 200, 200, 0.8)');
-                })
-                .bind('mouseout mouseup', function(){
-                    $(this).css('box-shadow', 'none');
-                })
-            ;
-
             options.zoomerLoader = $('<div/>')
                 .addClass('zoomer-loader')
                 .css(invisible)
@@ -398,17 +344,6 @@ $('iframe').zoomer({ width: 200, zoom: 0.5 });
             var $el = $(this),
                 options = $el.data(pluginName)
             ;
-
-            options.src = src;
-
-            if (options.click) {
-                options.zoomerLink
-                    .attr('href', options.messageURL || options.src || '#')
-                    .unbind('click').bind('click', options.click)
-                ;
-            } else {
-                options.zoomerLink.attr('href', options.messageURL || options.src);
-            }
 
             $el[pluginName]('fadeOut').attr('src', src);
 

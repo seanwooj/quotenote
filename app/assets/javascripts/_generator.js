@@ -7,7 +7,6 @@ window.qn.generator = {
   init: function(){
     var $ele = $(this.element);
     this.resize_text($ele);
-    // this.init_colorpicker();
   },
 
   resize_text: function($ele){
