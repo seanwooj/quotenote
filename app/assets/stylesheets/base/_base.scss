@@ -18,3 +18,23 @@
   }
 }
 
+#editor {
+  .fonts {
+    .font {
+      float: left;
+      width: 120px;
+      height: 24px;
+      display: block;
+      padding: 10px;
+      border: 1px solid black;
+      border-right: none;
+      &:last-child {
+        border-right: 1px solid black;
+      }
+      img {
+        height: 24px;
+      }
+    }
+  }
+}
+

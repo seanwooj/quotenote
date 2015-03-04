@@ -33,6 +33,7 @@ window.qn.editor = {
 
   instantiate_handlers: function(){
     this.change_background_on_input();
+    this.change_font_on_input();
   },
 
   init_colorpicker: function(){
@@ -70,9 +71,16 @@ window.qn.editor = {
     return "/generator.jpg?" + $.param(image_params);
   },
 
-  change_font: function(){
-    var font_family = window.prompt('which font?');
-    this.quote_params['font_family'] = font_family;
+  change_font_on_input: function(){
+    var that = this;
+    $(".fonts .font").on("click", function(e){
+      var font_name = $(this).data('font-name');
+      that.change_font(font_name);
+    });
+  },
+
+  change_font: function(font_name){
+    this.quote_params['font_family'] = font_name;
     var params = this.generate_querystring();
     this.change_iframe_src(params);
   },
@@ -115,8 +123,8 @@ window.qn.editor = {
   change_background_on_input: function(){
     var that = this;
     $(".backgrounds .bg").on("click", function(e){
-      var repeating = $(e.target).data("repeating");
-      var id = $(e.target).data("id");
+      var repeating = $(this).data("repeating");
+      var id = $(this).data("id");
       that.change_background_id(id, repeating);
     });
   },
