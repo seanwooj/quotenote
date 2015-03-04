@@ -59,6 +59,7 @@ window.qn.editor = {
         height: 400,
         loadingType: 'spinner'
     });
+    $("a.link_to_image").attr('href', this.generate_image_querystring());
   },
 
   generate_querystring: function(){
