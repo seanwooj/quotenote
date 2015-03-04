@@ -20,7 +20,7 @@ window.qn.editor = {
     font_family: 'Roboto',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
     quote_author: "You!",
-    background_id: 1,
+    background_id: 3,
     overlay: false
   },
 
