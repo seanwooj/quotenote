@@ -142,7 +142,7 @@ window.qn.editor = {
 
   change_iframe_src: function(params){
     $("iframe").zoomer('src', params);
-    $(".zoomer-cover a").attr('href', this.generate_image_querystring());
+    $("a.link_to_image").attr('href', this.generate_image_querystring());
   }
 
   // }
