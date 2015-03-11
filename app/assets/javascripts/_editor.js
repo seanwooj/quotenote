@@ -52,11 +52,14 @@ window.qn.editor = {
   },
 
   init_iframe: function(){
-    $("#iframe-container").html($('<iframe/>').attr('src', this.generate_querystring()))
+    $("#iframe-container").html($('<iframe/>').attr('src', this.generate_querystring()));
+    var frame_width = $(window).width();
+    var frame_height = (frame_width * 4) / 6;
+    var zoom = frame_width / 1800;
     $('iframe').zoomer({
-        zoom: 0.33333,
-        width: 600,
-        height: 400,
+        zoom: zoom,
+        width: frame_width,
+        height: frame_height,
         loadingType: 'spinner'
     });
     $("a.link_to_image").attr('href', this.generate_image_querystring());
