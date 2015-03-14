@@ -11,20 +11,10 @@
         #text-editor
           %textarea#text-box
         %button.button{:onclick => "window.qn.editor.cycle_quotes();"} Random Quote
-        %button.button{:onclick => "window.qn.editor.change_quote_on_input();"} Change Quote
         %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
         %input.minicolors.colorpicker{:type => "text"}
         = render :partial => 'font_picker'
         = render :partial => 'background_picker'
-
-        / %section
-        /   .colorpicker.cf
-        /     %a.white-color.selected{:href => '#'} White
-        /     %a.black-color{:href => '#'} Black
-        / %section
-        /   %a.menu-link.change-quote Change Quote
-        /   %a.menu-link.change-quote Change Font
-        /   %a.menu-link.change-quote Change Background
 
 
 - content_for :footer_js do

@@ -25,7 +25,6 @@ window.qn.editor = {
   },
 
   init: function(){
-    var $ele = $(this.element);
     this.init_colorpicker();
     this.instantiate_handlers();
     this.init_iframe();
@@ -35,6 +34,7 @@ window.qn.editor = {
   instantiate_handlers: function(){
     this.change_background_on_input();
     this.change_font_on_input();
+    this.change_quote_on_input();
   },
 
   init_colorpicker: function(){
@@ -122,9 +122,15 @@ window.qn.editor = {
   },
 
   change_quote_on_input: function(){
-    var $ele = $(this.element);
-    var quote = window.prompt("what quote?");
-    this.change_quote(quote);
+    var that = this;
+    $("#text-box").on("blur", function(e){
+      var quote = $(e.target).val();
+      if (quote == '') {
+        return false;
+      }
+
+      that.change_quote(quote);
+    });
   },
 
   change_background_id: function(id, repeating){
