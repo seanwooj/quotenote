@@ -29,6 +29,7 @@ window.qn.editor = {
     this.init_colorpicker();
     this.instantiate_handlers();
     this.init_iframe();
+    this.init_editor();
   },
 
   instantiate_handlers: function(){
@@ -52,8 +53,8 @@ window.qn.editor = {
   },
 
   init_iframe: function(){
-    $("#iframe-container").html($('<iframe/>').attr('src', this.generate_querystring()));
-    var frame_width = $(window).width();
+    $("#iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
+    var frame_width = $("#iframe-container").width();
     var frame_height = (frame_width * 4) / 6;
     var zoom = frame_width / 1800;
     $('iframe').zoomer({
@@ -63,6 +64,14 @@ window.qn.editor = {
         loadingType: 'spinner'
     });
     $("a.link_to_image").attr('href', this.generate_image_querystring());
+  },
+
+  init_editor: function(){
+    $("#editor-container").blurjs({
+      source: 'body',
+      radius: 7,
+      overlay: 'rgba(255,255,255,0.4)'
+    });
   },
 
   generate_querystring: function(){
