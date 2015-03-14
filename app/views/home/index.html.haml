@@ -11,9 +11,15 @@
         #text-editor
           %textarea#text-box
         %button.button{:onclick => "window.qn.editor.cycle_quotes();"} Random Quote
-        %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
-        %input.minicolors.colorpicker{:type => "text"}
+
+        %hr
+        %h5 Text Options
+        %input.minicolors.colorpicker{:type => "color"}
         = render :partial => 'font_picker'
+
+        %hr
+        %h5 Background Options
+        %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
         = render :partial => 'background_picker'
 
 

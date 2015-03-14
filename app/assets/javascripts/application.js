@@ -14,5 +14,6 @@
 //= require jquery-ujs
 //= require minicolors
 //= require blurjs
+//= require spectrum
 //= require jquery.zoomer/jquery.zoomer
 //= require_tree .

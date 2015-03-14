@@ -40,15 +40,18 @@ window.qn.editor = {
   init_colorpicker: function(){
     var $input = $("input.minicolors");
     var that = this;
-    $input.minicolors({
-        change: function(hex, opacity){
-          console.log(hex);
-          if(that.valid_hex(hex)){
-            that.change_quote_color(hex);
-          } else {
-            console.log('invalid hex');
-          }
-        }
+    $input.spectrum({
+      showPaletteOnly: true,
+      showPalette:true,
+      hideAfterPaletteSelect:true,
+      color: 'white',
+      palette: [
+        ['black', 'white', '#3b5998']
+      ],
+      change: function(color){
+        var color = color.toHexString();
+        that.change_quote_color(color);
+      }
     });
   },
 
