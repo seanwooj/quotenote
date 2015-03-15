@@ -17,7 +17,7 @@ window.qn.editor = {
   ],
 
   quote_params: {
-    font_family: 'Roboto',
+    font_family: 'cabin_sketch',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
     quote_author: "You!",
     background_id: 3,
@@ -28,7 +28,7 @@ window.qn.editor = {
     this.init_colorpicker();
     this.instantiate_handlers();
     this.init_iframe();
-    this.init_editor();
+    this.init_font_picker();
   },
 
   instantiate_handlers: function(){
@@ -55,6 +55,27 @@ window.qn.editor = {
     });
   },
 
+  init_font_picker: function(){
+    var that = this;
+
+    $(".fonts").select2({
+      minimumResultsForSearch: Infinity,
+      formatResult: this.picker_use_font_images,
+      formatSelection: this.picker_use_font_images,
+      dropdownCssClass: 'font-picker',
+      containerCssClass: 'font-picker-selection'
+    })
+
+    $(".fonts").on("select2-selecting", function(e){
+      that.change_font(e.val);
+    });
+  },
+
+  picker_use_font_images: function(font_object){
+    var font_name = font_object['text'];
+    return "<img src='/assets/font_images/" + font_name + ".png' class='picker_images' />"
+  },
+
   init_iframe: function(){
     $("#iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
     var frame_width = $("#iframe-container").width();
@@ -67,14 +88,6 @@ window.qn.editor = {
         loadingType: 'spinner'
     });
     $("a.link_to_image").attr('href', this.generate_image_querystring());
-  },
-
-  init_editor: function(){
-    $("#editor-container").blurjs({
-      source: 'body',
-      radius: 7,
-      overlay: 'rgba(255,255,255,0.4)'
-    });
   },
 
   generate_querystring: function(){

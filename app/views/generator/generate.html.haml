@@ -7,7 +7,7 @@
     = csrf_meta_tags
   %body
 
-    #quotenote{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family]}; background-image: url(#{@background_url});", :class => "#{'cover-background' unless @options[:repeating] == 'true'}"}
+    #quotenote{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family].split('_').join(' ').titleize}; background-image: url(#{@background_url});", :class => "#{'cover-background' unless @options[:repeating] == 'true'}"}
       .overlay{:class => "#{'active' if @options[:overlay] == 'true'}"}
       .quote
         .quote-text
@@ -17,7 +17,7 @@
 
 - content_for :font_styles do
   = render :partial => 'image_styles'
-  = render :partial => "generator/fonts/#{@options[:font_family].downcase.split(" ").join("_")}"
+  = render :partial => "generator/fonts/#{@options[:font_family]}"
 
 - content_for :footer_js do
   :javascript

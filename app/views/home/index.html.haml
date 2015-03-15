@@ -19,7 +19,9 @@
 
         %hr
         %h5 Background Options
-        %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
+        %label Overlay?
+        %input{:type => 'checkbox'}
+        / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
         = render :partial => 'background_picker'
 
 

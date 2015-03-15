@@ -1,5 +1,4 @@
-%ul.fonts.cf
-  - ['Cabin Sketch', 'Grand Hotel', 'Laila', 'Roboto', 'Mathlete'].each do |font_name|
-    %li.font{:data => {:font_name => font_name}}
-      = image_tag "font_images/#{font_name.underscore.split.join('_')}.png"
+%select.fonts
+  - ['cabin_sketch', 'grand_hotel', 'laila', 'roboto', 'mathlete'].each do |font_name|
+    %option.font{:value => font_name}= font_name
 

@@ -16,4 +16,5 @@
 //= require blurjs
 //= require spectrum
 //= require jquery.zoomer/jquery.zoomer
+//= require select2
 //= require_tree .

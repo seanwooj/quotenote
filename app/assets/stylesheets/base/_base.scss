@@ -115,3 +115,25 @@ body {
   }
 }
 
+.font-picker, .font-picker-selection {
+  img { height: 22px; padding: 0px 9px; }
+}
+
+.font-picker {
+  .select2-result.select2-result-selectable {
+    margin-bottom: 0;
+    img {
+      position: relative;
+      top: 3px;
+      padding: 0;
+    }
+  }
+}
+
+.fonts.font-picker-selection {
+  .select2-choice {
+    height: 38px;
+    img { height: 22px; padding: 8px 4px; }
+  }
+}
+
