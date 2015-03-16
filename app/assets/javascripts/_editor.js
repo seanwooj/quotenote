@@ -35,6 +35,7 @@ window.qn.editor = {
     this.change_background_on_input();
     this.change_font_on_input();
     this.change_quote_on_input();
+    this.change_quote_author_on_input();
     this.toggle_overlay_on_input();
   },
 
@@ -149,6 +150,20 @@ window.qn.editor = {
       }
 
       that.change_quote(quote);
+    });
+  },
+
+  change_quote_author: function(quote_author) {
+    this.quote_params['quote_author'] = quote_author;
+    var params = this.generate_querystring();
+    this.change_iframe_src(params);
+  },
+
+  change_quote_author_on_input: function(){
+    var that = this;
+    $("#author-box").on("blur", function(e){
+      var author = $(e.target).val();
+      that.change_quote_author(author);
     });
   },
 
