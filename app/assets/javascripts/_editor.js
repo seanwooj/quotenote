@@ -73,7 +73,9 @@ window.qn.editor = {
 
   picker_use_font_images: function(font_object){
     var font_name = font_object['text'];
-    return "<img src='/assets/font_images/" + font_name + ".png' class='picker_images' />"
+    var element = $("option.font[value=" + font_name + "]")
+    var image_url = element.data('image-location');
+    return "<img src='" + image_url + "' class='picker_images' />"
   },
 
   init_iframe: function(){
