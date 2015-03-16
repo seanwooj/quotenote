@@ -19,8 +19,8 @@
 
         %hr
         %h5 Background Options
-        %label Overlay?
-        %input{:type => 'checkbox'}
+        = check_box_tag 'high_contrast'
+        = label_tag 'high_contrast', 'increase contrast?', :class => 'high_contrast_label'
         / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
         = render :partial => 'background_picker'
 

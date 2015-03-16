@@ -35,6 +35,7 @@ window.qn.editor = {
     this.change_background_on_input();
     this.change_font_on_input();
     this.change_quote_on_input();
+    this.toggle_overlay_on_input();
   },
 
   init_colorpicker: function(){
@@ -44,7 +45,7 @@ window.qn.editor = {
       showPaletteOnly: true,
       showPalette:true,
       hideAfterPaletteSelect:true,
-      color: 'white',
+      color: 'black',
       palette: [
         ['black', 'white', '#3b5998']
       ],
@@ -165,6 +166,13 @@ window.qn.editor = {
       var id = $(this).data("id");
       that.change_background_id(id, repeating);
     });
+  },
+
+  toggle_overlay_on_input: function(){
+    var that = this;
+    $("#high_contrast").on('click', function(e){
+      that.toggle_overlay()
+    })
   },
 
   toggle_overlay: function(){
