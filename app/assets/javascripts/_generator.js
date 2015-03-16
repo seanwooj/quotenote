@@ -11,6 +11,7 @@ window.qn.generator = {
 
   resize_text: function($ele){
     var $quote = $ele.find('.quote-text');
+    var $author = $ele.find('.author-text');
     var $container = $ele.find('.quote');
     var $background = $ele;
     var content_height = $container.outerHeight();
@@ -28,6 +29,8 @@ window.qn.generator = {
       font_size = font_size - 0.5;
       $quote.css({"font-size": font_size + "px"});
     }
+
+    $author.css({"font-size": font_size / 1.5 + "px"});
 
     $container.height($container.height());
   }

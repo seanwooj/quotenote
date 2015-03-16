@@ -19,7 +19,7 @@ window.qn.editor = {
   quote_params: {
     font_family: 'cabin_sketch',
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
-    quote_author: "You!",
+    quote_author: "Some Author",
     background_id: 3,
     overlay: false
   },
@@ -47,7 +47,7 @@ window.qn.editor = {
       hideAfterPaletteSelect:true,
       color: 'black',
       palette: [
-        ['black', 'white', '#3b5998']
+        ['black', 'white']
       ],
       change: function(color){
         var color = color.toHexString();
