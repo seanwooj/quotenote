@@ -21,7 +21,8 @@ window.qn.editor = {
     quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
     quote_author: "Some Author",
     background_id: 3,
-    overlay: false
+    overlay: true,
+    font_color: 'white'
   },
 
   init: function(){
@@ -46,7 +47,7 @@ window.qn.editor = {
       showPaletteOnly: true,
       showPalette:true,
       hideAfterPaletteSelect:true,
-      color: 'black',
+      color: 'white',
       palette: [
         ['black', 'white']
       ],
