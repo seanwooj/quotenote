@@ -222,7 +222,7 @@ window.qn.editor = {
     var $backgrounds = $(".backgrounds");
     var bg_container_width = $backgrounds.width();
     var scrolled = $backgrounds.scrollLeft();
-    $backgrounds.scrollTo({left: direction + '=' + bg_container_width, top: 0});
+    $backgrounds.scrollTo({left: direction + '=' + bg_container_width, top: 0}, 800);
   }
 
   // }

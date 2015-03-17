@@ -41,9 +41,15 @@ body {
       font-weight: 400;
       position: absolute;
       @include box-sizing(border-box);
+      @include transition-duration(.2s);
       padding: 0 10px;
       height: 100%;
       padding-top: 36px;
+      cursor: pointer;
+      &:hover {
+        color: white;
+        background: rgba(0,0,0,0.5);
+      }
     }
 
     .prev {
