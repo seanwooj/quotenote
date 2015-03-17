@@ -30,6 +30,7 @@ window.qn.editor = {
     this.instantiate_handlers();
     this.init_iframe();
     this.init_font_picker();
+    this.init_background_scroll();
   },
 
   instantiate_handlers: function(){
@@ -204,6 +205,24 @@ window.qn.editor = {
   change_iframe_src: function(params){
     $("iframe").zoomer('src', params);
     $("a.link_to_image").attr('href', this.generate_image_querystring());
+  },
+
+  init_background_scroll: function(){
+    var that = this;
+    $(".backgrounds-container .next").on('click', function(){
+      that.background_scroll('+');
+    });
+
+    $(".backgrounds-container .prev").on('click', function(){
+      that.background_scroll('-');
+    });
+  },
+
+  background_scroll: function(direction){
+    var $backgrounds = $(".backgrounds");
+    var bg_container_width = $backgrounds.width();
+    var scrolled = $backgrounds.scrollLeft();
+    $backgrounds.scrollTo({left: direction + '=' + bg_container_width, top: 0});
   }
 
   // }

@@ -17,17 +17,41 @@ body {
     }
   }
 
-  .backgrounds {
-    margin-bottom: 0;
-    overflow-x: auto;
-    white-space: nowrap;
-    .bg {
+  .backgrounds-container {
+    position: relative;
+    .backgrounds {
       margin-bottom: 0;
-      display: inline-block;
+      overflow-x: auto;
+      white-space: nowrap;
       height: 120px;
-      background-size: cover;
-      background-position: center center;
-      width: 120px;
+      .bg {
+        margin: 0;
+        display: inline-block;
+        height: 120px;
+        background-size: cover;
+        background-position: center center;
+        width: 120px;
+      }
+    }
+
+    .next, .prev {
+      font-size: 30px;
+      background: rgba(0,0,0,0.3);
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+      position: absolute;
+      @include box-sizing(border-box);
+      padding: 0 10px;
+      height: 100%;
+      padding-top: 36px;
+    }
+
+    .prev {
+      top: 0; left: 0;
+    }
+
+    .next {
+      top:0; right: 0;
     }
   }
 }

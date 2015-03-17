@@ -17,4 +17,5 @@
 //= require spectrum
 //= require jquery.zoomer/jquery.zoomer
 //= require select2
+//= require jquery.scrollTo/jquery.scrollTo
 //= require_tree .
