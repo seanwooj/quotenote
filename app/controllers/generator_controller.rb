@@ -2,6 +2,8 @@ class GeneratorController < ApplicationController
   # layout false
 
   def generate
+    @hide_feedback = true
+
     @options = Generator.generate(params)
     background_id = @options[:background_id]
     @background = Background.find(background_id)

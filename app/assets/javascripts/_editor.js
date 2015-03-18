@@ -117,14 +117,12 @@ window.qn.editor = {
 
   change_font: function(font_name){
     this.quote_params['font_family'] = font_name;
-    var params = this.generate_querystring();
-    this.change_iframe_src(params);
+    this.change_iframe_src();
   },
 
   change_quote_color: function(color){
     this.quote_params['font_color'] = color;
-    var params = this.generate_querystring();
-    this.change_iframe_src(params);
+    this.change_iframe_src();
   },
 
   valid_hex: function(hex){
@@ -139,8 +137,7 @@ window.qn.editor = {
 
   change_quote: function(quote_text) {
     this.quote_params['quote_text'] = quote_text;
-    var params = this.generate_querystring();
-    this.change_iframe_src(params);
+    this.change_iframe_src();
   },
 
   change_quote_on_input: function(){
@@ -157,8 +154,7 @@ window.qn.editor = {
 
   change_quote_author: function(quote_author) {
     this.quote_params['quote_author'] = quote_author;
-    var params = this.generate_querystring();
-    this.change_iframe_src(params);
+    this.change_iframe_src();
   },
 
   change_quote_author_on_input: function(){
@@ -172,8 +168,7 @@ window.qn.editor = {
   change_background_id: function(id, repeating){
     this.quote_params['background_id'] = id;
     this.quote_params['repeating'] = repeating;
-    var params = this.generate_querystring();
-    this.change_iframe_src(params);
+    this.change_iframe_src();
   },
 
   change_background_on_input: function(){
@@ -198,11 +193,11 @@ window.qn.editor = {
     } else {
       this.quote_params['overlay'] = false;
     }
-    var params = this.generate_querystring();
-    this.change_iframe_src(params);
+    this.change_iframe_src();
   },
 
-  change_iframe_src: function(params){
+  change_iframe_src: function(){
+    var params = this.generate_querystring();
     $("iframe").zoomer('src', params);
     $("a.link_to_image").attr('href', this.generate_image_querystring());
   },
