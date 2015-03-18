@@ -42,7 +42,7 @@ window.qn.editor = {
   },
 
   init_colorpicker: function(){
-    var $input = $("input.minicolors");
+    var $input = $("input.colorpicker");
     var that = this;
     $input.spectrum({
       showPaletteOnly: true,
@@ -55,6 +55,7 @@ window.qn.editor = {
       change: function(color){
         var color = color.toHexString();
         that.change_quote_color(color);
+        $input.val(color);
       }
     });
   },
@@ -75,13 +76,6 @@ window.qn.editor = {
     });
   },
 
-  picker_use_font_images: function(font_object){
-    var font_name = font_object['text'];
-    var element = $("option.font[value=" + font_name + "]")
-    var image_url = element.data('image-location');
-    return "<img src='" + image_url + "' class='picker_images' />"
-  },
-
   init_iframe: function(){
     $("#iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
     var frame_width = $("#iframe-container").width();
@@ -94,6 +88,23 @@ window.qn.editor = {
         loadingType: 'spinner'
     });
     $("a.link_to_image").attr('href', this.generate_image_querystring());
+  },
+
+  grab_all_params_and_generate: function(){
+    this.quote_params['font_family'] = $("select.fonts").val();
+
+    if($("#text-box").val() != ''){
+      this.quote_params['quote_text'] = $("#text-box").val();
+    }
+
+    if($("#author-box").val() != ''){
+      this.quote_params['quote_author'] = $("#author-box").val();
+    }
+
+    this.quote_params['font_color'] = $("input.colorpicker").val();
+    this.quote_params['overlay'] = $("#high_contrast").is(":checked");
+    console.log(this.quote_params);
+    this.change_iframe_src();
   },
 
   generate_querystring: function(){
@@ -150,6 +161,10 @@ window.qn.editor = {
 
       that.change_quote(quote);
     });
+
+    $("#text-box").on("keyup", function(e){
+      that.set_timer();
+    });
   },
 
   change_quote_author: function(quote_author) {
@@ -162,6 +177,10 @@ window.qn.editor = {
     $("#author-box").on("blur", function(e){
       var author = $(e.target).val();
       that.change_quote_author(author);
+    });
+
+    $("#author-box").on("keyup", function(e){
+      that.set_timer();
     });
   },
 
@@ -218,6 +237,21 @@ window.qn.editor = {
     var bg_container_width = $backgrounds.width();
     var scrolled = $backgrounds.scrollLeft();
     $backgrounds.scrollTo({left: direction + '=' + bg_container_width, top: 0}, 800);
+  },
+
+  picker_use_font_images: function(font_object){
+    var font_name = font_object['text'];
+    var element = $("option.font[value=" + font_name + "]")
+    var image_url = element.data('image-location');
+    return "<img src='" + image_url + "' class='picker_images' />"
+  },
+
+  set_timer: function(){
+    var that = this;
+    window.clearTimeout(this.timeout || null);
+    qn.editor.timeout = setTimeout(function(){
+      that.grab_all_params_and_generate();
+    }, 1000)
   }
 
   // }
