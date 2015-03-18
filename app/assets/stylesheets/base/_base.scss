@@ -110,19 +110,6 @@ body {
       }
     }
 
-    .image-link-container{
-      width: 100%;
-      padding: 10px;
-      background: #fbfcfd;
-      border: 1px solid #eff3f6;
-      background: #f4f7f9;
-      @include box-sizing(border-box);
-      .button {
-        margin-bottom: 0;
-        background: white;
-      }
-    }
-
     .font-picker, .font-picker-selection {
       img { height: 22px; padding: 0px 9px; }
     }
@@ -148,6 +135,19 @@ body {
     #high_contrast, .high_contrast_label {
       display: inline-block;
       font-weight: 100;
+    }
+  }
+
+  .image-link-container{
+    width: 100%;
+    padding: 10px;
+    background: #fbfcfd;
+    border: 1px solid #eff3f6;
+    background: #f4f7f9;
+    @include box-sizing(border-box);
+    .button {
+      margin-bottom: 0;
+      background: white;
     }
   }
 }
