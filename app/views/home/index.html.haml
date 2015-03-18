@@ -7,13 +7,7 @@
 .container#editor-container
   .wrapper
     .row
-      #iframe-container.six.columns
-        #iframe
-        .image-link-container
-          %a.link_to_image.button Download
-          %a.link_to_purchase.button Buy Postcard
-
-      #editor.six.columns
+      #editor.five.columns
         #text-editor
           %textarea#text-box{:placeholder => 'Your quote here.'}
           %input#author-box{:type=>'text', :placeholder => 'Author name here.'}
@@ -30,6 +24,11 @@
         = label_tag 'high_contrast', 'Darken Background', :class => 'high_contrast_label'
         / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
         = render :partial => 'background_picker'
+      #iframe-container.seven.columns
+        #iframe
+        .image-link-container
+          %a.link_to_image.button Download
+          %a.link_to_purchase.button Buy Postcard
 
 
 - content_for :footer_js do
