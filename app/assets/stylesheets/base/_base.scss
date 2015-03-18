@@ -2,134 +2,156 @@ body {
   background: #fbfcfd;
 }
 
-#editor {
-  .fonts {
-    .font {
-      display: inline-block;
-      width: 120px;
-      height: 36px;
-      padding: 5px;
-      @include box-sizing(border-box);
-      border: 1px solid black;
-      img {
-        height: 20px;
-      }
-    }
-  }
+#masthead {
+  background-image: image-url("masthead.jpg");
+  background-size: cover;
+  height: 350px;
 
-  .backgrounds-container {
-    position: relative;
-    .backgrounds {
-      margin-bottom: 0;
-      overflow-x: auto;
-      overflow-y: hidden;
-      white-space: nowrap;
-      height: 120px;
-      .bg {
-        margin: 0;
-        display: inline-block;
-        height: 120px;
-        background-size: cover;
-        background-position: center center;
-        width: 120px;
-        cursor: pointer;
-      }
-    }
-
-    .next, .prev {
-      font-size: 30px;
-      background: rgba(0,0,0,0.3);
-      color: rgba(255,255,255,0.6);
+  .header {
+    padding-top: 30px;
+    h2 {
       font-weight: 400;
-      position: absolute;
-      @include box-sizing(border-box);
-      @include transition-duration(.2s);
-      padding: 0 10px;
-      height: 100%;
-      padding-top: 36px;
-      cursor: pointer;
-      &:hover {
-        color: white;
-        background: rgba(0,0,0,0.5);
-      }
-    }
-
-    .prev {
-      top: 0; left: 0;
-    }
-
-    .next {
-      top:0; right: 0;
+      font-size: 30px;
+      color: white;
+      background: #DD2151;
+      padding: 10px;
+      display: inline-block;
     }
   }
 }
+
 
 #editor-container{
   background: white;
   @include box-shadow(1px 1px 2px rgba(0,0,0,0.1));
   @include border-radius(3px);
+  position: relative;
+  top: -50px;
 
   h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
     font-weight: 400;
     margin-bottom: .5rem;
   }
-}
 
-.wrapper {
-  padding: 20px;
-}
-
-#text-editor {
-  padding: 10px;
-  @include box-sizing(border-box);
-  padding: 10px;
-  background: #f4f7f9;
-  #text-box {
-    width: 100%;
-    margin-bottom: 0;
+  .wrapper {
+    padding: 20px;
   }
-}
 
-.image-link-container{
-  width: 100%;
-  padding: 10px;
-  background: #fbfcfd;
-  border: 1px solid #eff3f6;
-  background: #f4f7f9;
-  @include box-sizing(border-box);
-  .button {
-    margin-bottom: 0;
-    background: white;
-  }
-}
+  #editor {
+    .fonts {
+      .font {
+        display: inline-block;
+        width: 120px;
+        height: 36px;
+        padding: 5px;
+        @include box-sizing(border-box);
+        border: 1px solid black;
+        img {
+          height: 20px;
+        }
+      }
+    }
 
-.font-picker, .font-picker-selection {
-  img { height: 22px; padding: 0px 9px; }
-}
-
-.font-picker {
-  .select2-result.select2-result-selectable {
-    margin-bottom: 0;
-    img {
+    .backgrounds-container {
       position: relative;
-      top: 3px;
-      padding: 0;
+      .backgrounds {
+        margin-bottom: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        height: 120px;
+        .bg {
+          margin: 0;
+          display: inline-block;
+          height: 120px;
+          background-size: cover;
+          background-position: center center;
+          width: 120px;
+          cursor: pointer;
+        }
+      }
+
+      .next, .prev {
+        font-size: 30px;
+        background: rgba(0,0,0,0.3);
+        color: rgba(255,255,255,0.6);
+        font-weight: 400;
+        position: absolute;
+        @include box-sizing(border-box);
+        @include transition-duration(.2s);
+        padding: 0 10px;
+        height: 100%;
+        padding-top: 36px;
+        cursor: pointer;
+        &:hover {
+          color: white;
+          background: rgba(0,0,0,0.5);
+        }
+      }
+
+      .prev {
+        top: 0; left: 0;
+      }
+
+      .next {
+        top:0; right: 0;
+      }
+    }
+
+    #text-editor {
+      padding: 10px;
+      @include box-sizing(border-box);
+      padding: 10px;
+      background: #f4f7f9;
+      #text-box {
+        width: 100%;
+        margin-bottom: 0;
+      }
+    }
+
+    .image-link-container{
+      width: 100%;
+      padding: 10px;
+      background: #fbfcfd;
+      border: 1px solid #eff3f6;
+      background: #f4f7f9;
+      @include box-sizing(border-box);
+      .button {
+        margin-bottom: 0;
+        background: white;
+      }
+    }
+
+    .font-picker, .font-picker-selection {
+      img { height: 22px; padding: 0px 9px; }
+    }
+
+    .font-picker {
+      .select2-result.select2-result-selectable {
+        margin-bottom: 0;
+        img {
+          position: relative;
+          top: 3px;
+          padding: 0;
+        }
+      }
+    }
+
+    .fonts.font-picker-selection {
+      .select2-choice {
+        height: 38px;
+        img { height: 22px; padding: 8px 4px; }
+      }
+    }
+
+    #high_contrast, .high_contrast_label {
+      display: inline-block;
+      font-weight: 100;
     }
   }
 }
 
-.fonts.font-picker-selection {
-  .select2-choice {
-    height: 38px;
-    img { height: 22px; padding: 8px 4px; }
-  }
-}
-
-#high_contrast, .high_contrast_label {
-  display: inline-block;
-  font-weight: 100;
-}
 
 .feedback-btn {
   text-align: center;
