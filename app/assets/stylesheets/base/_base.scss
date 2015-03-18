@@ -131,3 +131,29 @@ body {
   font-weight: 100;
 }
 
+.feedback-btn {
+  text-align: center;
+  width: 205px;
+  background-color: #DD2151;
+  position: fixed;
+  bottom: 0;
+  left: 35px;
+  z-index: 1000;
+  border-radius: 5px 5px 0 0;
+  a {
+    color: #fff;
+    display: block;
+    font-weight: 700;
+    height: 100%;
+    padding: 8px 18px;
+    text-decoration: none;
+    &:hover {
+      -webkit-transition: all .1s ease-in;
+      transition: all .1s ease-in;
+      background-color: #b11a41;
+      border-radius: 5px 5px 0 0;
+      color: white;
+    }
+  }
+}
+

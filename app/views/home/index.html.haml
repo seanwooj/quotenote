@@ -25,6 +25,9 @@
         / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
         = render :partial => 'background_picker'
 
+.feedback-btn
+  %a{:href => "https://docs.google.com/forms/d/1GwKZptrMC3KCa0dCarQeKVs_3Us6Sf9B69g_c7lnYC8/viewform", :target => "_blank"} Give us feedback
+
 
 - content_for :footer_js do
   :javascript
