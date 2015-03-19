@@ -79,7 +79,7 @@ window.qn.editor = {
   init_iframe: function(){
     $("#iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
     var frame_width = $("#iframe-container").width();
-    var frame_height = (frame_width * 4) / 6;
+    var frame_height = (frame_width);
     var zoom = frame_width / 1800;
     $('iframe').zoomer({
         zoom: zoom,
