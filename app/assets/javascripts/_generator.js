@@ -30,9 +30,9 @@ window.qn.generator = {
       $quote.css({"font-size": font_size + "px"});
     }
 
-    $author.css({"font-size": (font_size / 1.5) + "px"});
+    var author_font_size = font_size / 1.5;
 
-    $container.height($container.height());
+    $author.css({"font-size": author_font_size + "px"});
   }
 
 };
