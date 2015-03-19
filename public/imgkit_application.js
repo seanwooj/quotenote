@@ -17385,11 +17385,11 @@ window.qn.editor = {
 
   quote_params: {
     font_family: 'cabin_sketch',
-    quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
+    quote_text: ["Your quote here! Enter your", "quote and we'll make something pretty!"],
     quote_author: "Some Author",
     background_id: 3,
     overlay: true,
-    font_color: 'white'
+    font_color: 'white',
   },
 
   init: function(){
@@ -17446,7 +17446,7 @@ window.qn.editor = {
   init_iframe: function(){
     $("#iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
     var frame_width = $("#iframe-container").width();
-    var frame_height = (frame_width * 4) / 6;
+    var frame_height = (frame_width);
     var zoom = frame_width / 1800;
     $('iframe').zoomer({
         zoom: zoom,
@@ -17460,8 +17460,8 @@ window.qn.editor = {
   grab_all_params_and_generate: function(){
     this.quote_params['font_family'] = $("select.fonts").val();
 
-    if($("#text-box").val() != ''){
-      this.quote_params['quote_text'] = $("#text-box").val();
+    if(this.grab_and_arrayify_quote_from_input() != ['']){
+      this.quote_params['quote_text'] = this.grab_and_arrayify_quote_from_input();
     }
 
     if($("#author-box").val() != ''){
@@ -17521,8 +17521,8 @@ window.qn.editor = {
   change_quote_on_input: function(){
     var that = this;
     $("#text-box").on("blur", function(e){
-      var quote = $(e.target).val();
-      if (quote == '') {
+      var quote = that.arrayify_text($(e.target).val());
+      if (quote == ['']) {
         return false;
       }
 
@@ -17532,6 +17532,15 @@ window.qn.editor = {
     $("#text-box").on("keyup", function(e){
       that.set_timer();
     });
+  },
+
+  arrayify_text: function(text){
+    return text.split("\n");
+  },
+
+  grab_and_arrayify_quote_from_input: function(){
+    var arr = this.arrayify_text($("#text-box").val());
+    return arr;
   },
 
   change_quote_author: function(quote_author) {
@@ -17631,33 +17640,62 @@ window.qn.generator = {
 
   init: function(){
     var $ele = $(this.element);
-    this.resize_text($ele);
+    this.text_adjustments($ele);
   },
 
-  resize_text: function($ele){
+  text_adjustments: function($ele){
     var $quote = $ele.find('.quote-text');
     var $author = $ele.find('.author-text');
     var $container = $ele.find('.quote');
+    var $lines = $ele.find('.quote-text-line');
     var $background = $ele;
-    var content_height = $container.outerHeight();
-    var background_height = $background.height();
-    var font_size = parseInt($quote.css("font-size"));
 
-    while(background_height > (content_height) ) {
-      content_height = $container.outerHeight();
+    var $longest_line = this.get_longest_line($lines);
+
+    var line_width = $longest_line.outerWidth();
+    var container_width = $container.width();
+    var font_size = parseInt( $quote.css("font-size") );
+
+    while(container_width > (line_width) ) {
+      line_width = $longest_line.outerWidth();
       font_size = font_size + 0.5;
       $quote.css({"font-size": font_size + "px"});
     }
 
-    while(background_height < (content_height) ) {
-      content_height = $container.outerHeight();
+    while(container_width < (line_width) ) {
+      line_width = $longest_line.outerWidth();
       font_size = font_size - 0.5;
       $quote.css({"font-size": font_size + "px"});
     }
 
     var author_font_size = font_size / 1.5;
-
     $author.css({"font-size": author_font_size + "px"});
+
+    this.center_content_vertically($container, $background);
+  },
+
+  get_longest_line: function($lines) {
+    var longest_width = 0;
+    var $longest_line;
+
+    // Pick the longest line by looping through all the elements.
+    $lines.each(function(index){
+      var current_width = $(this).width();
+      if( current_width > longest_width ) {
+        longest_width = current_width;
+        $longest_line = $(this);
+      }
+    });
+
+    return $longest_line;
+  },
+
+  center_content_vertically: function($container, $background){
+    var background_height = $background.height();
+    var container_height = $container.outerHeight();
+    var top_offset = (background_height - container_height) / 2;
+
+    $container.css({"top": top_offset + "px"});
   }
 
 };
