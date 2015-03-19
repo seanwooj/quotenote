@@ -11,7 +11,9 @@
       .overlay{:class => "#{'active' if @options[:overlay] == 'true'}"}
       .quote.cf
         .quote-text
-          = @options[:quote_text]
+          - @options[:quote_text].each do |line|
+            .quote-text-line
+              = line
         .author-text
           = @options[:quote_author]
 

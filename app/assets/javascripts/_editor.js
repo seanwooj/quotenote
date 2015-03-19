@@ -18,11 +18,11 @@ window.qn.editor = {
 
   quote_params: {
     font_family: 'cabin_sketch',
-    quote_text: "Your quote here! Enter your quote and we'll make something pretty!",
+    quote_text: ["Your quote here! Enter your", "quote and we'll make something pretty!"],
     quote_author: "Some Author",
     background_id: 3,
     overlay: true,
-    font_color: 'white'
+    font_color: 'white',
   },
 
   init: function(){
@@ -93,8 +93,8 @@ window.qn.editor = {
   grab_all_params_and_generate: function(){
     this.quote_params['font_family'] = $("select.fonts").val();
 
-    if($("#text-box").val() != ''){
-      this.quote_params['quote_text'] = $("#text-box").val();
+    if(this.grab_and_arrayify_quote_from_input() != ['']){
+      this.quote_params['quote_text'] = this.grab_and_arrayify_quote_from_input();
     }
 
     if($("#author-box").val() != ''){
@@ -154,8 +154,8 @@ window.qn.editor = {
   change_quote_on_input: function(){
     var that = this;
     $("#text-box").on("blur", function(e){
-      var quote = $(e.target).val();
-      if (quote == '') {
+      var quote = that.arrayify_text($(e.target).val());
+      if (quote == ['']) {
         return false;
       }
 
@@ -165,6 +165,15 @@ window.qn.editor = {
     $("#text-box").on("keyup", function(e){
       that.set_timer();
     });
+  },
+
+  arrayify_text: function(text){
+    return text.split("\n");
+  },
+
+  grab_and_arrayify_quote_from_input: function(){
+    var arr = this.arrayify_text($("#text-box").val());
+    return arr;
   },
 
   change_quote_author: function(quote_author) {
