@@ -37,6 +37,7 @@ window.qn.editor = {
     this.change_background_on_input();
     this.change_font_on_input();
     this.change_quote_on_input();
+    this.add_linebreaks_to_input();
     this.change_quote_author_on_input();
     this.toggle_overlay_on_input();
   },
@@ -144,6 +145,20 @@ window.qn.editor = {
   cycle_quotes: function(){
     var random_quote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
     this.change_quote(random_quote);
+  },
+
+  add_linebreaks_to_input: function(){
+    var that = this;
+    $("#text-box").on('keyup', function(e){
+      var $textarea = $(this);
+      var text = $textarea.val();
+      var rows = text.split("\n");
+      var last_line = rows[rows.length - 1]
+      console.log(e.keyCode)
+      if(last_line.length > 25 && e.keyCode == 32) {
+        $textarea.val($textarea.val() + "\n")
+      }
+    });
   },
 
   change_quote: function(quote_text) {
