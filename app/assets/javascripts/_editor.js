@@ -153,8 +153,7 @@ window.qn.editor = {
       var $textarea = $(this);
       var text = $textarea.val();
       var rows = text.split("\n");
-      var last_line = rows[rows.length - 1]
-      console.log(e.keyCode)
+      var last_line = rows[rows.length - 1];
       if(last_line.length > 25 && e.keyCode == 32) {
         $textarea.val($textarea.val() + "\n")
       }
