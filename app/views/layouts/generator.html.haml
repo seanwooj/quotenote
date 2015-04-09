@@ -11,7 +11,6 @@
       try{Typekit.load();}catch(e){}
     = csrf_meta_tags
   %body
-    = render :partial => 'layouts/header'
     = yield
     - unless @hide_feedback
       .feedback-btn

@@ -22,6 +22,7 @@ gem 'aws-sdk'
 gem 'annotate'
 gem 'unicorn-rails'
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem 'foundation-icons-sass-rails'
 
 group :development, :test do
   gem 'byebug'

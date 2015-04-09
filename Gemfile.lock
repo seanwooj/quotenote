@@ -89,6 +89,9 @@ GEM
     erubis (2.7.0)
     execjs (2.3.0)
     ffi (1.9.6)
+    foundation-icons-sass-rails (3.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     haml (4.0.6)
@@ -241,6 +244,7 @@ DEPENDENCIES
   aws-sdk
   byebug
   compass-rails
+  foundation-icons-sass-rails
   haml-rails
   imgkit
   jbuilder (~> 2.0)

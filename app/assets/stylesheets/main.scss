@@ -17,6 +17,9 @@ we aim to organize our site's CSS in the following pattern:
 /* Compass */
 @import 'compass';
 
+/* Gem Assets */
+@import 'foundation-icons';
+
 /* Base Files */
 @import 'base/_clearfix.scss';
 @import 'base/_variables.scss';

@@ -1,5 +1,5 @@
 class GeneratorController < ApplicationController
-  # layout false
+  layout 'generator'
 
   def generate
     @hide_feedback = true

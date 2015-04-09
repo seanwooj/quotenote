@@ -18,6 +18,20 @@ body {
       padding: 10px;
       display: inline-block;
     }
+    ul.nav-menu {
+      float: right;
+
+      li {
+        list-style: none;
+        a {
+          display: inline-block;
+          border: 1px solid white;
+          padding: 10px;
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
 

@@ -1,9 +1,3 @@
-#masthead
-  .container
-    %section.header
-      %h2
-        %span.red QuoteNote
-
 .container#editor-container
   .wrapper
     .row
@@ -27,8 +21,12 @@
       #iframe-container.seven.columns
         #iframe
         .image-link-container
-          %a.link_to_image.button Download
-          %a.link_to_purchase.button Buy Postcard
+          %a.link_to_image.button
+            %i.fi-download
+            Download
+          %a.link_to_purchase.button
+            %i.fi-credit-card
+            Buy Postcard
 
 
 - content_for :footer_js do
