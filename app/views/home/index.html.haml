@@ -8,12 +8,16 @@
           %button.button{:onclick => "window.qn.editor.cycle_quotes();"} Random Quote
 
         %hr
-        %h5 Text Options
+        %h5
+          %i.fi-page-edit
+          Text Options
         %input.minicolors.colorpicker{:type => "color", :value => "#ffffff"}
         = render :partial => 'font_picker'
 
         %hr
-        %h5 Background Options
+        %h5
+          %i.fi-photo
+          Background Options
         = check_box_tag 'high_contrast', 'high_contrast', true
         = label_tag 'high_contrast', 'Darken Background', :class => 'high_contrast_label'
         / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
