@@ -23,13 +23,16 @@ gem 'annotate'
 gem 'unicorn-rails'
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'foundation-icons-sass-rails'
+gem 'devise'
+gem 'country-select'
 
 group :development, :test do
   gem 'byebug'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'rspec'
+  gem 'minitest-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production do

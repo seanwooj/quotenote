@@ -54,6 +54,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
+    bcrypt-ruby (3.1.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -83,11 +84,22 @@ GEM
       compass (~> 1.0.0)
       sass-rails (<= 5.0.1)
       sprockets (< 2.13)
+    country-select (1.1.1)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
-    diff-lcs (1.2.5)
+    devise (3.2.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.3.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.6)
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
@@ -122,10 +134,14 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
+    minitest-rails (2.1.1)
+      minitest (~> 5.4)
+      railties (~> 4.1)
     mono_logger (1.1.0)
     multi_json (1.10.1)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -174,19 +190,6 @@ GEM
     redis (3.2.1)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
-    rspec (3.2.0)
-      rspec-core (~> 3.2.0)
-      rspec-expectations (~> 3.2.0)
-      rspec-mocks (~> 3.2.0)
-    rspec-core (3.2.0)
-      rspec-support (~> 3.2.0)
-    rspec-expectations (3.2.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.2.0)
-    rspec-mocks (3.2.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.2.0)
-    rspec-support (3.2.1)
     ruby_parser (3.6.4)
       sexp_processor (~> 4.1)
     sass (3.4.12)
@@ -229,6 +232,8 @@ GEM
       rack
       unicorn
     uuidtools (2.1.4)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.0.0)
       activemodel (~> 4.0)
       binding_of_caller (>= 0.7.2)
@@ -244,17 +249,20 @@ DEPENDENCIES
   aws-sdk
   byebug
   compass-rails
+  country-select
+  devise
+  factory_girl_rails
   foundation-icons-sass-rails
   haml-rails
   imgkit
   jbuilder (~> 2.0)
+  minitest-rails
   paperclip
   pdfkit
   pg
   rails (= 4.2.0)
   rails_12factor
   resque (~> 2.0.0.pre.1)!
-  rspec
   sass-css-importer
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
