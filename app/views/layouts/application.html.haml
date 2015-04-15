@@ -14,9 +14,9 @@
     = render :partial => 'layouts/header'
     .container#editor-container
       .wrapper
+        %p.notice= notice
+        %p.alert= alert
         .row
-          %p.notice= notice
-          %p.alert= alert
           = yield
     - unless @hide_feedback
       .feedback-btn

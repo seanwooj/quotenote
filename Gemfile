@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 gem 'pg'
 
-gem 'sass-rails', '~> 5.0'
-gem 'compass-rails'
+gem 'sass-rails', '>= 5.0.1'
+gem 'compass-rails', '~> 2.0.2'
 gem 'haml-rails'
 gem 'uglifier', '>= 1.3.0'
 

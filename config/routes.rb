@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :backgrounds
-
   resources :products
+
+  devise_for :users
 
   root :to => 'home#index'
   get 'generator' => 'generator#generate'
