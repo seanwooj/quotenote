@@ -219,14 +219,23 @@ window.qn.editor = {
       var repeating = $(this).data("repeating");
       var id = $(this).data("id");
       that.change_background_id(id, repeating);
+      that.change_background_hidden_field_on_input(id);
     });
+  },
+
+  change_background_hidden_field_on_input: function(id){
+    $("#quote_note_background_id").val(id);
   },
 
   toggle_overlay_on_input: function(){
     var that = this;
     $("#high_contrast").on('click', function(e){
-      that.toggle_overlay()
+      that.toggle_overlay();
     })
+  },
+
+  change_overlay_hidden_field_on_input: function(overlay_bool) {
+    $('#quote_note_overlay').val(overlay_bool);
   },
 
   toggle_overlay: function(){
@@ -235,6 +244,7 @@ window.qn.editor = {
     } else {
       this.quote_params['overlay'] = false;
     }
+    this.change_overlay_hidden_field_on_input(this.quote_params['overlay']);
     this.change_iframe_src();
   },
 

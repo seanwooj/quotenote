@@ -1,0 +1,31 @@
+%h1 Listing quote_notes
+
+%table
+  %thead
+    %tr
+      %th Quote text
+      %th Font family
+      %th Quote author
+      %th Background
+      %th Overlay
+      %th Font color
+      %th
+      %th
+      %th
+
+  %tbody
+    - @quote_notes.each do |quote_note|
+      %tr
+        %td= quote_note.quote_text
+        %td= quote_note.font_family
+        %td= quote_note.quote_author
+        %td= quote_note.background
+        %td= quote_note.overlay
+        %td= quote_note.font_color
+        %td= link_to 'Show', quote_note
+        %td= link_to 'Edit', edit_quote_note_path(quote_note)
+        %td= link_to 'Destroy', quote_note, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Quote note', new_quote_note_path

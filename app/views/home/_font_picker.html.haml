@@ -1,4 +1,5 @@
-%select.fonts
+%select.fonts{:name => 'quote_note[font_family]'}
   - ['cabin_sketch', 'grand_hotel', 'laila', 'roboto', 'mathlete'].each do |font_name|
     %option.font{:value => font_name, :data => {:image_location => asset_url("font_images/#{font_name}.png")}}= font_name
+
 
