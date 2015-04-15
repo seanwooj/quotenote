@@ -15,6 +15,8 @@
     .container#editor-container
       .wrapper
         .row
+          %p.notice= notice
+          %p.alert= alert
           = yield
     - unless @hide_feedback
       .feedback-btn
