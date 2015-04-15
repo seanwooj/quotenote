@@ -12,7 +12,10 @@
     = csrf_meta_tags
   %body
     = render :partial => 'layouts/header'
-    = yield
+    .container#editor-container
+      .wrapper
+        .row
+          = yield
     - unless @hide_feedback
       .feedback-btn
         %a{:href => "https://docs.google.com/forms/d/1GwKZptrMC3KCa0dCarQeKVs_3Us6Sf9B69g_c7lnYC8/viewform", :target => "_blank"} Give us feedback

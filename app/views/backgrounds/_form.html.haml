@@ -1,0 +1,15 @@
+= form_for @background do |f|
+  - if @background.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@background.errors.count, "error")} prohibited this background from being saved:"
+      %ul
+        - @background.errors.full_messages.each do |msg|
+          %li= msg
+
+  .fields
+    = f.file_field :image
+    = f.text_field :name, :placeholder => 'name'
+  .actions
+    = f.submit 'Save', class: 'button'
+
+

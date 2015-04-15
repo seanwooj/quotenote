@@ -19,7 +19,8 @@
 class Background < ActiveRecord::Base
   has_attached_file :image,
     :styles => {
-      :small => '1000x'
+      :small => '1000x',
+      :thumb => '150x'
     },
     :convert_options => {
       :small => "-strip"

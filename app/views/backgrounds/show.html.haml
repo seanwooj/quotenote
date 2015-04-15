@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%h1= @background.name
+%p
+  %b Uploaded at:
+  = @background.updated_at.to_s
+%p= image_tag @background.image.url(:small), :width => '100%'
+= link_to 'Edit', edit_background_path(@background)
+\|
+= link_to 'Back', backgrounds_path

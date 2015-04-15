@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :backgrounds
+
   resources :products
 
   root :to => 'home#index'

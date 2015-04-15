@@ -1,4 +1,5 @@
-= form_for @background, :html => { :multipart => true } do |f|
- = f.file_field :image
- = f.text_field :name
- = f.submit "submit"
+%h1 New background
+
+= render 'form'
+
+= link_to 'Back', backgrounds_path
