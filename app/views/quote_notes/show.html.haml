@@ -1,0 +1,14 @@
+#iframe-container.seven.columns
+  #iframe
+#products.five.columns
+  %h2 Buy stuff
+  - @products.each do |product|
+    = link_to product.name, product_quote_note_path(product, @quote_note)
+
+
+- content_for :footer_js do
+  :javascript
+    $(window).load(function(){
+      params = #{@quote_note.serialize_for_client_json};
+      window.qn.editor.init(params);
+    });

@@ -19,6 +19,10 @@ class QuoteNotesController < ApplicationController
     @backgrounds = Background.all
   end
 
+  def show
+    @products = Product.all
+  end
+
   # POST /quote_notes
   # POST /quote_notes.json
   def create
@@ -26,7 +30,7 @@ class QuoteNotesController < ApplicationController
 
     respond_to do |format|
       if @quote_note.save
-        format.html { redirect_to edit_quote_note_path(@quote_note), notice: 'Quote note was successfully created.' }
+        format.html { redirect_to @quote_note, notice: 'Quote note was successfully created.' }
         format.json { render :show, status: :created, location: @quote_note }
       else
         format.html { render :new }
@@ -40,7 +44,7 @@ class QuoteNotesController < ApplicationController
   def update
     respond_to do |format|
       if @quote_note.update(quote_note_params)
-        format.html { redirect_to edit_quote_note_path(@quote_note), notice: 'Quote note was successfully updated.' }
+        format.html { redirect_to @quote_note, notice: 'Quote note was successfully updated.' }
         format.json { render :show, status: :ok, location: @quote_note }
       else
         format.html { render :edit }
