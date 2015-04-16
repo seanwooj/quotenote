@@ -5,7 +5,7 @@
         = link_to 'QuoteNote', root_path, :id => 'logo'
       %ul.nav-menu
         %li
-          %a.shopping-cart{:href => '#'}
+          = link_to cart_path, :class => 'shopping-cart' do
             %i.fi-shopping-cart
             Shopping Cart
             - if @cart.total_count > 0

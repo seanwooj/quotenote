@@ -3,7 +3,7 @@
 
 #product-details.five.columns
   %h2 Product Headline
-  = link_to '#', :class => 'button button-pink' do
+  = link_to add_cart_path(:product_id => @product.id, :quote_note_id => @quote_note.id), :class => 'button button-pink', :method => :post do
     %i.fi-shopping-cart
     Add To Cart
   = link_to 'See more products', @quote_note, :class => 'button'
