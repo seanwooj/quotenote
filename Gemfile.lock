@@ -50,14 +50,11 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.0)
-    aws-sdk (2.0.38)
-      aws-sdk-resources (= 2.0.38)
-    aws-sdk-core (2.0.38)
-      builder (~> 3.0)
-      jmespath (~> 1.0)
-      multi_json (~> 1.0)
-    aws-sdk-resources (2.0.38)
-      aws-sdk-core (= 2.0.38)
+    aws-sdk (1.64.0)
+      aws-sdk-v1 (= 1.64.0)
+    aws-sdk-v1 (1.64.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -127,8 +124,6 @@ GEM
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jmespath (1.0.2)
-      multi_json (~> 1.0)
     json (1.8.2)
     kgio (2.9.3)
     loofah (2.0.1)
@@ -250,7 +245,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  aws-sdk
+  aws-sdk (< 2.0)
   byebug
   compass-rails (~> 2.0.2)
   country-select

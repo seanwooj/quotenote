@@ -18,7 +18,7 @@ gem 'pdfkit'
 gem 'wkhtmltoimage-binary'
 gem 'sass-css-importer'
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'annotate'
 gem 'unicorn-rails'
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
