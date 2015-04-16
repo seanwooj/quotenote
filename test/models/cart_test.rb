@@ -39,4 +39,48 @@ class CartTest < MiniTest::Test
     assert_equal 15.0, cart.items.first.total_price
     assert_equal 10.0, cart.items.last.total_price
   end
+
+  def test_serialization
+    cart = Cart.new
+    2.times { cart.add_item(1,2) }
+    cart.add_item(2,2)
+
+    assert_equal session_hash["cart"], cart.serialize
+  end
+
+  def test_create_from_hash
+    cart = Cart.create_from_hash session_hash
+
+    assert_equal cart.items.count, 2
+    assert_equal cart.total_count, 3
+
+    assert_equal cart.items.first.product_id, 1
+    assert_equal cart.items.first.quote_note_id, 2
+    assert_equal cart.items.first.quantity, 2
+
+    assert_equal cart.items.last.product_id, 2
+    assert_equal cart.items.last.quote_note_id, 2
+    assert_equal cart.items.last.quantity, 1
+  end
+
+  private
+
+  def session_hash
+    {
+      "cart" => {
+        "items" => [
+          {
+            "product_id" => 1,
+            "quote_note_id" => 2,
+            "quantity" => 2
+          },
+          {
+            "product_id" => 2,
+            "quote_note_id" => 2,
+            "quantity" => 1
+          }
+        ]
+      }
+    }
+  end
 end

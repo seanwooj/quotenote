@@ -1,5 +1,15 @@
+require 'json'
+
 class Cart
   attr_reader :items
+
+  def self.create_from_hash hash
+    items = hash["cart"]["items"].map do |item|
+      CartItem.new(item["product_id"], item["quote_note_id"], item["quantity"])
+    end
+
+    Cart.new items
+  end
 
   def initialize items = []
     @items = items
@@ -38,6 +48,20 @@ class Cart
 
   def total_price
     @items.inject(0) { |sum, item| sum + item.total_price }
+  end
+
+  def serialize
+    items = @items.map do |item|
+      {
+        "product_id" => item.product_id,
+        "quote_note_id" => item.quote_note_id,
+        "quantity" => item.quantity
+      }
+    end
+
+    {
+      "items" => items
+    }
   end
 
 
