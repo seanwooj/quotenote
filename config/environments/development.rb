@@ -39,4 +39,10 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.merchant_id = "k78kdgkp9sxdzkrw"
+  Braintree::Configuration.public_key = "8dbtsbcdwnbj6sty"
+  Braintree::Configuration.private_key = "1601415f8659b4ea8fab8573a282da76"
+
 end

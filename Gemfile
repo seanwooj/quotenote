@@ -25,6 +25,7 @@ gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'foundation-icons-sass-rails'
 gem 'devise'
 gem 'country-select'
+gem 'braintree'
 
 group :development, :test do
   gem 'byebug'

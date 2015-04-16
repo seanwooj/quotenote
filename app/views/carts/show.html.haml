@@ -2,7 +2,8 @@
   %thead
     %tr
       %th Quantity
-      %th Name
+      %th Product Name
+      %th QuoteNote
       %th Total Price
   - @cart.items.each do |item|
     %tr
@@ -10,6 +11,8 @@
       %td
         / = image_tag item.product.image.thumb
         = link_to item.product.name, product_path(item.product_id)
+      %td
+        = link_to "View QuoteNote", item.quote_note
       %td= number_to_currency item.total_price
   %tfoot
     %tr
@@ -17,6 +20,8 @@
         %strong
           Total:
           = number_to_currency @cart.total_price
+
+=link_to 'Checkout', checkout_cart_path, :class => 'button button-pink'
 
 
 

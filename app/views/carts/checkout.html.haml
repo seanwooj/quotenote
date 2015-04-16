@@ -1,0 +1,31 @@
+%h1 Checkout
+
+%h2 You have the following products:
+
+%ul
+  - @cart.items.each do |item|
+    %li
+      %em= item.quantity
+      = item.product.name
+      = item.total_price
+
+%p
+  %strong
+  Total Price:
+  = number_to_currency @cart.total_price
+
+= form_for @order_form, :url => backgrounds_path do |f|
+
+  %h3 Some of your personal details
+
+  #dropin
+
+  %p= f.submit "Place Order", :class => 'btn btn-primary'
+
+
+:javascript
+  braintree.setup(
+    "#{@client_token}",
+    'dropin', {
+      container: 'dropin'
+    });

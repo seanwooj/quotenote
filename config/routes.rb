@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resource :cart, :only => :show do
     post 'add', :on => :member
+    get 'checkout'
   end
 
   devise_for :users

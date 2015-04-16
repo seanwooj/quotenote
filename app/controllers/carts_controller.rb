@@ -7,4 +7,9 @@ class CartsController < ApplicationController
     session['cart'] = @cart.serialize
     redirect_to :back, :notice => 'thanks.'
   end
+
+  def checkout
+    @order_form = OrderForm.new
+    @client_token = Braintree::ClientToken.generate()
+  end
 end
