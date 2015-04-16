@@ -1,15 +1,14 @@
 class QuoteNote < ActiveRecord::Base
   belongs_to :background
 
+  def arrayified_quote_text
+    quote_text == '' ? [''] : quote_text.split("\n")
+  end
+
   def serialize_for_client
     hash = self.serializable_hash
 
-    unless quote_text == ''
-      hash["quote_text"] = hash["quote_text"].split("\n")
-    else
-      # if there is not quote text, serialize it as an empty array.
-      hash["quote_text"] = ['']
-    end
+    hash["quote_text"] = arrayified_quote_text
 
     # if for whatever reason background isn't set, set some defaults.
     # this should be removed later on.
