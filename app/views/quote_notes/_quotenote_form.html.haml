@@ -1,5 +1,5 @@
-#editor.five.columns
-  = form_for @quote_note do |f|
+= form_for @quote_note do |f|
+  #editor.five.columns
     #text-editor
       = f.text_area :quote_text, :placeholder => 'Your quote here.', :id => 'text-box'
       = f.text_field :quote_author, :placeholder => 'Author (Optional)', :id => 'author-box'
@@ -14,19 +14,18 @@
     %h5
       %i.fi-photo
       Background Options
-    = check_box_tag 'high_contrast', 'high_contrast', true
-    = label_tag 'high_contrast', 'Darken Background', :class => 'high_contrast_label'
-    / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
+    = f.check_box :overlay, :id => 'overlay'
+    = f.label :overlay, :class => 'high_contrast_label' do
+      Darken Background
     = render :partial => 'home/background_picker'
     = f.hidden_field :background_id
-    = f.hidden_field :overlay
-    = f.submit 'Save', :class => 'link_to_purchase button'
-#iframe-container.seven.columns
-  #iframe
-  .image-link-container
-    %a.link_to_image.button
-      %i.fi-download
-      Download
-    %a.link_to_purchase.button
-      %i.fi-credit-card
-      Buy Print
+    / = f.submit 'Save', :class => 'link_to_purchase button'
+  #iframe-container.seven.columns
+    #iframe
+    .image-link-container
+      %a.link_to_image.button
+        %i.fi-download
+        Download
+      = button_tag(:type => 'submit', :class => 'link_to_purchase button') do
+        %i.fi-credit-card
+        Buy Print

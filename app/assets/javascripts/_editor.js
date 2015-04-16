@@ -104,7 +104,7 @@ window.qn.editor = {
     }
 
     this.quote_params['font_color'] = $("input.colorpicker").val();
-    this.quote_params['overlay'] = $("#high_contrast").is(":checked");
+    this.quote_params['overlay'] = $("#overlay").is(":checked");
     console.log(this.quote_params);
     this.change_iframe_src();
   },
@@ -230,13 +230,9 @@ window.qn.editor = {
 
   toggle_overlay_on_input: function(){
     var that = this;
-    $("#high_contrast").on('click', function(e){
+    $("#overlay").on('click', function(e){
       that.toggle_overlay();
     })
-  },
-
-  change_overlay_hidden_field_on_input: function(overlay_bool) {
-    $('#quote_note_overlay').val(overlay_bool);
   },
 
   toggle_overlay: function(){
@@ -245,7 +241,6 @@ window.qn.editor = {
     } else {
       this.quote_params['overlay'] = false;
     }
-    this.change_overlay_hidden_field_on_input(this.quote_params['overlay']);
     this.change_iframe_src();
   },
 

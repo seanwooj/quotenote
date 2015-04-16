@@ -3,8 +3,18 @@ class QuoteNote < ActiveRecord::Base
 
   def serialize_for_client
     hash = self.serializable_hash
-    hash["quote_text"] = hash["quote_text"].split("\n")
-    hash["repeating"] = background.repeating
+
+    unless quote_text == ''
+      hash["quote_text"] = hash["quote_text"].split("\n")
+    else
+      # if there is not quote text, serialize it as an empty array.
+      hash["quote_text"] = ['']
+    end
+
+    # if for whatever reason background isn't set, set some defaults.
+    # this should be removed later on.
+    hash["repeating"] = (background.nil? ? false : background.repeating)
+    hash["background_id"] = (background.nil? ? 3 : background.id)
     hash
   end
 

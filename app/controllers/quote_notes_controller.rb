@@ -40,7 +40,7 @@ class QuoteNotesController < ApplicationController
   def update
     respond_to do |format|
       if @quote_note.update(quote_note_params)
-        format.html { redirect_to @quote_note, notice: 'Quote note was successfully updated.' }
+        format.html { redirect_to edit_quote_note_path(@quote_note), notice: 'Quote note was successfully updated.' }
         format.json { render :show, status: :ok, location: @quote_note }
       else
         format.html { render :edit }
