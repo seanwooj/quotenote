@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-ujs
+//= require underscore
 //= require minicolors
 //= require blurjs
 //= require spectrum

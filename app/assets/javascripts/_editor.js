@@ -3,18 +3,6 @@ window.qn = window.qn || {};
 
 window.qn.editor = {
   element: '#quotenote',
-  quotes: [
-    "Passion and Gradualness",
-    "All that we are is the result of what we have thought",
-    "Become who you are by learning who you are",
-    "Things ain’t what they use to be and probably never was",
-    "It takes as much energy to wish as it does to plan.",
-    "I can accept failure, everyone fails at something. But I can’t accept not trying"
-  ],
-
-  fonts: [
-    'Pacifico', 'Roboto Condensed', 'Raleway', 'Montserrat', 'Cabin'
-  ],
 
   quote_params: {
     font_family: 'cabin_sketch',
