@@ -1,34 +1,4 @@
-#editor.five.columns
-  = form_for @quote_note do |f|
-    #text-editor
-      = f.text_area :quote_text, :placeholder => 'Your quote here.', :id => 'text-box'
-      = f.text_field :quote_text, :placeholder => 'Author (Optional)', :id => 'author-box'
-    %hr
-    %h5
-      %i.fi-page-edit
-      Text Options
-    = f.color_field :font_color, :value => '#ffffff', :class => 'minicolors colorpicker'
-    = render :partial => 'home/font_picker'
-
-    %hr
-    %h5
-      %i.fi-photo
-      Background Options
-    = check_box_tag 'high_contrast', 'high_contrast', true
-    = label_tag 'high_contrast', 'Darken Background', :class => 'high_contrast_label'
-    / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
-    = render :partial => 'home/background_picker'
-    = f.hidden_field :background_id, :value => 3
-    = f.hidden_field :overlay, :value => true
-#iframe-container.seven.columns
-  #iframe
-  .image-link-container
-    %a.link_to_image.button
-      %i.fi-download
-      Download
-    %a.link_to_purchase.button
-      %i.fi-credit-card
-      Buy Print
+= render 'quotenote_form'
 
 
 - content_for :footer_js do

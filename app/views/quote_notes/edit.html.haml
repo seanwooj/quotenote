@@ -1,7 +1,14 @@
-%h1 Editing quote_note
-
-= render 'form'
+= render 'quotenote_form'
 
 = link_to 'Show', @quote_note
 \|
 = link_to 'Back', quote_notes_path
+
+- content_for :footer_js do
+  :javascript
+    $(window).load(function(){
+      params = #{@quote_note.serialize_for_client};
+      window.qn.editor.init(params);
+    });
+
+

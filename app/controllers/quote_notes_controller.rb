@@ -20,6 +20,8 @@ class QuoteNotesController < ApplicationController
 
   # GET /quote_notes/1/edit
   def edit
+    @quote_note = QuoteNote.find(params[:id])
+    @backgrounds = Background.all
   end
 
   # POST /quote_notes

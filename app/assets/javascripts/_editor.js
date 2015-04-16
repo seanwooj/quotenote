@@ -25,7 +25,8 @@ window.qn.editor = {
     font_color: 'white',
   },
 
-  init: function(){
+  init: function(params){
+    this.quote_params = params || this.quote_params;
     this.init_colorpicker();
     this.instantiate_handlers();
     this.init_iframe();
