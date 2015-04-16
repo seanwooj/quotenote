@@ -7,11 +7,6 @@ class QuoteNotesController < ApplicationController
     @quote_notes = QuoteNote.all
   end
 
-  # GET /quote_notes/1
-  # GET /quote_notes/1.json
-  def show
-  end
-
   # GET /quote_notes/new
   def new
     @backgrounds = Background.all
@@ -31,7 +26,7 @@ class QuoteNotesController < ApplicationController
 
     respond_to do |format|
       if @quote_note.save
-        format.html { redirect_to @quote_note, notice: 'Quote note was successfully created.' }
+        format.html { redirect_to edit_quote_note_path(@quote_note), notice: 'Quote note was successfully created.' }
         format.json { render :show, status: :created, location: @quote_note }
       else
         format.html { render :new }

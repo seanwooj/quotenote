@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :quote_notes
+  resources :quote_notes, :only => [:create, :edit, :index, :new, :update]
 
   resources :backgrounds
   resources :products
 
   devise_for :users
 
-  root :to => 'home#index'
+  root :to => 'quote_notes#new'
   get 'generator' => 'generator#generate'
 
   resources :backgrounds, :only => [:new, :create, :index]
