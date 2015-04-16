@@ -8,3 +8,7 @@
           %a.shopping-cart{:href => '#'}
             %i.fi-shopping-cart
             Shopping Cart
+            - if @cart.total_count > 0
+              (
+              = pluralize @cart.total_count, 'item'
+              )

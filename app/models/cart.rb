@@ -4,8 +4,12 @@ class Cart
   attr_reader :items
 
   def self.create_from_hash hash
-    items = hash["cart"]["items"].map do |item|
-      CartItem.new(item["product_id"], item["quote_note_id"], item["quantity"])
+    if hash["cart"] && hash["cart"]["items"]
+      items = hash["cart"]["items"].map do |item|
+        CartItem.new(item["product_id"], item["quote_note_id"], item["quantity"])
+      end
+    else
+      items = []
     end
 
     Cart.new items
