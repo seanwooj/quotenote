@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :backgrounds
   resources :products do
-    resources :quote_notes, :only => [:show], :controller => 'product/quote_notes'
+    resources :quote_notes, :only => [:show], :controller => 'products/quote_notes'
   end
 
   devise_for :users

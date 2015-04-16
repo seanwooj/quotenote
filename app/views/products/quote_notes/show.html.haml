@@ -1,0 +1,15 @@
+#product.seven.columns
+  %h1= @product.name
+
+#product-details.five.columns
+  %h2 Product Headline
+  = link_to '#', :class => 'button button-pink' do
+    %i.fi-shopping-cart
+    Add To Cart
+  = link_to 'See more products', @quote_note, :class => 'button'
+  %h5 Additional Information
+  %p= @product.description
+  %hr
+  .shipping-information
+    %h5 Shipping Information
+    %p Shipping information block of text blah blah blah blah blah.

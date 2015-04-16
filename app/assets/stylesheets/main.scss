@@ -26,6 +26,9 @@ we aim to organize our site's CSS in the following pattern:
 @import 'base/_base.scss';
 @import 'base/_typography.scss';
 
+/* Components */
+@import 'components/_buttons.scss';
+
 /* Vendor Scripts */
 @import 'normalize.css/_normalize';
 @import 'skeleton-css/css/_skeleton';
