@@ -6,8 +6,4 @@ class UserTest < ActiveSupport::TestCase
     @user ||= User.new
   end
 
-  def test_valid
-    assert user.valid?
-  end
-
 end
