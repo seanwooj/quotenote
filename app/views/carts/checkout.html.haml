@@ -14,24 +14,25 @@
   Total Price:
   = number_to_currency @cart.total_price
 
-= form_for @order_form, :url => backgrounds_path do |f|
+= form_for @order_form, :url => orders_path do |f|
   = fields_for @order_form.user do |u|
-    - if true
-      .form-group
-        %p= u.text_field :name, :placeholder => "Name", :class => "form-control input-lg"
-        %p
-          = u.text_field :email, :placeholder => 'Email', :class => 'form-control'
-          %span.help-block This will help you track your order more effectively
-      .form-group
-        .row
-          %p= u.text_field :address, :placeholder => 'Address', :class => 'form-control'
-          %p= u.text_field :postal_code, :placeholder => 'Postal Code / Zipcode', :class => 'form-control'
-          %p= u.text_field :city, :placeholder => 'City', :class => 'form-control'
-        %p= u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
+    - unless current_user
+      %p
+        = u.text_field :email, :placeholder => 'Email', :class => 'form-control'
+        %span.help-block This will help you track your order more effectively
+      %p= u.password_field :password, :placeholder => 'password'
+      %p= u.password_field :password_confirmation, :placeholder => 'confirm password'
 
-        %p= u.text_field :phone, :class => 'form-control', :placeholder => 'Phone'
-    - else
+    .form-group
+      %p= u.text_field :name, :placeholder => "Name", :class => "form-control input-lg"
+    .form-group
+      .row
+        %p= u.text_field :address, :placeholder => 'Address', :class => 'form-control'
+        %p= u.text_field :postal_code, :placeholder => 'Postal Code / Zipcode', :class => 'form-control'
+        %p= u.text_field :city, :placeholder => 'City', :class => 'form-control'
+      %p= u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
 
+      %p= u.text_field :phone, :class => 'form-control', :placeholder => 'Phone'
 
 
   #dropin

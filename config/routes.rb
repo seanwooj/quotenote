@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   resources :products do
     resources :quote_notes, :only => [:show], :controller => 'products/quote_notes'
   end
+  resources :orders, :only => [:create, :index, :show] do
+    member do
+      get :new_payment
+      post :pay
+    end
+  end
 
   resource :cart, :only => :show do
     post 'add', :on => :member
