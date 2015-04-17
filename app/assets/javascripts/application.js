@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ujs
 //= require underscore
+//= require leanModal/leanModal1.1
 //= require minicolors
 //= require blurjs
 //= require spectrum

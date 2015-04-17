@@ -28,6 +28,7 @@ we aim to organize our site's CSS in the following pattern:
 
 /* Components */
 @import 'components/_buttons.scss';
+@import 'components/_modal.scss';
 
 /* Vendor Scripts */
 @import 'normalize.css/_normalize';
