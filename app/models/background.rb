@@ -3,7 +3,7 @@
 # Table name: backgrounds
 #
 #  id                 :integer          not null, primary key
-#  repeating          :boolean
+#  repeating          :boolean          default(FALSE)
 #  name               :text
 #  source_url         :text
 #  creator            :text

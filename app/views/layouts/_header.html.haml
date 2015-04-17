@@ -7,6 +7,5 @@
         %li
           = link_to cart_path, :class => 'shopping-cart' do
             %i.fi-shopping-cart
-            Shopping Cart
             - if @cart.total_count > 0
               = number_to_currency @cart.total_price

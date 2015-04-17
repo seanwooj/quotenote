@@ -15,8 +15,10 @@
   = number_to_currency @cart.total_price
 
 = form_for @order_form, :url => backgrounds_path do |f|
+  = fields_for @order_form.user do |ff|
+    - if @user.new_record?
 
-  %h3 Some of your personal details
+
 
   #dropin
 
