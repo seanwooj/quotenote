@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
     if @order_form.save
       #if charge user
       empty_cart
+      sign_in(:user, user)
       redirect_to root_path, :notice => 'Thanks for your business!'
     else
       render 'carts/checkout'
@@ -34,7 +35,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_form).permit(
-      :user => [:name, :phone, :address, :city, :country, :postal_code, :email, :id]
+      :user => [:name, :phone, :address, :city, :country, :postal_code, :email, :id, :password, :password_confirmation]
     )
   end
 
