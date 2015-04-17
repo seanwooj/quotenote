@@ -15,13 +15,15 @@
   = number_to_currency @cart.total_price
 
 = form_for @order_form, :url => orders_path do |f|
-  = fields_for @order_form.user do |u|
+  = f.fields_for :user, f.object.user do |u|
     - unless current_user
       %p
         = u.text_field :email, :placeholder => 'Email', :class => 'form-control'
         %span.help-block This will help you track your order more effectively
       %p= u.password_field :password, :placeholder => 'password'
       %p= u.password_field :password_confirmation, :placeholder => 'confirm password'
+    - else
+      = u.hidden_field :id
 
     .form-group
       %p= u.text_field :name, :placeholder => "Name", :class => "form-control input-lg"
@@ -37,7 +39,7 @@
 
   #dropin
 
-  %p= f.submit "Place Order", :class => 'btn btn-primary'
+  %p= f.submit "Place Order", :class => 'button button-pink'
 
 
 :javascript

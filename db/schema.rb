@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416170200) do
+ActiveRecord::Schema.define(version: 20150417215911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20150416170200) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "quote_note_id"
+    t.integer  "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "order_id"
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
+  add_index "order_items", ["quote_note_id"], name: "index_order_items_on_quote_note_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.decimal  "price"
@@ -77,5 +98,9 @@ ActiveRecord::Schema.define(version: 20150416170200) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "order_items", "quote_notes"
+  add_foreign_key "orders", "users"
   add_foreign_key "quote_notes", "backgrounds"
 end
