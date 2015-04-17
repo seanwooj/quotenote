@@ -1,0 +1,26 @@
+%h2= "Order ##{@order.id}"
+%p
+  Total Cost
+  %b= number_to_currency @order.total_price
+
+%table
+  %thead
+    %tr
+      %th Product Name
+      %th QuoteNote ID
+      %th Product Price
+      %th Quantity
+      %th Total Price
+  %tbody
+    - @order.order_items.each do |item|
+      %tr
+        %td= link_to item.product.name, item.product
+        %td= link_to item.quote_note.id, item.quote_note
+        %td= number_to_currency item.product.price
+        %td= item.quantity
+        %td= number_to_currency item.total_price
+  %tfooter
+    %tr
+      %td{:colspan => 4}
+      %td
+        = number_to_currency @order.total_price

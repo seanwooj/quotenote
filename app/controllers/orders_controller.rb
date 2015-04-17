@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   def show
-    @order = Order.find(order_params[:id])
+    @order = Order.includes(:order_items => [:quote_note]).includes(:user).find(params[:id])
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.includes(:order_items => [:quote_note, :product]).includes(:user).all
   end
 
   def create
