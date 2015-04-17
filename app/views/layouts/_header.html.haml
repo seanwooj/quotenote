@@ -9,3 +9,6 @@
             %i.fi-shopping-cart
             - if @cart.total_count > 0
               = number_to_currency @cart.total_price
+        - if current_user
+          %li
+            = link_to 'Sign Out', destroy_user_session_path, :method => :delete
