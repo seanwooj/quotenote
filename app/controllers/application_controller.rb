@@ -28,4 +28,5 @@ class ApplicationController < ActionController::Base
   def initialize_cart
     @cart = Cart.create_from_hash session
   end
+
 end

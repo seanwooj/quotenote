@@ -1,5 +1,6 @@
 class QuoteNotesController < ApplicationController
   before_action :set_quote_note, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_session_or_user, :only => [:edit, :update, :destroy]
 
   # GET /quote_notes
   # GET /quote_notes.json
@@ -27,6 +28,12 @@ class QuoteNotesController < ApplicationController
   # POST /quote_notes.json
   def create
     @quote_note = QuoteNote.new(quote_note_params)
+    # save session id so that non logged in users can edit their quotenotes
+    if current_user
+      @quote_note.user = current_user
+    else
+      @quote_note.session_id = session[:session_id]
+    end
 
     respond_to do |format|
       if @quote_note.save
@@ -72,5 +79,15 @@ class QuoteNotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_note_params
       params.require(:quote_note).permit(:quote_text, :font_family, :quote_author, :background_id, :overlay, :font_color)
+    end
+
+    def authenticate_session_or_user
+      if current_user && current_user.id == @quote_note.user_id
+        true
+      elsif session && session[:session_id] && session[:session_id] == @quote_note.session_id
+        true
+      else
+        redirect_to root_path, :alert => "You aren't allowed to be here"
+      end
     end
 end

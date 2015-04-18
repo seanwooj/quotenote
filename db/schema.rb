@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418192308) do
+ActiveRecord::Schema.define(version: 20150418193615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150418192308) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
+    t.string   "session_id"
   end
 
   add_index "backgrounds", ["user_id"], name: "index_backgrounds_on_user_id", using: :btree
@@ -73,9 +74,12 @@ ActiveRecord::Schema.define(version: 20150418192308) do
     t.string   "font_color"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "session_id"
+    t.integer  "user_id"
   end
 
   add_index "quote_notes", ["background_id"], name: "index_quote_notes_on_background_id", using: :btree
+  add_index "quote_notes", ["user_id"], name: "index_quote_notes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -107,4 +111,5 @@ ActiveRecord::Schema.define(version: 20150418192308) do
   add_foreign_key "order_items", "quote_notes"
   add_foreign_key "orders", "users"
   add_foreign_key "quote_notes", "backgrounds"
+  add_foreign_key "quote_notes", "users"
 end
