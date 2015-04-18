@@ -1,9 +1,10 @@
-#iframe-container.seven.columns
-  #iframe
 #products.five.columns
   %h2 Buy stuff
   - @products.each do |product|
     = link_to product.name, product_quote_note_path(product, @quote_note)
+
+#iframe-container.seven.columns
+  #iframe
 
 
 - content_for :footer_js do

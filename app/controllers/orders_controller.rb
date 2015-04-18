@@ -20,10 +20,15 @@ class OrdersController < ApplicationController
     )
 
     if @order_form.save
-      #if charge user
       empty_cart
       sign_in(:user, user)
-      redirect_to root_path, :notice => 'Thanks for your business!'
+      byebug
+      if charge_user
+        redirect_to root_path, :notice => 'Thanks for placing your order!'
+      else
+        # redirect to the pay route
+      end
+
     else
       render 'carts/checkout'
     end
@@ -44,5 +49,12 @@ class OrdersController < ApplicationController
   def empty_cart
     @cart.empty
     session['cart'] = @cart.serialize
+  end
+
+  def charge_user
+    byebug
+    transaction = OrderTransaction.new @order_form.order, params[:payment_method_nonce]
+    transaction.execute
+    transaction.ok?
   end
 end
