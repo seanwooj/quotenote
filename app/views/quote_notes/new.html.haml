@@ -13,6 +13,6 @@
 - content_for :footer_js do
   :javascript
     $(window).load(function(){
-      window.qn.editor.init({'background_id': #{session[:background_id]}});
+      window.qn.editor.init({'background_id': #{default_or_session_background}});
     });
 

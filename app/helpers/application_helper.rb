@@ -15,4 +15,12 @@ module ApplicationHelper
   def simple_date(date)
     date.strftime("%m/%d/%Y at %H:%M")
   end
+
+  def default_or_session_background
+    if session[:background_id]
+      session[:background_id]
+    else
+      Background.global.first.id
+    end
+  end
 end
