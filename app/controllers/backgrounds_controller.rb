@@ -26,6 +26,16 @@ class BackgroundsController < ApplicationController
   def create
     @background = Background.new(background_params)
 
+    if current_user
+      @background.user = current_user
+
+      if current_user.admin?
+        @background.global = true
+      end
+    else
+      @background.session_id = session[:session_id]
+    end
+
     respond_to do |format|
       if @background.save
         format.html { redirect_to @background, notice: 'Background was successfully created.' }

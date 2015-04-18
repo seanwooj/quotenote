@@ -26,7 +26,17 @@ class Background < ActiveRecord::Base
       :small => "-strip"
     }
 
+  scope :global -> { where(:global => true) }
+
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-
+  def self.available_for_user(current_user = nil, session_id = nil)
+    if current_user
+      Background.global | Background.where(:user => current_user)
+    elsif session_id
+      Background.global | Background.where(:session_id => session_id)
+    else
+      Background.global
+    end
+  end
 end
