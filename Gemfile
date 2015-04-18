@@ -32,9 +32,14 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'awesome_print'
+end
+
+group :test do
   gem 'minitest-rails'
   gem 'factory_girl_rails'
-  gem 'awesome_print'
+  gem 'database_cleaner'
+  gem 'minitest-around'
 end
 
 group :production do

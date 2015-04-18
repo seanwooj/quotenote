@@ -17,8 +17,12 @@
 #
 
 FactoryGirl.define do
-  factory :background do
-    
+  factory :background do |b|
+    b.image File.open("test/support/test_photo.jpg")
+
+    factory :background_with_user do
+      user
+    end
   end
 
 end
