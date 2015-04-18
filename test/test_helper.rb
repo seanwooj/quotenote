@@ -4,6 +4,7 @@ require "rails/test_help"
 require "minitest/rails"
 require "minitest/pride"
 require "support/database_cleaner"
+require "support/vcr"
 
 class ActiveSupport::TestCase
     ActiveRecord::Migration.check_pending!

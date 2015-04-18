@@ -17,11 +17,15 @@
 #
 
 FactoryGirl.define do
-  factory :background do |b|
-    b.image File.open("test/support/test_photo.jpg")
+  factory :background do
+    image File.open("test/support/test_photo.jpg")
 
     factory :background_with_user do
-      user
+      association :user, :factory => :user
+    end
+
+    factory :global_background do
+      global true
     end
   end
 
