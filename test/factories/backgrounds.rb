@@ -27,6 +27,10 @@ FactoryGirl.define do
     factory :global_background do
       global true
     end
+
+    factory :background_with_session_id do
+      session_id 'seSs10nid'
+    end
   end
 
 end
