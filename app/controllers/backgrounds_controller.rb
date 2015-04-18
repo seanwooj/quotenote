@@ -71,6 +71,32 @@ class BackgroundsController < ApplicationController
     end
   end
 
+  def add_and_redirect_to_quotenote
+    @background = Background.new(background_params)
+    @background.name = Background.generate_unique_name
+
+    if current_user
+      @background.user = current_user
+
+      if current_user.admin?
+        @background.global = true
+      end
+    else
+      @background.session_id = session[:session_id]
+    end
+
+    respond_to do |format|
+      if @background.save
+        session[:background_id] = @background.id
+        format.html { redirect_to :back, notice: 'Background was successfully created.' }
+        format.json { render :show, status: :created, location: @background }
+      else
+        format.html { render :new }
+        format.json { render json: @background.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_background

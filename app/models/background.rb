@@ -29,6 +29,7 @@ class Background < ActiveRecord::Base
   scope :global, -> { where(:global => true) }
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_presence_of :image, :name
 
   belongs_to :user
 
@@ -39,6 +40,19 @@ class Background < ActiveRecord::Base
       Background.global | Background.where(:session_id => session_id)
     else
       Background.global
+    end
+  end
+
+  def self.generate_unique_name(current_user = nil, session_id = nil)
+    strtime = Time.now.strftime('%s')
+    if current_user
+      email = current_user.email
+      name = email[/[^@]+/]
+      name + strtime
+    elsif session_id
+      session_id + strtime
+    else
+      (0...8).map { (65 + rand(26)).chr }.join + strtime
     end
   end
 end

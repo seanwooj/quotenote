@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :quote_notes
 
   resources :backgrounds
+  post 'add_background_and_redirect_to_quotenote', :to => 'backgrounds#add_and_redirect_to_quotenote'
+
   resources :products do
     resources :quote_notes, :only => [:show], :controller => 'products/quote_notes'
   end

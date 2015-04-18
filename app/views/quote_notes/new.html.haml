@@ -1,9 +1,18 @@
 = render 'quotenote_form'
 
 
+= form_for @background, :url => add_background_and_redirect_to_quotenote_path  do |f|
+  .fields
+    = f.file_field :image
+  .actions
+    = f.submit 'Save', class: 'button'
+
+
+
+
 - content_for :footer_js do
   :javascript
     $(window).load(function(){
-      window.qn.editor.init();
+      window.qn.editor.init({'background_id': #{session[:background_id]}});
     });
 

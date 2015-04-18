@@ -14,7 +14,8 @@ window.qn.editor = {
   },
 
   init: function(params){
-    this.quote_params = params || this.quote_params;
+    params = params || {}
+    this.quote_params = $.extend(this.quote_params, params)
     this.init_colorpicker();
     this.instantiate_handlers();
     this.init_iframe();

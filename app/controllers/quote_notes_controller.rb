@@ -10,14 +10,15 @@ class QuoteNotesController < ApplicationController
 
   # GET /quote_notes/new
   def new
-    @backgrounds = Background.all
+    @backgrounds = Background.available_for_user(current_user, session[:session_id])
+    @background = Background.new
     @quote_note = QuoteNote.new
   end
 
   # GET /quote_notes/1/edit
   def edit
     @quote_note = QuoteNote.find(params[:id])
-    @backgrounds = Background.all
+    @backgrounds = Background.available_for_user(current_user, session[:session_id])
   end
 
   def show
