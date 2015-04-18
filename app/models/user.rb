@@ -30,4 +30,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders, :dependent => :destroy
+  has_many :backgrounds, :dependent => :destroy
+  has_many :quote_notes, :dependent => :destroy
 end

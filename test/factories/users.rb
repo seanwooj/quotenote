@@ -25,7 +25,17 @@
 
 FactoryGirl.define do
   factory :user do
-    
+    name "Test User"
+    email "test@gmail.com"
+    admin false
+    password 'password'
+  end
+
+  factory :admin, :class => User do
+    name "Test Admin"
+    email "testadmin@gmail.com"
+    admin true
+    password 'password'
   end
 
 end
