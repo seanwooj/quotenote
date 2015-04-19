@@ -1,0 +1,37 @@
+upload ux should be improved
+should add a button that says upload
+want a modal to open when you click on "upload image"
+
+
+background selection should be improved
+see all of the images in one box
+possiby a scroll down 3x2
+
+when you upload a new photo it should be the first one that has come up.
+
+login modal is wonky, needs to be styled
+put a sign up button next to sign in button on top bar
+
+going through the flow
+sign up page causes a redirect loop
+can we grab first and last name
+auto email after sign up
+
+account option next to sign out button (edit user profile, etc)
+
+account drop down menu
+
+can we change the name of the file that is saved when you click on download?
+- [quote_text].jpg
+
+font picker is weirdly styled
+
+eventually - share buttons
+possibly watermark
+
+when you click out of a box, if it has already generated the querystring, then do not reload
+
+change the first image
+maybe change the color
+
+

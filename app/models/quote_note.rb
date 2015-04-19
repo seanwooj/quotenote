@@ -15,6 +15,7 @@
 
 class QuoteNote < ActiveRecord::Base
   belongs_to :background
+  belongs_to :user
 
   def arrayified_quote_text
     quote_text == '' ? [''] : quote_text.split("\n")
