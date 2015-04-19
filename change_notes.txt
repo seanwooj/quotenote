@@ -1,7 +1,5 @@
-upload ux should be improved
-should add a button that says upload
-want a modal to open when you click on "upload image"
-
+X upload ux should be improved
+X should add a button that says upload
 
 background selection should be improved
 see all of the images in one box

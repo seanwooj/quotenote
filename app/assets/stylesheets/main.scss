@@ -19,6 +19,8 @@ we aim to organize our site's CSS in the following pattern:
 
 /* Gem Assets */
 @import 'foundation-icons';
+@import 'jquery.fileupload';
+@import 'jquery.fileupload-ui';
 
 /* Base Files */
 @import 'base/_clearfix.scss';

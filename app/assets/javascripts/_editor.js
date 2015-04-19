@@ -30,6 +30,7 @@ window.qn.editor = {
     this.add_linebreaks_to_input();
     this.change_quote_author_on_input();
     this.toggle_overlay_on_input();
+    this.add_jquery_fileupload();
   },
 
   init_colorpicker: function(){
@@ -270,6 +271,25 @@ window.qn.editor = {
     qn.editor.timeout = setTimeout(function(){
       that.grab_all_params_and_generate();
     }, 1000)
+  },
+
+  add_jquery_fileupload: function(){
+    var that = this;
+    $("#new_background").fileupload({
+      dataType: 'json',
+      done: function (e, data){
+        var id = data['result']['id'];
+        that.quote_params['background_id'] = id;
+        that.change_iframe_src();
+        that.change_background_hidden_field_on_input(id);
+        $('.fileupload .upload-percentage').html("");
+      },
+      singleFileUploads: true,
+      progressall: function(e,data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('.fileupload .upload-percentage').html(progress + "%");
+      }
+    });
   }
 
   // }

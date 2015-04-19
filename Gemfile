@@ -26,6 +26,7 @@ gem 'foundation-icons-sass-rails'
 gem 'devise'
 gem 'country_select'
 gem 'braintree'
+gem 'jquery-fileupload-rails'
 
 group :development, :test do
   gem 'byebug'

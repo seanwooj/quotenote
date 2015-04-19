@@ -20,4 +20,5 @@
 //= require jquery.zoomer/jquery.zoomer
 //= require select2
 //= require jquery.scrollTo/jquery.scrollTo
+//= require jquery-fileupload/basic
 //= require_tree .

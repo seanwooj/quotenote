@@ -2,10 +2,12 @@
 
 
 = form_for @background, :url => add_background_and_redirect_to_quotenote_path  do |f|
-  .fields
+  .fileupload.button.fileupload-button
+    %span Upload your own
+    %i.fi-photo
+    %span.upload-percentage
     = f.file_field :image
-  .actions
-    = f.submit 'Save', class: 'button'
+
 
 
 
