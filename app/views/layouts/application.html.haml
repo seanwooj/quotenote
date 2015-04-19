@@ -15,8 +15,10 @@
     = render 'layouts/header'
     .container#editor-container
       .wrapper
-        %p.notice= notice
-        %p.alert= alert
+        - if notice
+          %p.notice= notice
+        - if alert
+          %p.alert= alert
         .row
           = yield
     = render 'feedback'

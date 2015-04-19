@@ -1,3 +1,5 @@
+%h2.section-header
+  Your Cart
 %table.table.table-hover
   %thead
     %tr
@@ -22,6 +24,7 @@
           = number_to_currency @cart.total_price
 
 =link_to 'Checkout', checkout_cart_path, :class => 'button button-pink'
+=link_to 'Add More Products', :back, :class => 'button'
 
 
 

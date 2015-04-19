@@ -35,3 +35,7 @@ change the first image
 maybe change the color
 
 
+add styles for the notices
+add a style for section headers
+
+

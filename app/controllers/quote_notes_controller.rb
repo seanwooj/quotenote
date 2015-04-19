@@ -38,7 +38,7 @@ class QuoteNotesController < ApplicationController
 
     respond_to do |format|
       if @quote_note.save
-        format.html { redirect_to @quote_note, notice: 'Quote note was successfully created.' }
+        format.html { redirect_to @quote_note, notice: 'Your quote has been saved! Get a print below.' }
         format.json { render :show, status: :created, location: @quote_note }
       else
         format.html { render :new }

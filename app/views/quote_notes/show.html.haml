@@ -1,5 +1,6 @@
 #products.five.columns
-  %h2 Buy stuff
+  %h2.section-header Available Products
+  %br
   - @products.each do |product|
     = link_to product.name, product_quote_note_path(product, @quote_note)
 
