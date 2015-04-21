@@ -15,3 +15,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Do not check API Keys into version control
+/config/printio.yml
+
+# Ignore .DS_Store
+*/.DS_Store
