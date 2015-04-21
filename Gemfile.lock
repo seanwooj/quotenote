@@ -132,6 +132,9 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     i18n_data (0.6.3)
     imgkit (1.6.0)
@@ -158,6 +161,7 @@ GEM
       railties (~> 4.1)
     mono_logger (1.1.0)
     multi_json (1.11.0)
+    multi_xml (0.5.5)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -284,6 +288,7 @@ DEPENDENCIES
   factory_girl_rails
   foundation-icons-sass-rails
   haml-rails
+  httparty
   imgkit
   jbuilder (~> 2.0)
   jquery-fileupload-rails

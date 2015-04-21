@@ -27,6 +27,7 @@ gem 'devise'
 gem 'country_select'
 gem 'braintree'
 gem 'jquery-fileupload-rails'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug'

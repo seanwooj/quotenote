@@ -19,6 +19,7 @@
 FactoryGirl.define do
   factory :background do
     image File.open("test/support/test_photo.jpg")
+    sequence(:name){ |n| "Name #{n}"}
 
     factory :background_with_user do
       association :user, :factory => :user
