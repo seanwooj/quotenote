@@ -23,6 +23,7 @@ class QuoteNote < ActiveRecord::Base
 
   def serialize_for_client
     hash = self.serializable_hash
+    hash = hash.slice('quote_text', 'font_family', 'quote_author', 'background_id', 'font_color')
 
     hash["quote_text"] = arrayified_quote_text
 
@@ -38,10 +39,8 @@ class QuoteNote < ActiveRecord::Base
   end
 
   def full_size_image_url
-    # should probably remove the extraneous attributes on the model
-    # but for now it is not harmful.
     hash = serialize_for_client
     hash["full_size"] = true
-    "/generator.jpg?" + hash.to_query
+    "/generator.jpg?" + URI.unescape(hash.to_query)
   end
 end

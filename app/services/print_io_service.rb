@@ -10,16 +10,19 @@ class PrintIOService
     @order_items = order.order_items
   end
 
+  def post_order
+    self.class.post("/orders?recipeid=#{PRINT_IO_RECIPE}", serialize_for_post)
+  end
+
   def serialized_items
     items = @order_items.map do |item|
       {
+        'Quantity' => item.quantity,
         'SKU' => item.product.api_name, #dangerous, and should change the api_name to SKU
         'ShipType' => 'Standard', #for now
         'Images' => [
           {
-            'Url' => '',
-            'Index' => 1,
-            'SpaceId' => ''
+            'Url' => 'http://quotenote.herokuapp.com' + item.quote_note.full_size_image_url,
           }
         ]
       }
@@ -29,19 +32,25 @@ class PrintIOService
   end
 
   def serialize_for_post
-    order = {
+    serialized_order = {
       'ShipToAddress' => {
         'FirstName' => user.name.split.first, # need to fix this.
         'LastName' => user.name.split.last,
         'Line1' => user.address,
         'City' => user.city,
         'CountryCode' => user.country,
+        'State' => 'CA', #testing
         'PostalCode' => user.postal_code,
         'Phone' => user.phone,
         'Email' => user.email
       },
 
-      'Items' => serialized_items
+      'Items' => serialized_items,
+      'Payment' => {
+        'PartnerBillingKey' => PRINT_IO_API
+      },
+      'IsPreSubmit' => false,
+      'SourceId' => order.id
     }
   end
 end
