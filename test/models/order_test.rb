@@ -3,7 +3,7 @@ require "test_helper"
 class OrderTest < ActiveSupport::TestCase
 
   def order
-    @order ||= Order.new
+    @order ||= create(:order)
   end
 
   def test_valid
