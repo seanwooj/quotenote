@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :order do
-    user
+    association :user, :factory => :user_with_all_fields
   end
 
 end

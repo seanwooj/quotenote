@@ -29,6 +29,14 @@ FactoryGirl.define do
     sequence(:email) { |n| "test#{n}@gmail.com" }
     admin false
     password 'password'
+
+    factory :user_with_all_fields do
+      address '123 test address'
+      city 'Los Angeles'
+      postal_code '94608'
+      phone '5555555555'
+      country 'US'
+    end
   end
 
   factory :admin, :class => User do
