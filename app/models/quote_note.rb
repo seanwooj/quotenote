@@ -23,7 +23,7 @@ class QuoteNote < ActiveRecord::Base
 
   def serialize_for_client
     hash = self.serializable_hash
-    hash = hash.slice('quote_text', 'font_family', 'quote_author', 'background_id', 'font_color')
+    hash = hash.slice('quote_text', 'font_family', 'quote_author', 'background_id', 'font_color', 'overlay')
 
     hash["quote_text"] = arrayified_quote_text
 
@@ -41,6 +41,6 @@ class QuoteNote < ActiveRecord::Base
   def full_size_image_url
     hash = serialize_for_client
     hash["full_size"] = true
-    "/generator.jpg?" + URI.unescape(hash.to_query)
+    "/generator.jpg?" + hash.to_query
   end
 end
