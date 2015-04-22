@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418195446) do
+ActiveRecord::Schema.define(version: 20150422184021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,19 @@ ActiveRecord::Schema.define(version: 20150418195446) do
   end
 
   add_index "backgrounds", ["user_id"], name: "index_backgrounds_on_user_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "images_file_name"
+    t.string   "images_content_type"
+    t.integer  "images_file_size"
+    t.datetime "images_updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+  end
+
+  add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
