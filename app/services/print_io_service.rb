@@ -11,7 +11,11 @@ class PrintIOService
   end
 
   def post_order
-    @result = self.class.post("/orders?recipeid=#{PRINT_IO_RECIPE}", serialize_for_post)
+    @result = self.class.post(
+      "/orders?recipeid=#{PRINT_IO_RECIPE}",
+      :body => serialize_for_post.to_json,
+      :headers => { 'Content-Type' => 'application/json' }
+    )
   end
 
   def ok?

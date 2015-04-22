@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   def create
     if order_params[:user][:id]
       user = User.find(order_params[:user][:id])
+      user.assign_attributes(order_params[:user])
     else
       user = User.new(order_params[:user])
     end

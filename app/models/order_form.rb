@@ -15,7 +15,7 @@ class OrderForm
   private
 
   def persist
-    user.save
+    user.save!
     @order = Order.create! :user => user
 
     build_order_items
