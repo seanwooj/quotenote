@@ -51,7 +51,7 @@ class PrintIOService
         'Line1' => user.address,
         'City' => user.city,
         'CountryCode' => user.country,
-        'State' => 'CA', #testing
+        # 'State' => 'CA', #testing
         'PostalCode' => user.postal_code,
         'Phone' => user.phone,
         'Email' => user.email
