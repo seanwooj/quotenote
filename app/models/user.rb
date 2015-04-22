@@ -32,4 +32,10 @@ class User < ActiveRecord::Base
   has_many :orders, :dependent => :destroy
   has_many :backgrounds, :dependent => :destroy
   has_many :quote_notes, :dependent => :destroy
+
+  def us_state
+    if country == 'US'
+      postal_code.to_region(:state => true)
+    end
+  end
 end

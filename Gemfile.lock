@@ -50,6 +50,8 @@ GEM
     annotate (2.6.8)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
+    area (0.10.0)
+      fastercsv (~> 1.5)
     arel (6.0.0)
     awesome_print (1.6.1)
     aws-sdk (1.64.0)
@@ -112,6 +114,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    fastercsv (1.5.5)
     ffi (1.9.8)
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
@@ -277,6 +280,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  area
   awesome_print
   aws-sdk (< 2.0)
   braintree

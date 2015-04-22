@@ -25,6 +25,7 @@ gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem 'foundation-icons-sass-rails'
 gem 'devise'
 gem 'country_select'
+gem 'area'
 gem 'braintree'
 gem 'jquery-fileupload-rails'
 gem 'httparty'

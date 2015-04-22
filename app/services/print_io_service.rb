@@ -34,7 +34,7 @@ class PrintIOService
         'ShipType' => 'Standard', #for now
         'Images' => [
           {
-            'Url' => 'http://quotenote.herokuapp.com' + item.quote_note.full_size_image_url,
+            'Url' => ENV['ROOT_URL'] + item.quote_note.full_size_image_url,
           }
         ]
       }
@@ -51,7 +51,7 @@ class PrintIOService
         'Line1' => user.address,
         'City' => user.city,
         'CountryCode' => user.country,
-        # 'State' => 'CA', #testing
+        'State' => user.us_state,
         'PostalCode' => user.postal_code,
         'Phone' => user.phone,
         'Email' => user.email
