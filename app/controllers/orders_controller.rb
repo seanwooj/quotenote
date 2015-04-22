@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_admin!, :only => [:index, :show]
+
+
   def show
     @order = Order.includes(:order_items => [:quote_note]).includes(:user).find(params[:id])
   end
@@ -22,8 +25,11 @@ class OrdersController < ApplicationController
     if @order_form.save
       empty_cart
       sign_in(:user, user)
-      byebug
       if charge_user
+        unless print_io_order_post
+          # raise some error and email support
+          # also do something with the status
+        end
         redirect_to root_path, :notice => 'Thanks for placing your order!'
       else
         # redirect to the pay route
@@ -52,9 +58,14 @@ class OrdersController < ApplicationController
   end
 
   def charge_user
-    byebug
     transaction = OrderTransaction.new @order_form.order, params[:payment_method_nonce]
     transaction.execute
     transaction.ok?
+  end
+
+  def print_io_order_post
+    ps = PrintIOService.new(@order_form.order)
+    ps.post_order
+    ps.ok?
   end
 end

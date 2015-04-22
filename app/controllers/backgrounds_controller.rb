@@ -1,5 +1,6 @@
 class BackgroundsController < ApplicationController
   before_action :set_background, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, :only => [:show, :new, :edit, :create, :index, :update, :destroy]
 
   # GET /backgrounds
   # GET /backgrounds.json

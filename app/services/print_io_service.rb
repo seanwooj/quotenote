@@ -11,7 +11,15 @@ class PrintIOService
   end
 
   def post_order
-    self.class.post("/orders?recipeid=#{PRINT_IO_RECIPE}", serialize_for_post)
+    @result = self.class.post("/orders?recipeid=#{PRINT_IO_RECIPE}", serialize_for_post)
+  end
+
+  def ok?
+    if @result
+      @result.ok? #httparty has a result method which returns a boolean
+    else
+      false
+    end
   end
 
   def serialized_items
