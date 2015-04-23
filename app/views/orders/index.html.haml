@@ -4,9 +4,11 @@
       %th ID
       %th User Email
       %th Ordered At
+      %th Status
   %tbody
     - @orders.each do |order|
       %tr
         %td= link_to order.id, order
         %td= order.user.email
         %td= simple_date(order.created_at)
+        %td= order.status

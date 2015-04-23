@@ -24,3 +24,26 @@
       %td{:colspan => 4}
       %td
         = number_to_currency @order.total_price
+
+%h2 Order Updates
+.status_transitions
+  %table
+    %thead
+      %tr
+        %th From
+        %th To
+        %th Event
+        %th Response Message
+        %th At
+    %tbody
+      - @order.order_status_transitions.each do |st|
+        %tr
+          %td= st.from
+          %td= st.to
+          %td= st.event
+          %td= st.response_message
+          %td= simple_date st.created_at
+
+  - if @order.api_error? || @order.transacted?
+    = link_to 'make api call', order_retry_print_api_call_path(@order), :class => 'button button-pink', :method => :post
+

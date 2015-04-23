@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423015308) do
+ActiveRecord::Schema.define(version: 20150423191437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,10 +62,23 @@ ActiveRecord::Schema.define(version: 20150423015308) do
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
   add_index "order_items", ["quote_note_id"], name: "index_order_items_on_quote_note_id", using: :btree
 
+  create_table "order_status_transitions", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "namespace"
+    t.string   "event"
+    t.string   "from"
+    t.string   "to"
+    t.datetime "created_at"
+    t.text     "response_message"
+  end
+
+  add_index "order_status_transitions", ["order_id"], name: "index_order_status_transitions_on_order_id", using: :btree
+
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "status"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -125,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150423015308) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "order_items", "quote_notes"
+  add_foreign_key "order_status_transitions", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "quote_notes", "backgrounds"
   add_foreign_key "quote_notes", "users"

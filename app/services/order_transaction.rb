@@ -11,9 +11,21 @@ class OrderTransaction
       :amount => order.total_price,
       :payment_method_nonce => nonce
     )
+
+    transition_order
   end
 
   def ok?
     @result.success?
+  end
+
+  private
+
+  def transition_order
+    if ok?
+      order.transact!
+    else
+      order.fail_transaction!
+    end
   end
 end

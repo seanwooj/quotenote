@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :new_payment
       post :pay
     end
+    post :retry_print_api_call
   end
 
   resource :cart, :only => :show do

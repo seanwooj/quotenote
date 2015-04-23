@@ -16,6 +16,8 @@ class PrintIOService
       :body => serialize_for_post.to_json,
       :headers => { 'Content-Type' => 'application/json' }
     )
+
+    transition_order
   end
 
   def ok?
@@ -35,7 +37,8 @@ class PrintIOService
         'ShipType' => 'Standard', #for now
         'Images' => [
           {
-            'Url' => ENV['ROOT_URL'] + item.quote_note.full_size_image_url,
+            # 'Url' => 'ENV['ROOT_URL'] + item.quote_note.full_size_image_url',
+            'Url' => 'http://awesome.com/image.jpg'
           }
         ]
       }
@@ -65,5 +68,15 @@ class PrintIOService
       'IsPreSubmit' => false,
       'SourceId' => order.id
     }
+  end
+
+  private
+
+  def transition_order
+    if ok?
+      order.make_api_call!(@result)
+    else
+      order.fail_api_call!(@result)
+    end
   end
 end

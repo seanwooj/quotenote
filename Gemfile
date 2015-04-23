@@ -29,6 +29,9 @@ gem 'area'
 gem 'braintree'
 gem 'jquery-fileupload-rails'
 gem 'httparty'
+gem 'state_machines'
+gem 'state_machines-audit_trail'
+gem 'state_machines-activerecord'
 
 group :development, :test do
   gem 'byebug'

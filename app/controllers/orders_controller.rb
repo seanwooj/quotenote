@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
 
   def show
-    @order = Order.includes(:order_items => [:quote_note]).includes(:user).find(params[:id])
+    @order = Order.includes(:order_items => [:quote_note]).includes(:user, :order_status_transitions).find(params[:id])
   end
 
   def index
@@ -24,9 +24,9 @@ class OrdersController < ApplicationController
     )
 
     if @order_form.save
-      empty_cart
       sign_in(:user, user)
       if charge_user
+        empty_cart
         unless print_io_order_post
           # raise some error and email support
           # also do something with the status
@@ -45,13 +45,19 @@ class OrdersController < ApplicationController
 
   end
 
+  def retry_print_api_call
+    @order = Order.find(params[:order_id])
+    @order.post_api_order
+    redirect_to :back
+  end
+
+  private
+
   def order_params
     params.require(:order_form).permit(
       :user => [:name, :phone, :address, :city, :country, :postal_code, :email, :id, :password, :password_confirmation]
     )
   end
-
-  private
 
   def empty_cart
     @cart.empty

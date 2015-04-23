@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 
+  namespace: MyString
+  event: MyString
+  from: MyString
+  to: MyString
+  created_at: 2015-04-23 11:28:49
+
+two:
+  order_id: 
+  namespace: MyString
+  event: MyString
+  from: MyString
+  to: MyString
+  created_at: 2015-04-23 11:28:49
