@@ -13,12 +13,12 @@
 //= require jquery
 //= require jquery-ujs
 //= require underscore
+//= require select2
 //= require leanModal/leanModal1.1
 //= require minicolors
 //= require blurjs
 //= require spectrum
 //= require jquery.zoomer/jquery.zoomer
-//= require select2
 //= require jquery.scrollTo/jquery.scrollTo
 //= require jquery-fileupload/basic
 //= require_tree .
