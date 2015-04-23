@@ -1,3 +1,4 @@
+'use strict';
 window.qn = window.qn || {};
 
 window.qn.editor = {
@@ -60,7 +61,7 @@ window.qn.editor = {
       formatSelection: this.picker_use_font_images,
       dropdownCssClass: 'font-picker',
       containerCssClass: 'font-picker-selection'
-    })
+    });
 
     $(".fonts").on("select2-selecting", function(e){
       that.change_font(e.val);
