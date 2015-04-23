@@ -35,7 +35,7 @@ class PrintIOService
         'ShipType' => 'Standard', #for now
         'Images' => [
           {
-            'Url' => ENV['ROOT_URL'] + item.quote_note.full_size_image_url,
+            'Url' => 'http://jimdo.wpengine.com/wp-content/uploads/2014/01/tree-247122.jpg',
           }
         ]
       }
