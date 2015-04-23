@@ -37,7 +37,7 @@ class PrintIOService
         'ShipType' => 'Standard', #for now
         'Images' => [
           {
-            'Url' => 'ENV['ROOT_URL'] + item.quote_note.full_size_image_url',
+            'Url' => ENV['ROOT_URL'] + item.quote_note.full_size_image_url
             # 'Url' => 'http://awesome.com/image.jpg'
           }
         ]
