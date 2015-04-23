@@ -22,6 +22,7 @@ class PrintIOService
     if @result
       @result.ok? #httparty has a result method which returns a boolean
     else
+      puts @result
       false
     end
   end
