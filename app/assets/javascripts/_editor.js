@@ -55,17 +55,17 @@ window.qn.editor = {
   init_font_picker: function(){
     var that = this;
 
-    // $(".fonts").select2({
-    //   minimumResultsForSearch: Infinity,
-    //   formatResult: this.picker_use_font_images,
-    //   formatSelection: this.picker_use_font_images,
-    //   dropdownCssClass: 'font-picker',
-    //   containerCssClass: 'font-picker-selection'
-    // })
+    $(".fonts").select2({
+      minimumResultsForSearch: Infinity,
+      formatResult: this.picker_use_font_images,
+      formatSelection: this.picker_use_font_images,
+      dropdownCssClass: 'font-picker',
+      containerCssClass: 'font-picker-selection'
+    })
 
-    // $(".fonts").on("select2-selecting", function(e){
-    //   that.change_font(e.val);
-    // });
+    $(".fonts").on("select2-selecting", function(e){
+      that.change_font(e.val);
+    });
   },
 
   init_iframe: function(){
