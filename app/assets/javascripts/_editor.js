@@ -1,4 +1,3 @@
-'use strict';
 window.qn = window.qn || {};
 
 window.qn.editor = {
