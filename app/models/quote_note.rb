@@ -21,9 +21,17 @@ class QuoteNote < ActiveRecord::Base
     quote_text == '' ? [''] : quote_text.split("\n")
   end
 
-  def serialize_for_client
+  def serialize_relevant
     hash = self.serializable_hash
     hash = hash.slice('quote_text', 'font_family', 'quote_author', 'background_id', 'font_color', 'overlay')
+  end
+
+  def serialize_relevant_with_indifferent_access
+    HashWithIndifferentAccess.new(serialize_relevant)
+  end
+
+  def serialize_for_client
+    hash = serialize_relevant
 
     hash["quote_text"] = arrayified_quote_text
 

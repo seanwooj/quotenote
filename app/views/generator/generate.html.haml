@@ -3,7 +3,8 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Quotenote
-    = yield :font_styles
+    = render :partial => 'generator/image_styles'
+    = render :partial => "generator/fonts/#{@options[:font_family]}"
     = csrf_meta_tags
   %body
 
@@ -17,11 +18,6 @@
         .author-text
           = @options[:quote_author]
 
-- content_for :font_styles do
-  = render :partial => 'image_styles'
-  = render :partial => "generator/fonts/#{@options[:font_family]}"
-
-- content_for :footer_js do
   :javascript
     $(window).load(function(){
       window.qn.generator.init();
