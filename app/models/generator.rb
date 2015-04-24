@@ -20,10 +20,15 @@ class Generator
     kit.to_jpg
   end
 
-  def self.generate_and_save(quote_note)
+  def self.generate_image_file(quote_note)
     img = self.generate_image(quote_note)
     file = Tempfile.new(["quote_image", ".jpg"], 'tmp', :encoding => 'ascii-8bit')
     file.write(img)
+    file
+  end
+
+  def self.generate_and_save(quote_note)
+    file = self.generate_image_file(quote_note)
     quote_note.image = file
     file.unlink
     quote_note.save!

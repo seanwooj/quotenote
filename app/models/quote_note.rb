@@ -20,6 +20,8 @@ class QuoteNote < ActiveRecord::Base
   has_attached_file :image, :styles => {:preview => '500x500'}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  before_validation :build_image
+
   def arrayified_quote_text
     quote_text == '' ? [''] : quote_text.split("\n")
   end
@@ -53,5 +55,9 @@ class QuoteNote < ActiveRecord::Base
     hash = serialize_for_client
     hash["full_size"] = true
     "/generator.jpg?" + hash.to_query
+  end
+
+  def build_image
+    self.image = Generator.generate_image_file self
   end
 end
