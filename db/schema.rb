@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423191437) do
+ActiveRecord::Schema.define(version: 20150423235546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,12 +97,16 @@ ActiveRecord::Schema.define(version: 20150423191437) do
     t.string   "font_family"
     t.string   "quote_author"
     t.integer  "background_id"
-    t.boolean  "overlay",       default: true
+    t.boolean  "overlay",            default: true
     t.string   "font_color"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "session_id"
     t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "quote_notes", ["background_id"], name: "index_quote_notes_on_background_id", using: :btree

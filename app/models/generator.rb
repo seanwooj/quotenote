@@ -13,10 +13,19 @@ class Generator
 
     string = template.render_to_string 'generator/generate.html.haml'
 
-    kit = IMGKit.new(template.render_to_string('generator/generate_no_controller.html.haml'))
+    kit = IMGKit.new(template.render_to_string('generator/generate.html.haml'))
     kit.javascripts << "#{Rails.root}/public/imgkit_application.js"
 
     # string
     kit.to_jpg
+  end
+
+  def self.generate_and_save(quote_note)
+    img = self.generate_image(quote_note)
+    file = Tempfile.new(["quote_image", ".jpg"], 'tmp', :encoding => 'ascii-8bit')
+    file.write(img)
+    quote_note.image = file
+    file.unlink
+    quote_note.save!
   end
 end

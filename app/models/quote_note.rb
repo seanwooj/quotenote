@@ -17,6 +17,9 @@ class QuoteNote < ActiveRecord::Base
   belongs_to :background
   belongs_to :user
 
+  has_attached_file :image, :styles => {:preview => '500x500'}
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
   def arrayified_quote_text
     quote_text == '' ? [''] : quote_text.split("\n")
   end
