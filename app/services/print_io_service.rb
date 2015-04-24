@@ -63,7 +63,8 @@ class PrintIOService
 
       'Items' => serialized_items,
       'Payment' => {
-        'PartnerBillingKey' => PRINT_IO_API
+        'PartnerBillingKey' => PRINT_IO_API,
+        'Total' => order.total_price
       },
       'IsPreSubmit' => false,
       'SourceId' => order.id
