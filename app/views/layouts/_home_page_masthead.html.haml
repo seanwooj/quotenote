@@ -1,0 +1,24 @@
+#landing_page_masthead
+  .container
+    %section.header
+      %h2
+        = link_to 'QuoteNote', root_path, :id => 'logo'
+      %ul.nav-menu
+        %li
+          = link_to cart_path, :class => 'shopping-cart' do
+            %i.fi-shopping-cart
+            - if @cart.total_count > 0
+              = number_to_currency @cart.total_price
+        - if current_user
+          %li
+            = link_to 'Sign Out', destroy_user_session_path, :method => :delete
+        - else
+          %li
+            =link_to 'Sign In', '#login-modal', :id => 'open-login'
+          %li
+            =link_to 'Sign Up', new_user_registration_path
+    .masthead-text
+      %h1.tagline Inspiration. Delivered.
+      %h4.subline Turn your photos and quotes into inspirational posters in minutes.
+      .cta-links
+        = link_to 'Start now!', new_quote_note_path, :class => 'button'

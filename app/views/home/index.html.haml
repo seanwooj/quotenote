@@ -1,37 +1,12 @@
-#editor.five.columns
-  #text-editor
-    %textarea#text-box{:placeholder => 'Your quote here.'}
-    %input#author-box{:type=>'text', :placeholder => 'Author (Optional)'}
-    %button.button{:onclick => "window.qn.editor.cycle_quotes();"} Random Quote
-
-  %hr
-  %h5
-    %i.fi-page-edit
-    Text Options
-  %input.minicolors.colorpicker{:type => "color", :value => "#ffffff"}
-  = render :partial => 'font_picker'
-
-  %hr
-  %h5
-    %i.fi-photo
-    Background Options
-  = check_box_tag 'high_contrast', 'high_contrast', true
-  = label_tag 'high_contrast', 'Darken Background', :class => 'high_contrast_label'
-  / %button.button{:onclick => 'window.qn.editor.toggle_overlay();'} Overlay
-  = render :partial => 'background_picker'
-#iframe-container.seven.columns
-  #iframe
-  .image-link-container
-    %a.link_to_image.button
-      %i.fi-download
-      Download
-    %a.link_to_purchase.button.button-pink
-      %i.fi-credit-card
-      Buy Postcard
-
-
-- content_for :footer_js do
-  :javascript
-    $(window).load(function(){
-      window.qn.editor.init();
-    });
+.container
+  %h2 Your photos. Your quotes.
+  .row
+    .four.columns
+      %i.fi-upload
+      %p Upload your photo.
+    .four.columns
+      %i.fi-pencil
+      %p Write your quote.
+    .four.columns
+      %i.fi-mail
+      %p Get it in the mail.

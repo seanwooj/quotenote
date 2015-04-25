@@ -23,6 +23,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root :to => 'quote_notes#new'
+  root :to => 'home#index'
   get 'generator' => 'generator#generate'
 end

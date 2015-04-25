@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Quotenote
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = yield :font_styles
+    = javascript_include_tag "//use.typekit.net/mld4sti.js"
+    = javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js'
+    :javascript
+      try{Typekit.load();}catch(e){}
+    = csrf_meta_tags
+  %body
+    = render 'layouts/home_page_masthead'
+    = yield
+    = render 'feedback'
+    = render 'modals'
+    = yield :footer_js
+    :javascript
+      $(window).load(function(){
+        window.qn.global.init();
+      });
