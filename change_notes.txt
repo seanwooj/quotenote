@@ -37,3 +37,35 @@ add styles for the notices
 add a style for section headers
 
 
+
+
+
+
+TWO
+change the styling box
+sign in and login button both
+
+when signed in, have an account dropdown
+
+fix the pictures, somehow - rank 2
+font selection is oversized. fix
+
+image load is pretty slow
+
+there is no context for the site. - we need to somehow provide context.
+- change the flash message when purchase is clicked
+
+how do we want to display the products?
+
+product selection needs to be worked on.
+
+we need to provide the product information
+
+we need an order confirmation page.
+and email confirmations
+
+we need to have a person login on the checkout
+
+
+delete an item from cart **
+
