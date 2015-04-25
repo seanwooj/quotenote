@@ -13,21 +13,26 @@
   %strong
   Total Price:
   = number_to_currency @cart.total_price
+%hr
+
+- unless current_user
+  %h2 Create Your Account
+  %p
+    Already have an account?
+    = link_to "Log in.", new_user_session_path
 
 = form_for @order_form, :url => orders_path do |f|
   = f.fields_for :user, f.object.user do |u|
     - unless current_user
-      %p
-        = u.text_field :email, :placeholder => 'Email', :class => 'form-control'
-        %span.help-block This will help you track your order more effectively
+      %p= u.text_field :email, :placeholder => 'Email', :class => 'form-control'
       %p= u.password_field :password, :placeholder => 'password'
       %p= u.password_field :password_confirmation, :placeholder => 'confirm password'
     - else
       = u.hidden_field :id
 
     .form-group
+      %h2 Shipping Information
       %p= u.text_field :name, :placeholder => "Name", :class => "form-control input-lg"
-    .form-group
       .row
         %p= u.text_field :address, :placeholder => 'Address', :class => 'form-control'
         %p= u.text_field :postal_code, :placeholder => 'Postal Code / Zipcode', :class => 'form-control'
@@ -37,7 +42,8 @@
 
       %p= u.text_field :phone, :class => 'form-control', :placeholder => 'Phone'
 
-
+  %hr
+  %h2 Credit Card Information
   #dropin
 
   %p= f.submit "Place Order", :class => 'button button-pink'
