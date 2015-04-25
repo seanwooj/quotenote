@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resource :cart, :only => :show do
     post 'add', :on => :member
+    delete 'empty', :on => :member
     get 'checkout'
   end
 

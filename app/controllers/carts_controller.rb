@@ -5,7 +5,13 @@ class CartsController < ApplicationController
   def add
     @cart.add_item params[:product_id], params[:quote_note_id]
     session['cart'] = @cart.serialize
-    redirect_to cart_path, :notice => 'thanks.'
+    redirect_to cart_path
+  end
+
+  def empty
+    @cart.empty
+    session['cart'] = @cart.serialize
+    redirect_to cart_path, :notice => 'Your cart has been emptied!'
   end
 
   def checkout
