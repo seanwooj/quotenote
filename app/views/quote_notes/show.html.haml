@@ -1,11 +1,11 @@
-#products.five.columns
+#products.six.columns
   %h2.section-header Available Products
   %br
   - @products.each do |product|
     = link_to product.name, product_quote_note_path(product, @quote_note)
 
-#iframe-container.seven.columns
-  #iframe
+#iframe-container.six.columns
+  = image_tag @quote_note.image.url(:preview), :class => 'quote_note_preview'
 
 
 - content_for :footer_js do

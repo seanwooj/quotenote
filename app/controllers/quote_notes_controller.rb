@@ -38,7 +38,10 @@ class QuoteNotesController < ApplicationController
 
     respond_to do |format|
       if @quote_note.save
-        format.html { redirect_to @quote_note, notice: 'Your quote has been saved! Get a print below.' }
+        # we will need to change this back to the quote note page with the
+        # list of products later. for now, go to our product only.
+        # HACKY HACK HACK JANKYTOWN
+        format.html { redirect_to [Product.first, @quote_note], notice: 'Your quote has been saved! Get a print below.' }
         format.json { render :show, status: :created, location: @quote_note }
       else
         format.html { render :new }

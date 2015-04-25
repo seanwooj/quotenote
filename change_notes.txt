@@ -42,8 +42,8 @@ add a style for section headers
 
 
 TWO
-change the styling box
-sign in and login button both
+change the font box
+X sign in and login button both
 
 when signed in, have an account dropdown
 
@@ -57,15 +57,17 @@ there is no context for the site. - we need to somehow provide context.
 
 how do we want to display the products?
 
-product selection needs to be worked on.
+X product selection needs to be worked on. - taken care of for now. one product only.
 
 we need to provide the product information
+
+build a landing page.
 
 we need an order confirmation page.
 and email confirmations
 
-we need to have a person login on the checkout
+X we need to have a person login on the checkout
 
 
-delete an item from cart **
+X delete an item from cart **
 
