@@ -4,9 +4,10 @@ class Generator
     options = params
   end
 
-  def self.generate_image(quote_note)
+  def self.generate_image(quote_note, option_overrides = {})
     options = quote_note.serialize_relevant_with_indifferent_access
     options[:quote_text] = options[:quote_text].split("\n")
+    options = options.merge(option_overrides)
     template = ImageGeneratorService.new()
     template.options = options
     template.background_url = quote_note.background.image.url

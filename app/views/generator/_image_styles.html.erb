@@ -9,6 +9,9 @@
     width: 1800px;
     overflow: hidden;
     position: relative;
+    color: <%= @options[:font_color] %>;
+    font-family: <%= @options[:font_family].split('_').join(' ').titleize %>;
+    background-image: url(<%= @background_url %>);
   }
   #quotenote.cover-background {
     background-size: cover;

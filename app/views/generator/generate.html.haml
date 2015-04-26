@@ -8,7 +8,7 @@
     = csrf_meta_tags
   %body
 
-    #quotenote{:style => "color: #{@options[:font_color]}; font-family: #{@options[:font_family].split('_').join(' ').titleize}; background-image: url(#{@background_url});", :class => "#{'cover-background' unless @options[:repeating] == 'true'}"}
+    #quotenote{:class => "#{'cover-background' unless @options[:repeating] == 'true'}"}
       .overlay{:class => "#{'active' if @options[:overlay] == 'true' || @options[:overlay] == true}"}
       .quote.cf
         .quote-text
