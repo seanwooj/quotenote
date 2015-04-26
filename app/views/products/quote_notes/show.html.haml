@@ -2,12 +2,11 @@
   .product-preview
     .background{:style => "background: url(#{image_url('brick_wall.jpg')}); width: 100%; height: 400px; position: relative;"}
       .product_preview
-        = image_tag 'clip.png', :style => "position: absolute; top: 40px; right: 50%; width: 50px; margin-left: 80px;"
-        .quote_note{:style => 'width: 50%; margin-left: 25%; margin-top: 70px; box-shadow: 0px 3px 3px rgba(0,0,0,0.3), background: white; padding: 10px;'}
-          = image_tag @quote_note.image.url(:preview)
+        / = image_tag 'clip.png', :style => "position: absolute; top: 40px; right: 50%; width: 50px; margin-left: 80px;"
+        = image_tag @quote_note.image.url(:preview), :style => 'width: 50%; margin-left: 25%; margin-top: 70px; box-shadow: 0px 3px 3px rgba(0,0,0,0.3);'
 
 #product-details.five.columns
-  %h3= @product.name
+  %h4= @product.name
   %h5 Product Information
   %p= @product.description
   %hr
