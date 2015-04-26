@@ -1,16 +1,13 @@
 = render 'quotenote_form'
 
-
-= form_for @background, :url => add_background_and_redirect_to_quotenote_path  do |f|
-  .fileupload.button.fileupload-button
-    %span Upload your own
-    %i.fi-photo
-    %span.upload-percentage
-    = f.file_field :image
-
-
-
-
+.row
+  .file-upload.twelve.columns
+    = form_for @background, :url => add_background_and_redirect_to_quotenote_path  do |f|
+      .fileupload.button.fileupload-button.button-pink
+        %span Upload your own image
+        %i.fi-photo
+        %span.upload-percentage
+        = f.file_field :image
 
 - content_for :footer_js do
   :javascript
