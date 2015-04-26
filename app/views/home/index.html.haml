@@ -1,12 +1,18 @@
-.container
-  %h2 Your photos. Your quotes.
-  .row
-    .four.columns
-      %i.fi-upload
-      %p Upload your photo.
-    .four.columns
-      %i.fi-pencil
-      %p Write your quote.
-    .four.columns
-      %i.fi-mail
-      %p Get it in the mail.
+.selling-points
+  .container
+    %h2 Your photos. Your quotes.
+    .row.landing-page-3col
+      .four.columns
+        %i.fi-upload
+        %h4 Upload your photo.
+        %p Upload your favorite photo, or use one of ours.
+      .four.columns
+        %i.fi-pencil
+        %h4 Write your quote.
+        %p Get inspired! Have a hero who has a lot to say? Write their quote. Have a friend who makes you laugh? Write one of their catchphrases!
+      .four.columns
+        %i.fi-mail
+        %h4 Get it in the mail.
+        %p We'll make your poster on the highest quality paper and mail it wherever you'd like!
+      .twelve.columns
+        = link_to 'Start now!', new_quote_note_path, :class => 'button button-pink'

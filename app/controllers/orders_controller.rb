@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
           # raise some error and email support
           # also do something with the status
         end
-        redirect_to root_path, :notice => 'Thanks for placing your order!'
+        redirect_to confirmation_order_path(@order_form.order)
       else
         # redirect to the pay route
       end
@@ -49,6 +49,10 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:order_id])
     @order.post_api_order
     redirect_to :back
+  end
+
+  def confirmation
+    @order = Order.find(params[:id])
   end
 
   private

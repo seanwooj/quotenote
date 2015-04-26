@@ -43,7 +43,31 @@ body {
 }
 
 #landing_page_masthead {
+  position: relative;
   height: 600px;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    opacity: .99;
+  }
+  .masthead-text {
+    text-align: center;
+    margin-top: 100px;
+    .tagline {
+      color: white;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .subline {
+      color: white;
+    }
+    .cta-links {
+    }
+  }
 }
 
 
@@ -53,18 +77,18 @@ body {
   position: relative;
   top: -50px;
 
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: .5rem;
-    &.section-header {
-      padding: 10px;
-      background: $pink;
-      color: white;
-      display: inline-block;
-      font-size: 20px;
-    }
-  }
+  // h1, h2, h3, h4, h5, h6 {
+  //   font-size: 16px;
+  //   font-weight: 400;
+  //   margin-bottom: .5rem;
+  //   &.section-header {
+  //     padding: 10px;
+  //     background: $pink;
+  //     color: white;
+  //     display: inline-block;
+  //     font-size: 20px;
+  //   }
+  // }
 
   .wrapper {
     padding: 20px;
@@ -233,3 +257,16 @@ body {
   }
 }
 
+.selling-points {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: #ffffff;
+  .landing-page-3col{
+    .four {
+      i {
+        font-size: 40px;
+      }
+    }
+  }
+}

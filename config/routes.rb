@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get :new_payment
       post :pay
+      get :confirmation
     end
     post :retry_print_api_call
   end
