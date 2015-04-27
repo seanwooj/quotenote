@@ -30,9 +30,8 @@ class PrintIOService
 
   def ok?
     if @result
-      @result.ok? #httparty has a result method which returns a boolean
+      @result.ok? && !@result["Errors"]
     else
-      puts @result
       false
     end
   end
