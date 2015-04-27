@@ -25,8 +25,6 @@ class PrintIOService
       :headers => { 'Content-Type' => 'application/json' }
     )
 
-    byebug
-
     transition_order
   end
 
