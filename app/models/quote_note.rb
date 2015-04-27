@@ -17,10 +17,13 @@ class QuoteNote < ActiveRecord::Base
   belongs_to :background
   belongs_to :user
 
-  has_attached_file :image, :styles => {:preview => '500x500'}
+  has_attached_file :image
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  before_validation :build_image
+  has_attached_file :preview_image
+  validates_attachment_content_type :preview_image, :content_type => /\Aimage\/.*\Z/
+
+  before_validation :build_preview_image
 
   def arrayified_quote_text
     quote_text == '' ? [''] : quote_text.split("\n")
@@ -57,7 +60,7 @@ class QuoteNote < ActiveRecord::Base
     "/generator.jpg?" + hash.to_query
   end
 
-  def build_image
-    self.image = Generator.generate_image_file self
+  def build_preview_image
+    self.preview_image = Generator.generate_image_file self
   end
 end

@@ -5,6 +5,7 @@
     %title Quotenote
     = render :partial => 'generator/image_styles'
     = render :partial => "generator/fonts/#{@options[:font_family]}"
+    = javascript_include_tag "/imgkit_application.js"
     = csrf_meta_tags
   %body
 

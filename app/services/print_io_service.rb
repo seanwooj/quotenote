@@ -10,12 +10,22 @@ class PrintIOService
     @order_items = order.order_items
   end
 
+  def generate_print_images
+    @order_items.each do |item|
+      Generator.generate_and_save item.quote_note, {:height => item.product.height_string, :width => item.product.width_string}
+    end
+  end
+
   def post_order
+    generate_print_images
+
     @result = self.class.post(
       "/orders?recipeid=#{PRINT_IO_RECIPE}",
       :body => serialize_for_post.to_json,
       :headers => { 'Content-Type' => 'application/json' }
     )
+
+    byebug
 
     transition_order
   end

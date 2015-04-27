@@ -5,8 +5,8 @@
     box-sizing: border-box;
   }
   #quotenote {
-    height: 1800px;
-    width: 1800px;
+    height: <%= @options[:height] %>;
+    width: <%= @options[:width] %>;
     overflow: hidden;
     position: relative;
     color: <%= @options[:font_color] %>;

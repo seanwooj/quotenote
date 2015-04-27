@@ -12,8 +12,16 @@
 #
 
 class Product < ActiveRecord::Base
-  validates_presence_of :name, :price, :api_name
+  validates_presence_of :name, :price, :api_name, :height, :width
   validates_numericality_of :price
 
   has_many :images, :as => :imageable
+
+  def height_string
+    self.height.to_s + 'px'
+  end
+
+  def width_string
+    self.width.to_s + 'px'
+  end
 end

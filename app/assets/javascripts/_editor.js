@@ -11,6 +11,8 @@ window.qn.editor = {
     background_id: 3,
     overlay: true,
     font_color: 'white',
+    height: '1200px',
+    width: '1200px'
   },
 
   init: function(params){
@@ -72,7 +74,7 @@ window.qn.editor = {
     $("#iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
     var frame_width = $("#iframe-container").width();
     var frame_height = (frame_width);
-    var zoom = frame_width / 1800;
+    var zoom = frame_width / parseInt(this.quote_params['width']);
     $('iframe').zoomer({
         zoom: zoom,
         width: frame_width,

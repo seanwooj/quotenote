@@ -34,6 +34,7 @@ class Order < ActiveRecord::Base
     ps = PrintIOService.new(self)
     ps.post_order
   end
+  handle_asynchronously :post_api_order
 
   # state_machine override methods
 

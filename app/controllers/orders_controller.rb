@@ -27,10 +27,7 @@ class OrdersController < ApplicationController
       sign_in(:user, user)
       if charge_user
         empty_cart
-        unless print_io_order_post
-          # raise some error and email support
-          # also do something with the status
-        end
+        print_io_order_post
         redirect_to confirmation_order_path(@order_form.order)
       else
         # redirect to the pay route
@@ -75,8 +72,6 @@ class OrdersController < ApplicationController
   end
 
   def print_io_order_post
-    ps = PrintIOService.new(@order_form.order)
-    ps.post_order
-    ps.ok?
+    @order_form.order.post_api_order
   end
 end
