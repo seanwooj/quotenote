@@ -32,6 +32,7 @@ gem 'state_machines'
 gem 'state_machines-audit_trail'
 gem 'state_machines-activerecord'
 gem 'delayed_job_active_record'
+gem 'shareable'
 
 group :development, :test do
   gem 'byebug'

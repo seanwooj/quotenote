@@ -236,6 +236,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.5.0)
+    shareable (1.1.4)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     sort_alphabetical (1.0.1)
       unicode_utils (>= 1.2.2)
     spring (1.3.4)
@@ -318,6 +321,7 @@ DEPENDENCIES
   sass-css-importer
   sass-rails (>= 5.0.1)
   sdoc (~> 0.4.0)
+  shareable
   spring
   state_machines
   state_machines-activerecord

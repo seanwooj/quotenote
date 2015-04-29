@@ -25,3 +25,25 @@
     }
   }
 }
+
+
+#footer{
+  padding: 30px 0 50px;
+  background: #202020;
+  color: #CCCCCC;
+  span.small {
+    font-size: 12px;
+  }
+  ul.footer-links {
+    margin-top: 20px;
+    li {
+      float: left;
+      margin-right: 20px;
+      list-style: none;
+      a {
+        color: #CCCCCC;
+        text-decoration: none;
+      }
+    }
+  }
+}
