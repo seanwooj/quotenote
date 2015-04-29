@@ -45,7 +45,6 @@ class PrintIOService
         'Images' => [
           {
             'Url' => item.quote_note.image.url
-            # 'Url' => 'http://awesome.com/image.jpg'
           }
         ]
       }
@@ -57,12 +56,12 @@ class PrintIOService
   def serialize_for_post
     serialized_order = {
       'ShipToAddress' => {
-        'FirstName' => user.name.split.first, # need to fix this.
-        'LastName' => user.name.split.last,
+        'FirstName' => user.first_name,
+        'LastName' => user.last_name,
         'Line1' => user.address,
         'City' => user.city,
         'CountryCode' => user.country,
-        'State' => user.us_state,
+        'State' => user.state,
         'PostalCode' => user.postal_code,
         'Phone' => user.phone,
         'Email' => user.email

@@ -32,13 +32,19 @@
 
     .form-group
       %h2 Shipping Information
-      %p= u.text_field :name, :placeholder => "Name", :class => "form-control input-lg"
+      %p= u.text_field :first_name, :placeholder => "First Name", :class => "form-control input-lg"
+      %p= u.text_field :last_name, :placeholder => "Last Name", :class => "form-control input-lg"
       .row
         %p= u.text_field :address, :placeholder => 'Address', :class => 'form-control'
         %p= u.text_field :postal_code, :placeholder => 'Postal Code / Zipcode', :class => 'form-control'
         %p= u.text_field :city, :placeholder => 'City', :class => 'form-control'
-        %p= u.text_field :state, :placeholder => 'State', :class => 'form-control'
-      %p= u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
+        %p
+          = u.label :state, 'State (Only for US)'
+          = u.select :state, :class => 'form-control' do
+            = options_for_select us_states
+      %p
+        = u.label :country, 'Country'
+        = u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
 
       %p= u.text_field :phone, :class => 'form-control', :placeholder => 'Phone'
 

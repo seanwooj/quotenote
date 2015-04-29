@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order_form).permit(
-      :user => [:name, :phone, :address, :city, :country, :postal_code, :email, :id, :password, :password_confirmation]
+      :user => [:first_name, :last_name, :phone, :address, :city, :country, :postal_code, :email, :id, :password, :password_confirmation, :state]
     )
   end
 
