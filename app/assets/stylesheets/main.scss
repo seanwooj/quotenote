@@ -28,6 +28,9 @@ we aim to organize our site's CSS in the following pattern:
 @import 'base/_base.scss';
 @import 'base/_typography.scss';
 
+/* Layout */
+@import 'layout/_footer.scss';
+
 /* Components */
 @import 'components/_buttons.scss';
 @import 'components/_modal.scss';

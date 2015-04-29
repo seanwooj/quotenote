@@ -1,0 +1,27 @@
+#social-links {
+  background: #1BB391;
+  text-align: center;
+  padding-bottom: 40px;
+  h2.section-header {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    color: rgba(255,255,255,0.6);
+  }
+  .social {
+    display: inline-block;
+    @include clearfix;
+    padding-bottom: 30px;
+    a {
+      float: left;
+      text-decoration: none;
+      color: white;
+      padding: 10px 40px;
+      background: #17A182;
+      border: 1px solid rgba(0,0,0,0.1);
+      i {
+        font-size: 5em;
+        color: rgba(255,255,255,0.6);
+      }
+    }
+  }
+}
