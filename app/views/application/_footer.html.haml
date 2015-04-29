@@ -6,3 +6,19 @@
         - {:twitter => 'https://twitter.com/QUOTENOTE_it', :facebook => 'https://www.facebook.com/pages/QuoteNote/575718842568593', :instagram => 'https://instagram.com/quotenote_it/', :tumblr => 'http://quotenote-it.tumblr.com/ '}.each do |social_name, url|
           %a{:href => url, :target => '_blank'}
             %i{:class => "fi-social-#{social_name.to_s}"}
+
+#footer
+  .container
+    .row
+      .three.columns.footer-logo
+        %h2
+          = link_to 'QuoteNote', root_path, :class => 'logo'
+        %span.small= "© #{Time.now.year} All rights reserved."
+      .seven.columns.links
+        %ul.footer-links
+          - {:about => '#', :contact => '#', :privacy_policy => '#'}.each do |name, href|
+            %li
+              %a{:href => href}= name.to_s.split("_").join(" ").titleize
+
+      .two.columns.shareable
+        = render_shareable :buttons => ['twitter', 'facebook', 'tumblr', 'google_plus', 'reddit', 'pinterest']
