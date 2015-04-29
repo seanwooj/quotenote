@@ -13,7 +13,7 @@ window.qn.global = {
   },
 
   instantiate_modal_handlers: function(){
-    $("#open-login").leanModal();
+    $("#open-login").leanModal({closeButton: "#close-login"});
   },
 
   instantiate_tracking: function(){
