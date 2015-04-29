@@ -26,10 +26,6 @@ window.qn.global = {
       {url: target.href}
     });
 
-    analytics.trackLink(add_to_cart, 'Added Item to Cart', function(target){
-      {url: target.href}
-    });
-
     analytics.trackLink(checkout, 'Started Checkout');
 
     analytics.trackForm(order_form, 'Filled Out Checkout Form', function(target){
