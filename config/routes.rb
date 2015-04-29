@@ -26,4 +26,9 @@ Rails.application.routes.draw do
 
   root :to => 'home#index'
   get 'generator' => 'generator#generate'
+
+  # Static Pages
+  get 'contact' => 'static_pages#contact'
+  get 'about' => 'static_pages#contact'
+  get 'privacy_policy' => 'static_pages#privacy_policy'
 end
