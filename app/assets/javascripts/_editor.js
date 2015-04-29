@@ -285,6 +285,7 @@ window.qn.editor = {
         that.change_iframe_src();
         that.change_background_hidden_field_on_input(id);
         $('.fileupload .upload-percentage').html("");
+        analytics.track('Uploaded Image');
       },
       singleFileUploads: true,
       progressall: function(e,data) {

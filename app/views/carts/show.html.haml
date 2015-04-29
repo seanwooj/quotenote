@@ -23,7 +23,7 @@
           Total:
           = number_to_currency @cart.total_price
 
-=link_to 'Checkout', checkout_cart_path, :class => 'button button-pink'
+=link_to 'Checkout', checkout_cart_path, :class => 'button button-pink', :id => 'checkout'
 =link_to 'Add More Products', :back, :class => 'button'
 =link_to empty_cart_path, :class => 'button', :method => :delete do
   %i.fi-trash

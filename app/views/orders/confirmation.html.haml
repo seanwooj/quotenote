@@ -5,3 +5,13 @@
 %p
   Want to send one as a gift?
   = link_to 'Make a new poster now!', new_quote_note_path
+
+
+- content_for :footer_js do
+  :javascript
+    $(window).load(function(){
+      analytics.track('Order Confirmation', {
+        order_id: #{@order.id}
+      })
+    });
+
