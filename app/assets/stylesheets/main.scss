@@ -31,6 +31,9 @@ we aim to organize our site's CSS in the following pattern:
 /* Layout */
 @import 'layout/_footer.scss';
 
+/* Pages */
+@import 'pages/_contact.scss';
+
 /* Components */
 @import 'components/_buttons.scss';
 @import 'components/_modal.scss';

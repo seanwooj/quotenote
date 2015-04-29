@@ -1,2 +1,19 @@
-%h2 Contact Us!
-%p Okay, so sometimes things go wrong. Or you might have something to tell us that you feel will improve our product. We'd love to hear your feedback and concerns. We'll do everything in our power to make sure you get what you need!
+#contact-container
+  %h3 Contact Us!
+  %p Sometimes things go wrong. Or you might have something to tell us that you feel will improve our product. We'd love to hear your feedback and concerns. We'll do everything in our power to make sure you get what you need!
+
+  #contact
+    .hello
+      %i.fi-mail
+      %p
+        If you'd like to contact us and give some feedback email:
+        = link_to "hello@quotenote.it", 'mailto:hello@quotenote.it'
+    .support
+      %i.fi-wrench
+      %p
+        If you are having problems with your order or have had an issue with your products please email:
+        = link_to "support@quotenote.it", 'mailto:support@quotenote.it'
+    .support-phone
+      %i.fi-telephone
+      %p If you are having urgent issues with your order, please call us at +1 (858) 480-9325
+

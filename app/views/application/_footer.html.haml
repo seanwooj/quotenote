@@ -16,7 +16,7 @@
         %span.small= "© #{Time.now.year} All rights reserved."
       .seven.columns.links
         %ul.footer-links
-          - {:about => '#', :contact => '#', :privacy_policy => '#'}.each do |name, href|
+          - {:about => '#', :contact => '/contact', :privacy_policy => '#'}.each do |name, href|
             %li
               %a{:href => href}= name.to_s.split("_").join(" ").titleize
 
