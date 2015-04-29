@@ -20,6 +20,7 @@ window.qn.editor = {
     this.quote_params = $.extend(this.quote_params, params)
     this.init_colorpicker();
     this.instantiate_handlers();
+    this.change_background_hidden_field_on_input(this.quote_params['background_id']);
     this.init_iframe();
     this.init_font_picker();
     this.init_background_scroll();
