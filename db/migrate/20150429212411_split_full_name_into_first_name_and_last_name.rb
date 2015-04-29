@@ -6,9 +6,11 @@ class SplitFullNameIntoFirstNameAndLastName < ActiveRecord::Migration
     add_column :users, :last_name, :string
     users.each do |user|
       u = User.find(user[0])
-      u.first_name = user[1].split(" ")[0]
-      u.last_name = user[1].split(" ")[1]
-      u.save!
+      unless user[1].nil?
+        u.first_name = user[1].split(" ")[0]
+        u.last_name = user[1].split(" ")[1]
+        u.save!
+      end
     end
   end
 end
