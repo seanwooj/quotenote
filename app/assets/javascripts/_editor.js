@@ -72,11 +72,11 @@ window.qn.editor = {
   },
 
   init_iframe: function(){
-    $("#iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
+    $("#editor-iframe").html($('<iframe/>').attr('src', this.generate_querystring()));
     var frame_width = $("#iframe-container").width();
     var frame_height = (frame_width);
     var zoom = frame_width / parseInt(this.quote_params['width']);
-    $('iframe').zoomer({
+    $('#editor-iframe iframe').zoomer({
         zoom: zoom,
         width: frame_width,
         height: frame_height,
