@@ -38,25 +38,23 @@
               = u.label :address
               = u.text_field :address
           .row
-            .four.columns
+            .three.columns
               = u.label :postal_code, 'Postal Code'
               = u.text_field :postal_code
-            .eight.columns
-              = u.label :city
-              = u.text_field :city
-          .row
-            .five.columns
+            .four.columns
               = u.label :state, 'State (Only for US)'
               = u.select :state do
                 = options_for_select us_states
+            .five.columns
+              = u.label :city
+              = u.text_field :city
+          .row
             .seven.columns
               = u.label :country, 'Country'
               = u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
-          .row
-            .six.columns
+            .five.columns
               = u.label :phone
               = u.text_field :phone
-            .six.columns
 
       %h2.section-header Credit Card Information
       #dropin
