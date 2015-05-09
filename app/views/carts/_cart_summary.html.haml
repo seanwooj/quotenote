@@ -1,0 +1,25 @@
+.sidebar-panel.order-summary
+  %h3.sidebar-panel-header= header
+  .sidebar-panel-content
+    %ul
+      - @cart.items.each do |item|
+        - qn_image_url = QuoteNote.find(item.quote_note_id).preview_image.url
+        %li
+          .order-item-image
+            %img{:src => qn_image_url}
+          .order-item-info
+            %h5.product-name= item.product.name
+            .quantity
+              QTY
+              = item.quantity
+            .price
+              = number_to_currency item.total_price
+  .sidebar-panel-content.subtotal
+    .price-group
+      .price-type Subtotal
+      .price-value= number_to_currency @cart.total_price
+      .price-type Shipping
+      .price-value Free!
+    .price-group.total
+      .price-type.total Total
+      .price-value.total= number_to_currency @cart.total_price
