@@ -70,8 +70,10 @@
       .sidebar-panel-content
         %ul
           - @cart.items.each do |item|
+            - qn_image_url = QuoteNote.find(item.quote_note_id).preview_image.url
             %li
               .order-item-image
+                %img{:src => qn_image_url}
               .order-item-info
                 %h5.product-name= item.product.name
                 .quantity
