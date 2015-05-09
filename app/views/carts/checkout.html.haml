@@ -65,18 +65,29 @@
 
       %p= f.submit "Place Order", :class => 'button button-pink'
   .five.columns
-    %h3 Order Summary
-    %ul
-      - @cart.items.each do |item|
-        %li
-          %em= item.quantity
-          = item.product.name
-          = item.total_price
-
-    %p
-      %strong
-      Total Price:
-      = number_to_currency @cart.total_price
+    .sidebar-panel.order-summary
+      %h3.sidebar-panel-header Order Summary
+      .sidebar-panel-content
+        %ul
+          - @cart.items.each do |item|
+            %li
+              .order-item-image
+              .order-item-info
+                %h5.product-name= item.product.name
+                .quantity
+                  QTY
+                  = item.quantity
+                .price
+                  = number_to_currency item.total_price
+      .sidebar-panel-content.subtotal
+        .price-group
+          .price-type Subtotal
+          .price-value= number_to_currency @cart.total_price
+          .price-type Shipping
+          .price-value Free!
+        .price-group.total
+          .price-type.total Total
+          .price-value.total= number_to_currency @cart.total_price
 
 
 :javascript
