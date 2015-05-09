@@ -88,18 +88,18 @@ body {
   position: relative;
   top: -50px;
 
-  // h1, h2, h3, h4, h5, h6 {
-  //   font-size: 16px;
-  //   font-weight: 400;
-  //   margin-bottom: .5rem;
-  //   &.section-header {
-  //     padding: 10px;
-  //     background: $pink;
-  //     color: white;
-  //     display: inline-block;
-  //     font-size: 20px;
-  //   }
-  // }
+  h1, h2, h3, h4, h5, h6 {
+    // font-size: 16px;
+    // font-weight: 400;
+    // margin-bottom: .5rem;
+    &.section-header {
+      padding: 10px;
+      background: $pink;
+      color: white;
+      display: inline-block;
+      font-size: 20px;
+    }
+  }
 
   .wrapper {
     padding: 20px;
@@ -283,5 +283,18 @@ body {
         font-size: 40px;
       }
     }
+  }
+}
+
+.form-group {
+  margin-bottom: 3em;
+  input, select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  label {
+    font-weight: 100;
+    color: #555;
+    margin-bottom: 0;
   }
 }

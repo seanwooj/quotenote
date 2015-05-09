@@ -1,58 +1,82 @@
 %h1 Checkout
 
-%h2 You have the following products:
-
-%ul
-  - @cart.items.each do |item|
-    %li
-      %em= item.quantity
-      = item.product.name
-      = item.total_price
-
-%p
-  %strong
-  Total Price:
-  = number_to_currency @cart.total_price
-%hr
-
-- unless current_user
-  %h2 Create Your Account
-  %p
-    Already have an account?
-    = link_to "Log in.", new_user_session_path
-
-= form_for @order_form, :url => orders_path do |f|
-  = f.fields_for :user, f.object.user do |u|
+.row.checkout
+  .seven.columns
     - unless current_user
-      %p= u.text_field :email, :placeholder => 'Email', :class => 'form-control'
-      %p= u.password_field :password, :placeholder => 'password'
-      %p= u.password_field :password_confirmation, :placeholder => 'confirm password'
-    - else
-      = u.hidden_field :id
-
-    .form-group
-      %h2 Shipping Information
-      %p= u.text_field :first_name, :placeholder => "First Name", :class => "form-control input-lg"
-      %p= u.text_field :last_name, :placeholder => "Last Name", :class => "form-control input-lg"
-      .row
-        %p= u.text_field :address, :placeholder => 'Address', :class => 'form-control'
-        %p= u.text_field :postal_code, :placeholder => 'Postal Code / Zipcode', :class => 'form-control'
-        %p= u.text_field :city, :placeholder => 'City', :class => 'form-control'
-        %p
-          = u.label :state, 'State (Only for US)'
-          = u.select :state, :class => 'form-control' do
-            = options_for_select us_states
+      %h2.section-header Account
       %p
-        = u.label :country, 'Country'
-        = u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
+        If you're a cool cat with an account already,
+        = link_to "Log in.", new_user_session_path
 
-      %p= u.text_field :phone, :class => 'form-control', :placeholder => 'Phone'
+    = form_for @order_form, :url => orders_path do |f|
+      = f.fields_for :user, f.object.user do |u|
+        - unless current_user
+          .form-group
+            .row
+              .twelve.columns
+                = u.label :email
+                = u.text_field :email
+            .row
+              .six.columns
+                = u.label :password
+                = u.password_field :password
+              .six.columns
+                = u.label :password_confirmation, 'Confirm your password!'
+                = u.password_field :password_confirmation
+        - else
+          = u.hidden_field :id
 
-  %hr
-  %h2 Credit Card Information
-  #dropin
+        .form-group
+          %h2.section-header Shipping Information
+          .row
+            .six.columns
+              = u.label :first_name, 'First Name'
+              = u.text_field :first_name
+            .six.columns
+              = u.label :last_name, 'Last Name'
+              = u.text_field :last_name
+          .row
+            .twelve.columns
+              = u.label :address
+              = u.text_field :address
+          .row
+            .four.columns
+              = u.label :postal_code, 'Postal Code'
+              = u.text_field :postal_code
+            .eight.columns
+              = u.label :city
+              = u.text_field :city
+          .row
+            .five.columns
+              = u.label :state, 'State (Only for US)'
+              = u.select :state do
+                = options_for_select us_states
+            .seven.columns
+              = u.label :country, 'Country'
+              = u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
+          .row
+            .six.columns
+              = u.label :phone
+              = u.text_field :phone
+            .six.columns
 
-  %p= f.submit "Place Order", :class => 'button button-pink'
+      %h2.section-header Credit Card Information
+      #dropin
+
+      %p= f.submit "Place Order", :class => 'button button-pink'
+  .five.columns
+    %h3 Order Summary
+    %ul
+      - @cart.items.each do |item|
+        %li
+          %em= item.quantity
+          = item.product.name
+          = item.total_price
+
+    %p
+      %strong
+      Total Price:
+      = number_to_currency @cart.total_price
 
 
 :javascript
