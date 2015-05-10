@@ -35,4 +35,12 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 
+
+  def valid_for_order?
+    !first_name.blank? && !last_name.blank? &&
+    !address.blank? && !postal_code.blank? &&
+    !city.blank? && !country.blank? &&
+    !phone.blank?
+  end
+
 end

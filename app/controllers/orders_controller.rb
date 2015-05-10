@@ -34,6 +34,7 @@ class OrdersController < ApplicationController
       end
 
     else
+      @client_token = Braintree::ClientToken.generate()
       render 'carts/checkout'
     end
   end

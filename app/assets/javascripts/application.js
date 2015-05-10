@@ -21,4 +21,5 @@
 //= require jquery.zoomer/jquery.zoomer
 //= require jquery.scrollTo/jquery.scrollTo
 //= require jquery-fileupload/basic
+//= require jquery.serializeJSON
 //= require_tree .

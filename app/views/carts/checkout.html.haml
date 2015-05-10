@@ -13,14 +13,14 @@
             .row
               .twelve.columns
                 = u.label :email
-                = u.text_field :email
+                = u.text_field :email, :class => 'pristine validate'
             .row
               .six.columns
                 = u.label :password
-                = u.password_field :password
+                = u.password_field :password, :class => 'pristine validate'
               .six.columns
                 = u.label :password_confirmation, 'Confirm your password!'
-                = u.password_field :password_confirmation
+                = u.password_field :password_confirmation, :class => 'pristine validate'
         - else
           = u.hidden_field :id
 
@@ -29,39 +29,39 @@
           .row
             .six.columns
               = u.label :first_name, 'First Name'
-              = u.text_field :first_name
+              = u.text_field :first_name, :class => 'pristine validate', :pattern => '^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$', :required => true
             .six.columns
               = u.label :last_name, 'Last Name'
-              = u.text_field :last_name
+              = u.text_field :last_name, :class => 'pristine validate', :pattern => '^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$', :required => true
           .row
             .twelve.columns
               = u.label :address
-              = u.text_field :address
+              = u.text_field :address, :class => 'pristine validate', :pattern => '[a-zA-Z\d\s\-\,\#\.\+]+', :required => true
           .row
             .three.columns
               = u.label :postal_code, 'Postal Code'
-              = u.text_field :postal_code
+              = u.text_field :postal_code, :class => 'pristine validate', :pattern => '^\d{5,6}(?:[-\s]\d{4})?$', :required => true
             .four.columns
               = u.label :state, 'State (Only for US)'
-              = u.select :state do
+              = u.select :state, :class => 'pristine' do
                 = options_for_select us_states
             .five.columns
               = u.label :city
-              = u.text_field :city
+              = u.text_field :city, :class => 'pristine validate', :pattern => '^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$', :required => true
           .row
             .seven.columns
               = u.label :country, 'Country'
-              = u.country_select :country, {:priority_countries => ['US']}, {:class => 'form-control'}
+              = u.country_select :country, {:priority_countries => ['US']}, {:class => 'pristine'}
             .five.columns
               = u.label :phone
-              = u.text_field :phone
+              = u.text_field :phone, :class => 'pristine validate', :pattern => '^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$', :required => true
 
       %h2.section-header Credit Card Information
       #dropin
 
       %p= f.submit "Place Order", :class => 'button button-pink'
   .five.columns
-    = render 'cart_summary', :header => 'Order Summary'
+    = render 'carts/cart_summary', :header => 'Order Summary'
 
 
 :javascript
@@ -70,3 +70,7 @@
     'dropin', {
       container: 'dropin'
     });
+
+  $(window).load(function(){
+    window.qn.checkout.init();
+  });

@@ -22,7 +22,7 @@ class OrderForm
   end
 
   def valid?
-    user.valid?
+    user.valid? && user.valid_for_order?
   end
 
   def build_order_items
