@@ -11,31 +11,39 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if order_params[:user][:id]
-      user = User.find(order_params[:user][:id])
-      user.assign_attributes(order_params[:user])
-    else
-      user = User.new(order_params[:user])
-    end
+    user = get_or_make_user_via_params(order_params)
 
     @order_form = OrderForm.new(
       :user => user,
       :cart => @cart # pulled from the initialize cart before action in app controller
     )
 
-    if @order_form.save
-      sign_in(:user, user)
-      if charge_user
-        empty_cart
-        print_io_order_post
-        redirect_to confirmation_order_path(@order_form.order)
+    # WE MUST CHECK TO ENSURE THAT A PAYMENT METHOD NONCE HAS BEEN PASSED IN.
+    # braintree intercepts the form submission -- but not fast enough. the form submission happens
+    # and gets cancelled quickly, but not quickly enough to prevent the first order form from
+    # being saved, which saves the user. then braintree submits the form again, this time with
+    # a payment nonce. that makes it through, but at that point the user is saved already, which
+    # breaks the form flow.
+    unless params[:payment_method_nonce] == ''
+
+      if @order_form.save
+        sign_in(:user, user)
+        if charge_user
+          empty_cart
+          print_io_order_post
+          redirect_to confirmation_order_path(@order_form.order)
+        else
+          raise PaymentError.new(order_params), "something went wrong with the payment #{order_params.to_s}"
+        end
       else
-        raise PaymentError.new(order_params), "something went wrong with the payment #{order_params.to_s}"
+        begin
+          raise PaymentError.new(order_params), "something went wrong with the account information #{order_params.to_s}"
+        rescue
+          @client_token = Braintree::ClientToken.generate()
+          render 'carts/checkout'
+        end
       end
 
-    else
-      @client_token = Braintree::ClientToken.generate()
-      render 'carts/checkout'
     end
   end
 
@@ -54,6 +62,16 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def get_or_make_user_via_params order_params
+    if order_params[:user][:id]
+      user = User.find(order_params[:user][:id])
+      user.assign_attributes(order_params[:user])
+    else
+      user = User.new(order_params[:user])
+    end
+    user
+  end
 
   def order_params
     params.require(:order_form).permit(

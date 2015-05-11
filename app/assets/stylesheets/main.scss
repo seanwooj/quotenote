@@ -33,10 +33,13 @@ we aim to organize our site's CSS in the following pattern:
 
 /* Pages */
 @import 'pages/_contact.scss';
+@import 'pages/_checkout.scss';
 
 /* Components */
+@import 'components/_panels.scss';
 @import 'components/_buttons.scss';
 @import 'components/_modal.scss';
+@import 'components/_forms.scss';
 
 /* Vendor Scripts */
 @import 'normalize.css/_normalize';

@@ -1,5 +1,6 @@
 .row.checkout
   .seven.columns
+    = render 'orders/errors'
     - unless current_user
       %h2.section-header Account Information
       %p
@@ -17,10 +18,10 @@
             .row
               .six.columns
                 = u.label :password
-                = u.password_field :password, :class => 'pristine validate'
+                = u.password_field :password, :class => 'pristine validate', :required => true, :minlength => '8'
               .six.columns
                 = u.label :password_confirmation, 'Confirm your password!'
-                = u.password_field :password_confirmation, :class => 'pristine validate'
+                = u.password_field :password_confirmation, :class => 'pristine validate', :required => true, :minlength => '8'
         - else
           = u.hidden_field :id
 

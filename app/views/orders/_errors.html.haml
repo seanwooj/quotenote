@@ -1,0 +1,8 @@
+- if @order_form.has_errors?
+  .sidebar-panel.error.checkout-errors
+    %h4.sidebar-panel-header Oh noes!!
+    .sidebar-panel-content
+      We have found some problems with your order. Please review them below.
+      %ul.user-errors
+        - @order_form.user.errors.full_messages.each do |error|
+          %li= error

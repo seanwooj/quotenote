@@ -1,0 +1,30 @@
+.form-group {
+  margin-bottom: 3em;
+  .field_with_errors {
+    input, select {
+      border-bottom: 1px solid #DD2151;
+    }
+  }
+
+  input, select {
+    width: 100%;
+    margin-bottom: 10px;
+    @include border-radius(0px);
+
+    &.dirty {
+      &:invalid {
+        border-bottom: 1px solid #DD2151;
+      }
+
+      &:valid {
+        border-bottom: 1px solid #28C891;
+      }
+    }
+
+  }
+  label {
+    font-weight: 100;
+    color: #555;
+    margin-bottom: 0;
+  }
+}

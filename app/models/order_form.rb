@@ -12,6 +12,10 @@ class OrderForm
     end
   end
 
+  def has_errors?
+    user.errors.any?
+  end
+
   private
 
   def persist

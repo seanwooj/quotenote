@@ -40,6 +40,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # config.middleware.use('PartyFoul::Middleware')
+
   Braintree::Configuration.environment = :sandbox
   Braintree::Configuration.merchant_id = "k78kdgkp9sxdzkrw"
   Braintree::Configuration.public_key = "8dbtsbcdwnbj6sty"
