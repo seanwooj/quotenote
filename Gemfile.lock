@@ -117,6 +117,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.8)
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
@@ -167,14 +169,19 @@ GEM
     mono_logger (1.1.0)
     multi_json (1.11.0)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    octokit (3.8.0)
+      sawyer (~> 0.6.0, >= 0.5.3)
     orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    party_foul (1.5.5)
+      octokit (~> 3.1)
     pdfkit (0.6.2)
     pg (0.18.1)
     rack (1.6.1)
@@ -232,6 +239,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    sawyer (0.6.0)
+      addressable (~> 2.3.5)
+      faraday (~> 0.8, < 0.10)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -313,6 +323,7 @@ DEPENDENCIES
   minitest-around
   minitest-rails
   paperclip
+  party_foul
   pdfkit
   pg
   rails (= 4.2.0)

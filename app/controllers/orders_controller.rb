@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_admin!, :only => [:index, :show]
+  before_action :authenticate_admin!, :only => [:index, :show, :retry_print_api_call]
 
 
   def show
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
         print_io_order_post
         redirect_to confirmation_order_path(@order_form.order)
       else
-        # redirect to the pay route
+        raise PaymentError.new(order_params), "something went wrong with the payment #{order_params.to_s}"
       end
 
     else
