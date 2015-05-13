@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
         if charge_user
           empty_cart
           print_io_order_post
+          CheckoutMailer.order_confirmation_email(user, @order_form.order).deliver_now
           redirect_to confirmation_order_path(@order_form.order)
         else
           raise PaymentError.new(order_params), "something went wrong with the payment #{order_params.to_s}"
