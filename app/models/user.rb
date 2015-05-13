@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     !first_name.blank? && !last_name.blank? &&
     !address.blank? && !postal_code.blank? &&
     !city.blank? && !country.blank? &&
-    !phone.blank?
+    !phone.blank? && (country == 'US' && !state.blank?)
   end
 
 end
