@@ -29,6 +29,6 @@ Rails.application.routes.draw do
 
   # Static Pages
   get 'contact' => 'static_pages#contact'
-  get 'about' => 'static_pages#contact'
+  get 'about' => 'static_pages#about'
   get 'privacy_policy' => 'static_pages#privacy_policy'
 end
