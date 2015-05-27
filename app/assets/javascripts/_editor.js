@@ -6,7 +6,7 @@ window.qn.editor = {
 
   quote_params: {
     font_family: 'cabin_sketch',
-    quote_text: ["Your quote here! Enter your", "quote and we'll make something pretty!"],
+    quote_text: ["Type your quote here and", "share your first QuoteNote"],
     quote_author: "",
     background_id: 29,
     overlay: true,
