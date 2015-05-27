@@ -8,7 +8,7 @@ window.qn.editor = {
     font_family: 'cabin_sketch',
     quote_text: ["Your quote here! Enter your", "quote and we'll make something pretty!"],
     quote_author: "",
-    background_id: 3,
+    background_id: 29,
     overlay: true,
     font_color: 'white',
     height: '1200px',
