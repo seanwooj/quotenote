@@ -20,7 +20,12 @@ module ApplicationHelper
     if session[:background_id]
       session[:background_id]
     else
-      Background.global.first.id
+      # kludgy hack to make sure we pick the wooden background
+      if Background.global.where(:id => 28).empty?
+        Background.global.first.id
+      else
+        28
+      end
     end
   end
 end
